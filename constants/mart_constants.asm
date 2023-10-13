@@ -1,0 +1,74 @@
+; mart types (see engine/items/mart.asm)
+	const_def
+	const MARTTYPE_STANDARD
+	const MARTTYPE_BITTER
+	const MARTTYPE_BARGAIN
+	const MARTTYPE_PHARMACY
+	const MARTTYPE_ROOFTOP
+
+; Marts indexes (see data/items/marts.asm)
+	const_def
+	const MART_CHERRYGROVE
+	const MART_CHERRYGROVE_DEX
+	const MART_VIOLET
+	const MART_AZALEA
+	const MART_CIANWOOD
+	const MART_CIANWOODTMNONE
+	const MART_CIANWOODTMMUD
+	const MART_CIANWOODTMWIND
+	const MART_CIANWOODTMSWAG
+	const MART_CIANWOODTMSWAGWIND
+	const MART_CIANWOODTMMUDSWAG
+	const MART_CIANWOODTMMUDWIND
+	const MART_CIANWOODTMALL
+	const MART_CIANWOODSTONE
+	const MART_GOLDENROD_2F_1
+	const MART_GOLDENROD_2F_2
+	const MART_GOLDENROD_3F
+	const MART_GOLDENROD_4F
+	const MART_GOLDENROD_5Fnone
+	const MART_GOLDENROD_5Fdig
+	const MART_GOLDENROD_5Fheadbutt
+	const MART_GOLDENROD_5Frocksmash
+	const MART_GOLDENROD_5Fheadbuttdig
+	const MART_GOLDENROD_5Fheadbuttrocksmash
+	const MART_GOLDENROD_5Frocksmashdig
+	const MART_GOLDENROD_5Fall
+	const MART_OLIVINE
+	const MART_ECRUTEAK
+	const MART_MAHOGANY_1
+	const MART_MAHOGANYnone
+	const MART_MAHOGANYsludgebomb
+	const MART_MAHOGANYrollout
+	const MART_MAHOGANYleechlife
+	const MART_MAHOGANYrolloutsludgebomb
+	const MART_MAHOGANYrolloutleechlife
+	const MART_MAHOGANYleechlifesludgebomb
+	const MART_MAHOGANYall
+	const MART_BLACKTHORN
+	const MART_VIRIDIAN
+	const MART_PEWTER
+	const MART_CERULEAN
+	const MART_LAVENDER
+	const MART_VERMILION
+	const MART_CELADON_2F_1
+	const MART_CELADON_2F_2
+	const Mart_Celadon3Fnone
+	const Mart_Celadon3FRock
+	const Mart_Celadon3FSolar
+	const Mart_Celadon3FQuake
+	const Mart_Celadon3FRockSolar
+	const Mart_Celadon3FSolarQuake
+	const Mart_Celadon3FRockQuake
+	const Mart_Celadon3Fall	
+	const MART_CELADON_4F
+	const MART_CELADON_5F_1
+	const MART_CELADON_5F_2
+	const MART_FUCHSIA
+	const MART_SAFFRON
+	const MART_MT_MOON
+	const MART_INDIGO_PLATEAU
+	const MART_INDIGOTM1
+	const MART_INDIGOTM2
+	const MART_UNDERGROUND
+DEF NUM_MARTS EQU const_value
