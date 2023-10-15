@@ -1,9 +1,6 @@
 DEF CELADONGAMECORNERPRIZEROOM_TM32_COINS     EQU 1500
 DEF CELADONGAMECORNERPRIZEROOM_TM29_COINS     EQU 3500
 DEF CELADONGAMECORNERPRIZEROOM_TM15_COINS     EQU 7500
-DEF CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS  EQU 5000
-DEF CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS  EQU 5000
-DEF CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS EQU 5000
 DEF CELADONGAMECORNERPRIZEROOM_CHIKORITA_COINS EQU 5000
 DEF CELADONGAMECORNERPRIZEROOM_CYNDAQUIL_COINS EQU 5000
 DEF CELADONGAMECORNERPRIZEROOM_TOTODILE_COINS EQU 5000
@@ -139,74 +136,17 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 	loadmenu .MenuHeader
 	verticalmenu
 	closewindow
-	ifequal 1, .Bulbasaur
-	ifequal 2, .Charmander
-	ifequal 3, .Squirtle
-	ifequal 4, .Chikorita
-	ifequal 5, .Cyndaquil
-	ifequal 6, .Totodile
+	ifequal 1, .Chikorita
+	ifequal 2, .Cyndaquil
+	ifequal 3, .Totodile
 	sjump CeladonPrizeRoom_CancelPurchaseScript
-
-.Bulbasaur:
-	checkcoins CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS
-	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
-	getmonname STRING_BUFFER_3, BULBASAUR
-	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	waitsfx
-	playsound SFX_TRANSACTION
-	writetext CeladonPrizeRoom_HereYouGoText
-	waitbutton
-	setval BULBASAUR
-	special GameCornerPrizeMonCheckDex
-	givepoke BULBASAUR, 10
-	takecoins CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS
-	sjump .loop
-
-.Charmander:
-	checkcoins CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS
-	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
-	getmonname STRING_BUFFER_3, CHARMANDER
-	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	waitsfx
-	playsound SFX_TRANSACTION
-	writetext CeladonPrizeRoom_HereYouGoText
-	waitbutton
-	setval CHARMANDER
-	special GameCornerPrizeMonCheckDex
-	givepoke CHARMANDER, 10
-	takecoins CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS
-	sjump .loop
-
-.Squirtle:
-	checkcoins CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS
-	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
-	getmonname STRING_BUFFER_3, SQUIRTLE
-	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_CancelPurchaseScript
-	waitsfx
-	playsound SFX_TRANSACTION
-	writetext CeladonPrizeRoom_HereYouGoText
-	waitbutton
-	setval SQUIRTLE
-	special GameCornerPrizeMonCheckDex
-	givepoke SQUIRTLE, 10
-	takecoins CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS
-	sjump .loop
 
 .Chikorita:
 	checkcoins CELADONGAMECORNERPRIZEROOM_CHIKORITA_COINS
 	ifequal HAVE_LESS, CeladonPrizeRoom_notenoughcoins
 	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, CeladonPrizeRoom_notenoughroom
-	getmonname STRING_BUFFER_3, BULBASAUR
+	getmonname STRING_BUFFER_3, CHIKORITA
 	scall CeladonPrizeRoom_askbuy
 	iffalse CeladonPrizeRoom_CancelPurchaseScript
 	waitsfx
@@ -263,17 +203,14 @@ CeladonGameCornerPrizeRoomPokemonVendor:
 
 .MenuData:
 	db STATICMENU_CURSOR ; flags
-	db 7 ; items
-	db "BULBASAUR  {d:CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS}@"
-	db "CHARMANDER {d:CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS}@"
-	db "SQUIRTLE   {d:CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS}@"
-	db "CHIKORITA  {d:CELADONGAMECORNERPRIZEROOM_BULBASAUR_COINS}@"
-	db "CYNDAQUIL  {d:CELADONGAMECORNERPRIZEROOM_CHARMANDER_COINS}@"
-	db "TOTODILE   {d:CELADONGAMECORNERPRIZEROOM_SQUIRTLE_COINS}@"
+	db 4 ; items
+	db "CHIKORITA  {d:CELADONGAMECORNERPRIZEROOM_CHIKORITA_COINS}@"
+	db "CYNDAQUIL  {d:CELADONGAMECORNERPRIZEROOM_CYNDAQUIL_COINS}@"
+	db "TOTODILE   {d:CELADONGAMECORNERPRIZEROOM_TOTODILE_COINS}@"
 	db "CANCEL@"
 
 CeladonGameCornerPrizeRoomGentlemanText:
-	text "I wanted SQUIRTLE,"
+	text "I wanted TOTODILE,"
 	line "but I was short by"
 	cont "100 coins…"
 	done

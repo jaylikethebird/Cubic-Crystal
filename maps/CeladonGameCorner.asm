@@ -255,8 +255,7 @@ else
 endc
 
 CeladonGymGuideText:
-	text "Hey! CHAMP in"
-	line "making!"
+	text "Hey! CHAMP!"
 
 	para "Are you playing"
 if DEF(_CRYSTAL_AU)

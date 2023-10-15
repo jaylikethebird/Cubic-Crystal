@@ -50,17 +50,8 @@ ViridianCityGrampsNearGym:
 ViridianCityDreamEaterFisher:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM42_DREAM_EATER
-	iftrue .GotDreamEater
 	writetext ViridianCityDreamEaterFisherText
-	promptbutton
-	verbosegiveitem TM_DREAM_EATER
-	iffalse .NoRoomForDreamEater
-	setevent EVENT_GOT_TM42_DREAM_EATER
-.GotDreamEater:
-	writetext ViridianCityDreamEaterFisherGotDreamEaterText
 	waitbutton
-.NoRoomForDreamEater:
 	closetext
 	end
 
@@ -148,7 +139,7 @@ ViridianCityDreamEaterFisherText:
 	text "Yawn!"
 
 	para "I must have dozed"
-	line "off in the sun."
+	line "off just now."
 
 	para "…I had this dream"
 	line "about a DROWZEE"
@@ -156,22 +147,14 @@ ViridianCityDreamEaterFisherText:
 	para "eating my dream."
 	line "Weird, huh?"
 
-	para "Huh?"
-	line "What's this?"
+	para "I gave away my"
+	line "DREAM EATER TM"
 
-	para "Where did this TM"
-	line "come from?"
+	para "a few years back,"
+	line "but I heard you"
 
-	para "This is spooky!"
-	line "Here, you can have"
-	cont "this TM."
-	done
-
-ViridianCityDreamEaterFisherGotDreamEaterText:
-	text "TM42 contains"
-	line "DREAM EATER…"
-
-	para "…Zzzzz…"
+	para "can buy them in"
+	line "CELADON CITY."
 	done
 
 ViridianCityYoungsterText:

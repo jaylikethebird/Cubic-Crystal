@@ -4,22 +4,61 @@
 	const FUCHSIAGYM_FUCHSIA_GYM_2
 	const FUCHSIAGYM_FUCHSIA_GYM_3
 	const FUCHSIAGYM_FUCHSIA_GYM_4
-	const FUCHSIAGYM_GYM_GUIDE_FUCHSIA
+	const FUCHSIAGYM_GYM_GUIDE
+	const FUCHSIAGYM_JANINEREAL
 
 FuchsiaGym_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 
-FuchsiaGymJanineScript:
+FuchsiaGymFakeJanineScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_TM06_TOXIC
+	iftrue .FightOver
 	checkevent EVENT_TALKED_GYM_GUIDE_FUCHSIA
-	iftrue .RegularGuide
+	iffalse .Champ
+	writetext FuchsiaPokecenter1FJanineImpersonatorText
+	waitbutton
+	closetext
+	applymovement FUCHSIAGYM_GYM_GUIDE, Movement_NinjaSpin
+	opentext
+	writetext FuchsiaPokecenter1FJanineImpersonator2Text
+	waitbutton
+	closetext
+	applymovement FUCHSIAGYM_GYM_GUIDE, Movement_NinjaSpin
+	opentext
+	writetext FuchsiaPokecenter1FJanineImpersonator3Text
+	waitbutton
+	closetext
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	pause 15
+	disappear FUCHSIAGYM_GYM_GUIDE
+	appear FUCHSIAGYM_JANINEREAL
+	special FadeInQuickly
+	end
+.FightOver
+	writetext FuchsiaPokecenter1FJanineImpersonator4Text
+	waitbutton
+	closetext
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	pause 15
+	disappear FUCHSIAGYM_GYM_GUIDE
+	appear FUCHSIAGYM_JANINEREAL
+	special FadeInQuickly
+	end
+.Champ
+	writetext FakeGuide
+	waitbutton
+	closetext
+	end
+
+FuchsiaGymJanineScript:
 	checkflag ENGINE_SOULBADGE
 	iftrue .FightDone
-	applymovement FUCHSIAGYM_GYM_GUIDE_FUCHSIA, Movement_NinjaSpin
-	faceplayer
-	variablesprite FUCHSIAGYM_GYM_GUIDE_FUCHSIA, SPRITE_JANINE
-	special LoadUsedSpritesGFX
 	faceplayer
 	opentext
 	writetext JanineText_DisappointYou
@@ -45,12 +84,6 @@ FuchsiaGymJanineScript:
 	waitsfx
 	setflag ENGINE_SOULBADGE
 	sjump .AfterBattle
-.RegularGuide:
-	faceplayer
-	writetext RegularGuide
-	waitbutton
-	closetext
-	end
 .FightDone:
 	faceplayer
 	opentext
@@ -207,17 +240,10 @@ CamperBarryScript:
 FuchsiaGymGuideScript:
 	faceplayer
 	opentext
-	checkevent EVENT_TALKED_GYM_GUIDE_FUCHSIA
-	iftrue .FindJanine
 	checkevent EVENT_BEAT_JANINE
 	iftrue .FuchsiaGymGuideWinScript
-	writetext FuchsiaGymGuideText
-	setevent EVENT_TALKED_GYM_GUIDE_FUCHSIA
-	waitbutton
-	closetext
-	end
-.FindJanine
 	writetext FindJanineText
+	setevent EVENT_TALKED_GYM_GUIDE_FUCHSIA
 	waitbutton
 	closetext
 	end
@@ -251,24 +277,89 @@ Movement_NinjaSpin:
 	turn_head DOWN
 	step_end
 
+FuchsiaPokecenter1FJanineImpersonatorText:
+	text "Mwahahahaha!"
+
+	para "That's right!"
+	line "The real JANINE is"
+	cont "none other than…"
+	done
+
+FuchsiaPokecenter1FJanineImpersonator2Text:
+	text "Erm, hang on."
+
+	para "Ahem, the REAL"
+	line "JANINE is none"
+	cont "other than…"
+	done
+
+FuchsiaPokecenter1FJanineImpersonator3Text:
+	text "Darn it!"
+
+	para "Gimme a sec,"
+	line "I've been too"
+
+	para "busy training my"
+	line "#MON to test"
+	cont "this disguise…"
+	done
+
+FuchsiaPokecenter1FJanineImpersonator4Text:
+	text "Congrats, CHAMP…"
+
+	para "…just kidding, it's"
+	line "still me!"
+	done
+
+FakeGuide:
+	text "Hey there!"
+
+	para "You must be on"
+	line "the hunt for the"
+
+	para "incredible ninja"
+	line "prodigy, JANINE!"
+
+	para "She's somewhere in"
+	line "this room, but"
+	cont "watch out!"
+
+	para "Her students are"
+	line "disguised to fool"
+	cont "trainers like you."
+	done
+
 JanineText_DisappointYou:
-	text "Fufufufu…"
+	text "MWAHAHAHAHA!"
 
-	para "I'm sorry to dis-"
-	line "appoint you…"
+	para "That's right!"
 
-	para "I'm only joking!"
+	para "It is I!"
+	line "The deadly and"
+	cont "beautiful JANINE!"
 
-	para "I'm the real deal!"
+	para "My father, the"
+	line "great KOGA, gave"
 
-	para "JANINE of FUCHSIA"
-	line "GYM, that's me!"
+	para "FUCHSIA's GYM to"
+	line "me when he left"
+	cont "for the ELITE 4."
+
+	para "It's finally time"
+	line "to show the world"
+	cont "what I can do!"
+
+	para "Prepare to be"
+	line "amazed!"
 	done
 
 JanineText_ToughOne:
-	text "JANINE: You're a"
-	line "tough one. You"
-	cont "definitely won…"
+	text "ARGH! WHAT?"
+
+	para "You beat Father?"
+
+	para "Rats, no wonder I"
+	line "lost…"
 
 	para "Here's SOULBADGE."
 	line "Take it."
@@ -280,27 +371,35 @@ Text_ReceivedSoulBadge:
 	done
 
 JanineText_ToxicSpeech:
-	text "JANINE: You're so"
-	line "tough! I have a"
-	cont "special gift!"
+	text "I guess I have a"
+	line "lot to learn."
 
-	para "It's TOXIC, a pow-"
-	line "erful poison that"
+	para "But let none say"
+	line "the daughter of"
 
-	para "steadily saps the"
-	line "victim's HP."
+	para "KOGA lacks honor."
+	line "Or panache. Or"
+	cont "humility."
+
+	para "Please take this"
+	line "ancient TM, the"
+	
+	para "forbidden ninja"
+	line "technique: TOXIC!"
 	done
 
 JanineText_ApplyMyself:
-	text "JANINE: I'm going"
-	line "to really apply"
+	text "Just you watch!"
+	line "I'll show every"
 
-	para "myself and improve"
-	line "my skills."
+	para "doubter that I"
+	line "earned this GYM"
 
-	para "I want to become"
-	line "better than both"
-	cont "Father and you!"
+	para "when I surpass"
+	line "you and Father"
+
+	para "to become a"
+	line "#MON CHAMPION!"
 	done
 
 LassAliceBeforeText:
@@ -375,44 +474,33 @@ CamperBarryAfterText:
 	cont "what, huh?"
 	done
 
-RegularGuide:
-	text "Yo, CHAMP in"
-	line "making!"
-
-	para "Whoops! Take a"
-	line "good look around"
-
-	para "you. The trainers"
-	line "all look like the"
-	cont "LEADER, JANINE."
-
-	para "Which of them is"
-	line "the real JANINE?"
-	done
-
-FuchsiaGymGuideText:
-	text "Yo, CHAMP in"
-	line "making!"
-
-	para "Whoops! Take a"
-	line "good look around"
-
-	para "you. The trainers"
-	line "all look like the"
-	cont "LEADER, JANINE."
-
-	para "Which of them is"
-	line "the real JANINE?"
-	done
-
 FindJanineText:
-	text "FIND JANINE!"
+	text "Yo, CHAMP!"
+
+	para "Uh, I mean, I'm"
+	line "for sure JANINE!"
+
+	para "…"
+
+	para "Darn, I'll never"
+	line "be a ninja."
+
+	para "I can't even get"
+	line "this disguise off."
+
+	para "CHAMP! Go find"
+	line "the real JANINE!"
 	done
 
 FuchsiaGymGuideWinText:
 	text "That was a great"
-	line "battle, trainer"
-	cont "from JOHTO!"
+	line "battle!"
+
+	para "Now if only I"
+	line "could find the"
+
+	para "zipper for this"
+	line "disguise…"
 	done
 
 FuchsiaGym_MapEvents:
@@ -429,9 +517,10 @@ FuchsiaGym_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, FuchsiaGymStatue
 
 	def_object_events
-	object_event  1, 10, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymGuideScript, -1
-	object_event  5,  7, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
-	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
-	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1
-	object_event  4,  2, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CamperBarryScript, -1
-	object_event  7, 15, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, -1
+	object_event  4, 2, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymGuideScript, -1
+	object_event  0,  12, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
+	object_event  3, 6, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
+	object_event  8,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1
+	object_event  6,  13, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CamperBarryScript, -1
+	object_event  7, 15, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymFakeJanineScript, -1
+	object_event  7, 15, SPRITE_JANINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, -1

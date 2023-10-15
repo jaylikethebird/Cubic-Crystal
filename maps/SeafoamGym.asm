@@ -22,22 +22,22 @@ SeafoamGymBlaineScript:
 	winlosstext BlaineWinLossText, 0
 	loadtrainer BLAINE, BLAINE1
 	startbattle
-	iftrue .ReturnAfterBattle
-	appear SEAFOAMGYM_GYM_GUIDE
-.ReturnAfterBattle:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLAINE
+	appear SEAFOAMGYM_GYM_GUIDE
 	opentext
 	writetext ReceivedVolcanoBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
-	writetext BlaineAfterBattleText
-	waitbutton
-	closetext
-	end
-
 .FightDone:
+	checkevent EVENT_GOT_BLAINE_TM
+	iftrue .GotSunnyDay
+	writetext BlaineSunnyDayText
+	promptbutton
+	verbosegiveitem TM_SUNNY_DAY
+	setevent EVENT_GOT_BLAINE_TM
+.GotSunnyDay:
 	writetext BlaineFightDoneText
 	waitbutton
 	closetext
@@ -61,24 +61,21 @@ SeafoamGymGuideScript:
 	end
 
 BlaineIntroText:
-	text "BLAINE: Waaah!"
+	text "So, you've found"
+	line "me. Welcome!"
 
-	para "My GYM in CINNABAR"
-	line "burned down."
+	para "I'm BLAINE, the"
+	line "GYM LEADER without"
+	cont "a GYM."
 
-	para "My fire-breathing"
-	line "#MON and I are"
+	para "The volcano that"
+	line "destroyed CINNABAR"
 
-	para "homeless because"
-	line "of the volcano."
+	para "wrought havoc on"
+	line "the SEAFOAM ISLES,"
 
-	para "Waaah!"
-
-	para "But I'm back in"
-	line "business as a GYM"
-
-	para "LEADER here in"
-	line "this cave."
+	para "so I moved in to"
+	line "continue my work."
 
 	para "If you can beat"
 	line "me, I'll give you"
@@ -89,8 +86,7 @@ BlaineIntroText:
 	done
 
 BlaineWinLossText:
-	text "BLAINE: Awesome."
-	line "I've burned out…"
+	text "I've burned out…"
 
 	para "You've earned"
 	line "VOLCANOBADGE!"
@@ -101,26 +97,27 @@ ReceivedVolcanoBadgeText:
 	line "VOLCANOBADGE."
 	done
 
-BlaineAfterBattleText:
-	text "BLAINE: I did lose"
-	line "this time, but I'm"
+BlaineSunnyDayText:
+	text "Fire can destroy."
 
-	para "going to win the"
-	line "next time."
+	para "But the only way"
+	line "to move forward"
 
-	para "When I rebuild my"
-	line "CINNABAR GYM,"
+	para "is to focus on"
+	line "what it can give!"
 
-	para "we'll have to have"
-	line "a rematch."
+	para "In that spirit,"
+	line "take this TM"
+	cont "for SUNNY DAY!"
 	done
 
 BlaineFightDoneText:
-	text "BLAINE: My fire"
-	line "#MON will be"
+	text "My fire will never"
+	line "go out forever."
 
-	para "even stronger."
-	line "Just you watch!"
+	para "My #MON and I"
+	line "will rise from"
+	cont "the ashes!"
 	done
 
 SeafoamGymGuideWinText:

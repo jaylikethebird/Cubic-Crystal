@@ -2,11 +2,47 @@
 	const ROCKTUNNELB1F_POKE_BALL1
 	const ROCKTUNNELB1F_POKE_BALL2
 	const ROCKTUNNELB1F_POKE_BALL3
+	const ROCKTUNNEL_ZAPDOS
 
 RockTunnelB1F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+		callback MAPCALLBACK_OBJECTS, ZapdosAppearTunnel
+
+ZapdosAppearTunnel:
+	checkevent EVENT_FOUGHT_ZAPDOS
+	iftrue .NoAppear
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .Appear
+	sjump .NoAppear
+
+.Appear:
+	appear ROCKTUNNEL_ZAPDOS
+	endcallback
+
+.NoAppear:
+	disappear ROCKTUNNEL_ZAPDOS
+	endcallback
+
+RockTunnelZapdos:
+	faceplayer
+	opentext
+	writetext ZapdosText
+	cry ZAPDOS
+	pause 15
+	closetext
+	setevent EVENT_FOUGHT_ZAPDOS
+	loadvar VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	loadwildmon ZAPDOS, 60
+	startbattle
+	disappear ROCKTUNNEL_ZAPDOS
+	reloadmapafterbattle
+	end
+
+ZapdosText:
+	text "DOSSSS!"
+	done
 
 RockTunnelB1FIron:
 	itemball IRON
@@ -38,3 +74,4 @@ RockTunnelB1F_MapEvents:
 	object_event  7, 25, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnelB1FIron, EVENT_ROCK_TUNNEL_B1F_IRON
 	object_event  6, 17, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnelB1FPPUp, EVENT_ROCK_TUNNEL_B1F_PP_UP
 	object_event 15,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RockTunnelB1FRevive, EVENT_ROCK_TUNNEL_B1F_REVIVE
+	object_event 19, 14, SPRITE_BIRD, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RockTunnelZapdos, EVENT_FOUGHT_ZAPDOS

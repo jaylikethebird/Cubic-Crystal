@@ -3,7 +3,6 @@
 	const OLIVINEPORT_SAILOR2
 	const OLIVINEPORT_SAILOR3
 	const OLIVINEPORT_FISHING_GURU1
-	const OLIVINEPORT_FISHING_GURU2
 	const OLIVINEPORT_YOUNGSTER
 	const OLIVINEPORT_COOLTRAINER_F
 
@@ -204,15 +203,6 @@ OlivinePortFishingGuru1Script:
 	turnobject OLIVINEPORT_FISHING_GURU1, UP
 	end
 
-OlivinePortFishingGuru2Script:
-	faceplayer
-	opentext
-	writetext OlivinePortFishingGuru2Text
-	waitbutton
-	closetext
-	turnobject OLIVINEPORT_FISHING_GURU2, UP
-	end
-
 OlivinePortYoungsterScript:
 	faceplayer
 	opentext
@@ -352,15 +342,6 @@ OlivinePortFishingGuru1Text:
 	line "rare elsewhere."
 	done
 
-OlivinePortFishingGuru2Text:
-	text "How many RODS do"
-	line "you have?"
-
-	para "Different RODS"
-	line "catch different"
-	cont "#MON."
-	done
-
 OlivinePortYoungsterText:
 	text "S.S.AQUA uses jets"
 	line "to skim over the"
@@ -400,6 +381,5 @@ OlivinePort_MapEvents:
 	object_event  7, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorBeforeHOFScript, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	object_event  6, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAfterHOFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	object_event  4, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru1Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
-	object_event 13, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru2Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	object_event  4, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortYoungsterScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	object_event 11, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortCooltrainerFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME

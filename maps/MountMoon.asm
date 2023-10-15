@@ -1,5 +1,6 @@
 	object_const_def
 	const MOUNTMOON_RIVAL
+	const MOUNTMOON_BROCK
 
 MountMoon_MapScripts:
 	def_scene_scripts
@@ -85,6 +86,20 @@ MountMoonRivalMovementAfter:
 	step DOWN
 	step_end
 
+BrockScript:
+	faceplayer
+	opentext
+	writetext BrockMoonText
+	waitbutton
+	closetext
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	disappear MOUNTMOON_BROCK
+	setevent EVENT_BROCK_RETURNS
+	pause 15
+	special FadeInQuickly
+	end
+
 MountMoonRivalTextBefore:
 	text "<……> <……> <……>"
 
@@ -125,8 +140,7 @@ MountMoonRivalTextAfter:
 	line "and square."
 
 	para "I admit it. But"
-	line "this isn't the"
-	cont "end."
+	line "I'm not done."
 
 	para "I'm going to be"
 	line "the greatest #-"
@@ -149,13 +163,22 @@ MountMoonRivalTextLoss:
 
 	para "I've repaid my"
 	line "debt to you."
+	done
 
-	para "With my #MON,"
-	line "I'm going to beat"
+BrockMoonText:
+	text "Hi! I'm BROCK"
+	line "from PEWTER CITY."
 
-	para "the CHAMPION and"
-	line "become the world's"
-	cont "greatest trainer."
+	para "The #MON battle"
+	line "I just heard…"
+
+	para "Was that you?"
+
+	para "Then I better get"
+	line "back to my GYM"
+
+	para "to see your skill"
+	line "for myself!"
 	done
 
 MountMoon_MapEvents:
@@ -177,3 +200,4 @@ MountMoon_MapEvents:
 
 	def_object_events
 	object_event  7,  3, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	object_event  13,  11, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BrockScript, -1

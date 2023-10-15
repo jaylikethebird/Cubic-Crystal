@@ -25,12 +25,16 @@ ViridianGymBlueScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_EARTHBADGE
-	writetext LeaderBlueAfterText
-	waitbutton
-	closetext
-	end
-
 .FightDone:
+	checkevent EVENT_GOT_BLUE_TM
+	iftrue .GotHiddenPower
+	writetext LeaderBlueAfterText
+	promptbutton
+	verbosegiveitem TM_HIDDEN_POWER
+	setevent EVENT_GOT_BLUE_TM
+	writetext LeaderBlueHiddenPowerText
+	waitbutton
+.GotHiddenPower
 	writetext LeaderBlueEpilogueText
 	waitbutton
 	closetext
@@ -62,7 +66,7 @@ ViridianGymStatue:
 	jumpstd GymStatue2Script
 
 LeaderBlueBeforeText:
-	text "BLUE: Yo! Finally"
+	text "Yo! Finally"
 	line "got here, huh?"
 
 	para "I wasn't in the"
@@ -74,28 +78,35 @@ LeaderBlueBeforeText:
 	para "…"
 
 	para "You're telling me"
-	line "you conquered all"
-	cont "the GYMS in JOHTO?"
+	line "you're the new"
+	cont "CHAMP? Whatever."
 
-	para "Heh! JOHTO's GYMS"
-	line "must be pretty"
-	cont "pathetic then."
+	para "Did you know I"
+	line "was the youngest"
 
-	para "Hey, don't worry"
-	line "about it."
+	para "CHAMPION in the"
+	line "history of the"
+	cont "#MON LEAGUE?"
 
-	para "I'll know if you"
-	line "are good or not by"
+	para "RED might've taken"
+	line "my title, but I"
+	cont "got there first!"
 
-	para "battling you right"
-	line "now."
+	para "The only reason"
+	line "you made it to"
 
-	para "Ready, JOHTO"
-	line "CHAMP?"
+	para "CHAMPION is that"
+	line "I got bored with"
+	cont "the LEAGUE."
+
+	para "LANCE? Pfft."
+
+	para "I'll give you a"
+	line "REAL battle!"
 	done
 
 LeaderBlueWinText:
-	text "BLUE: What?"
+	text "What?"
 
 	para "How the heck did I"
 	line "lose to you?"
@@ -113,42 +124,61 @@ Text_ReceivedEarthBadge:
 	done
 
 LeaderBlueAfterText:
-	text "BLUE: …"
+	text "…"
 
-	para "All right, I was"
-	line "wrong. You're the"
+	para "You could actually"
+	line "do it."
 
-	para "real deal. You are"
-	line "a good trainer."
+	para "You could beat"
+	line "that so-called"
+	cont "#MON MASTER."
 
-	para "But I'm going to"
-	line "beat you someday."
+	para "Oh man, wouldn't"
+	line "that be rich?"
 
-	para "Don't you forget"
-	line "it!"
+	para "Some JOHTO kid"
+	line "does to RED what"
+	cont "he did to me."
+
+	para "Well don't let me"
+	line "stop you. In fact,"
+	cont "take this!"
+	done
+
+LeaderBlueHiddenPowerText:
+	text "That's my TM for"
+	line "HIDDEN POWER."
+
+	para "Its type depends"
+	line "on your #MON's"
+	cont "inner strength."
+
+	para "It makes for a"
+	line "killer surprise."
+
+	para "…"
 	done
 
 LeaderBlueEpilogueText:
-	text "BLUE: Listen, you."
+	text "Listen, you."
 
 	para "You'd better not"
 	line "lose until I beat"
 	cont "you. Got it?"
+
+	para "Smell ya later!"
 	done
 
 ViridianGymGuideText:
-	text "Yo, CHAMP in"
-	line "making!"
+	text "Yo, CHAMP!"
 
 	para "How's it going?"
 	line "Looks like you're"
 	cont "on a roll."
 
 	para "The GYM LEADER is"
-	line "a guy who battled"
-
-	para "the CHAMPION three"
-	line "years ago."
+	line "a former CHAMPION"
+	cont "himself!"
 
 	para "He's no pushover."
 

@@ -27,21 +27,19 @@ PewterGymBrockScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
-	writetext BrockBoulderBadgeText
-	waitbutton
-	closetext
-	end
-
 .FightDone:
 	checkevent EVENT_GOT_TM37_SANDSTORM
 	iftrue .GotSandstorm
-	writetext BrockExplainTMText
+	writetext BrockBoulderBadgeText
 	promptbutton
 	verbosegiveitem TM_SANDSTORM
-	iffalse .GotSandstorm
 	setevent EVENT_GOT_TM37_SANDSTORM
-.GotSandstorm:
-	writetext BrockWinLossText
+	writetext BrockExplainTMText
+	waitbutton
+	closetext
+	end
+.GotSandstorm
+	writetext BrockFightDoneText
 	waitbutton
 	closetext
 	end
@@ -82,35 +80,29 @@ PewterGymStatue:
 	jumpstd GymStatue2Script
 
 BrockIntroText:
-	text "BROCK: Wow, it's"
-	line "not often that we"
+	text "Aha!"
 
-	para "get a challenger"
-	line "from JOHTO."
+	para "I was hoping you"
+	line "would show."
 
-	para "I'm BROCK, the"
-	line "PEWTER GYM LEADER."
+	para "Your battle in"
+	line "MT. MOON gave"
+	cont "me goosebumps."
 
-	para "I'm an expert on"
-	line "rock-type #MON."
+	para "Let's see if you"
+	line "can inflict any"
 
-	para "My #MON are im-"
-	line "pervious to most"
-
-	para "physical attacks."
-	line "You'll have a hard"
-
-	para "time inflicting"
-	line "any damage."
+	para "damage against my"
+	line "rock-hard #MON!"
 
 	para "Come on!"
 	done
 
 BrockWinLossText:
-	text "BROCK: Your #-"
-	line "MON's powerful at-"
-	cont "tacks overcame my"
-	cont "rock-hard defense…"
+	text "Your #MON's"
+	line "powerful attacks"
+	cont "overcame my rock-"
+	cont "hard defense…"
 
 	para "You're stronger"
 	line "than I expected…"
@@ -125,7 +117,7 @@ ReceivedBoulderBadgeText:
 	done
 
 BrockBoulderBadgeText:
-	text "BROCK: <PLAY_G>,"
+	text "<PLAY_G>,"
 	line "thanks. I enjoyed"
 
 	para "battling you, even"
@@ -143,9 +135,10 @@ BrockBoulderBadgeText:
 
 	para "perfect for a"
 	line "trainer like you."
-
+	done
+	
 BrockExplainTMText:
-	text "BROCK: This is"
+	text "This is"
 	line "SANDSTORM!"
 
 	para "It inflicts damage"
@@ -157,8 +150,8 @@ BrockExplainTMText:
 	done
 
 BrockFightDoneText:
-	text "BROCK: The world"
-	line "is huge. There are"
+	text "The world is just"
+	line "huge. There are"
 
 	para "still many strong"
 	line "trainers like you."
@@ -170,9 +163,8 @@ BrockFightDoneText:
 	done
 
 CamperJerrySeenText:
-	text "The trainers of"
-	line "this GYM use rock-"
-	cont "type #MON."
+	text "BROCK uses rock-"
+	line "type #MON."
 
 	para "The rock-type has"
 	line "high DEFENSE."
@@ -185,8 +177,9 @@ CamperJerrySeenText:
 	done
 
 CamperJerryBeatenText:
-	text "I have to win"
-	line "these battles…"
+	text "Dang, I should"
+	line "really be using"
+	cont "rock-types!"
 	done
 
 CamperJerryAfterBattleText:
@@ -201,14 +194,12 @@ CamperJerryAfterBattleText:
 	done
 
 PewterGymGuideText:
-	text "Yo! CHAMP in"
-	line "making! You're"
+	text "Yo! CHAMP!"
+	line "You rock!"
 
-	para "really rocking."
-	line "Are you battling"
-
-	para "the GYM LEADERS of"
-	line "KANTO?"
+	para "Are you battling"
+	line "the GYM LEADERS of"
+	cont "KANTO?"
 
 	para "They're strong and"
 	line "dedicated people,"
@@ -218,10 +209,10 @@ PewterGymGuideText:
 	done
 
 PewterGymGuideWinText:
-	text "Yo! CHAMP in"
-	line "making! That GYM"
+	text "Yo! CHAMPION!"
+	line "That GYM didn't"
 
-	para "didn't give you"
+	para "give you too"
 	line "much trouble."
 
 	para "The way you took"
@@ -246,5 +237,5 @@ PewterGym_MapEvents:
 
 	def_object_events
 	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PewterGymBrockScript, -1
-	object_event  2,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperJerry, -1
+	object_event  2,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerCamperJerry, -1
 	object_event  6, 11, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, PewterGymGuideScript, -1

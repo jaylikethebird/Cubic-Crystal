@@ -306,13 +306,13 @@
 	const EVENT_WADE_ASKED_FOR_PHONE_NUMBER
 	const EVENT_TALKED_GYM_GUIDE_FUCHSIA
 	const EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_ERIKA_RETURNS
 	const EVENT_LIZ_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_BROCK_RETURNS
 	const EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_GOT_BLAINE_TM
 	const EVENT_TODD_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_GOT_BLUE_TM
 	const EVENT_GINA_ASKED_FOR_PHONE_NUMBER
 	const_skip ; unused in Crystal
 	const EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
@@ -320,11 +320,11 @@
 	const EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
 	const_skip ; unused in Crystal
 	const EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
-	const_skip ; unused
-	const_skip ; unused
+	const EVENT_FOUGHT_ZAPDOS
+	const EVENT_FOUGHT_MOLTRES
+	const EVENT_FOUGHT_ARTICUNO
 	const EVENT_DANA_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_CAUGHT_BIRDS
 	const EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	const_skip ; unused in Crystal
 	const EVENT_DEREK_ASKED_FOR_PHONE_NUMBER

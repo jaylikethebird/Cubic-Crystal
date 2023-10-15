@@ -30,7 +30,7 @@ FuchsiaPokecenter1FJanineImpersonatorScript:
 	closetext
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, FuchsiaPokecenter1FJanineImpersonatorSpinMovement
 	faceplayer
-	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_GYM_GUIDE
+	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_JANINE
 	special LoadUsedSpritesGFX
 	opentext
 	writetext FuchsiaPokecenter1FJanineImpersonatorText2
@@ -38,7 +38,7 @@ FuchsiaPokecenter1FJanineImpersonatorScript:
 	closetext
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, FuchsiaPokecenter1FJanineImpersonatorSpinMovement
 	faceplayer
-	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_JANINE
+	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_LASS
 	special LoadUsedSpritesGFX
 	end
 

@@ -4,16 +4,31 @@
 	const PEWTERCITY_GRAMPS
 	const PEWTERCITY_FRUIT_TREE1
 	const PEWTERCITY_FRUIT_TREE2
+	const PEWTERCITY_YOUNGSTER
 
 PewterCity_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PewterCityFlypointCallback
+	callback MAPCALLBACK_OBJECTS, SilverWingCallback
 
 PewterCityFlypointCallback:
 	setflag ENGINE_FLYPOINT_PEWTER
 	endcallback
+
+SilverWingCallback:
+	special BirdsCheck
+	iftrue setevent EVENT_CAUGHT_BIRDS
+	endcallback
+
+CamperJerryText:
+	faceplayer
+	opentext
+	writetext CamperJerryTextHere
+	waitbutton
+	closetext
+	end
 
 PewterCityCooltrainerFScript:
 	jumptextfaceplayer PewterCityCooltrainerFText
@@ -22,19 +37,29 @@ PewterCityBugCatcherScript:
 	jumptextfaceplayer PewterCityBugCatcherText
 
 PewterCityGrampsScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_SILVER_WING
 	iftrue .GotSilverWing
-	writetext PewterCityGrampsText
-	promptbutton
-	verbosegiveitem SILVER_WING
-	setevent EVENT_GOT_SILVER_WING
+	checkevent EVENT_CAUGHT_BIRDS
+	iftrue .GotBirds
+	faceplayer
+	opentext
+	writetext PewterCityGrampsGiveWing
+	waitbutton
 	closetext
 	end
 
 .GotSilverWing:
-	writetext PewterCityGrampsText_GotSilverWing
+	faceplayer
+	opentext
+	writetext PewterCityGrampsDone
+	waitbutton
+	closetext
+	end
+
+.GotBirds:
+	faceplayer
+	opentext
+	writetext PewterCityGrampsTextNoBirds
 	waitbutton
 	closetext
 	end
@@ -66,6 +91,20 @@ PewterCityFruitTree1:
 PewterCityFruitTree2:
 	fruittree FRUITTREE_PEWTER_CITY_2
 
+CamperJerryTextHere:
+	text "BROCK?"
+	line "He's spelunking in"
+	cont "MT.MOON."
+
+	para "Me?"
+	line "I'm just a GYM"
+	cont "TRAINER."
+
+	para "I'm lightyears"
+	line "away from getting"
+	cont "a GYM of my own."
+	done
+
 PewterCityCooltrainerFText:
 	text "Have you visited"
 	line "PEWTER GYM?"
@@ -83,7 +122,20 @@ PewterCityBugCatcherText:
 	line "night."
 	done
 
-PewterCityGrampsText:
+PewterCityGrampsGiveWing:
+	text "Going to new, un-"
+	line "known places and"
+	cont "seeing new people…"
+
+	para "Those are the joys"
+	line "of travel."
+	done
+
+PewterCityGrampsDone:
+	text "TEST!"
+	done
+
+PewterCityGrampsTextNoBirds:
 	text "Ah, you came all"
 	line "the way out here"
 	cont "from JOHTO?"
@@ -103,15 +155,6 @@ PewterCityGrampsText:
 	para "Here. I want you"
 	line "to have this item"
 	cont "I found in JOHTO."
-	done
-
-PewterCityGrampsText_GotSilverWing:
-	text "Going to new, un-"
-	line "known places and"
-	cont "seeing new people…"
-
-	para "Those are the joys"
-	line "of travel."
 	done
 
 PewterCitySignText:
@@ -177,3 +220,5 @@ PewterCity_MapEvents:
 	object_event 29, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PewterCityGrampsScript, -1
 	object_event 32,  3, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityFruitTree1, -1
 	object_event 30,  3, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterCityFruitTree2, -1
+	object_event 16,  18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CamperJerryText, EVENT_BROCK_RETURNS
+
