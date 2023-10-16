@@ -18,9 +18,12 @@ PewterCityFlypointCallback:
 	endcallback
 
 SilverWingCallback:
-	special BirdsCheck
-	iftrue setevent EVENT_CAUGHT_BIRDS
-	endcallback
+    special BirdsCheck
+    iftrue .setcaughtbirds
+    endcallback
+.setcaughtbirds
+    setevent EVENT_CAUGHT_BIRDS
+    endcallback
 
 CamperJerryText:
 	faceplayer
@@ -40,10 +43,10 @@ PewterCityGrampsScript:
 	checkevent EVENT_GOT_SILVER_WING
 	iftrue .GotSilverWing
 	checkevent EVENT_CAUGHT_BIRDS
-	iftrue .GotBirds
+	iftrue .CaughtBirds
 	faceplayer
 	opentext
-	writetext PewterCityGrampsGiveWing
+	writetext PewterCityGrampsTextNoBirds
 	waitbutton
 	closetext
 	end
@@ -56,12 +59,15 @@ PewterCityGrampsScript:
 	closetext
 	end
 
-.GotBirds:
+.CaughtBirds:
 	faceplayer
 	opentext
-	writetext PewterCityGrampsTextNoBirds
+	writetext PewterCityGrampsGiveWing
+	promptbutton
+	verbosegiveitem SILVER_WING
 	waitbutton
 	closetext
+	setevent EVENT_GOT_SILVER_WING
 	end
 
 PewterCitySign:
@@ -123,16 +129,11 @@ PewterCityBugCatcherText:
 	done
 
 PewterCityGrampsGiveWing:
-	text "Going to new, un-"
-	line "known places and"
-	cont "seeing new people…"
-
-	para "Those are the joys"
-	line "of travel."
+	text "GIVE WING TEST"
 	done
 
 PewterCityGrampsDone:
-	text "TEST!"
+	text "YOU DONE!"
 	done
 
 PewterCityGrampsTextNoBirds:

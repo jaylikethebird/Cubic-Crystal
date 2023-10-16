@@ -43,7 +43,7 @@ PewterGroupSprites:
 ; Route3, PewterCity
 CinnabarGroupSprites:
 ; Route19, Route20, Route21, CinnabarIsland
-	db SPRITE_TEACHER
+	db SPRITE_MOLTRES
 	db SPRITE_FISHER
 	db SPRITE_YOUNGSTER
 	db SPRITE_BLUE
@@ -265,7 +265,8 @@ BlackthornGroupSprites:
 
 SilverGroupSprites:
 ; Route28, SilverCaveOutside
-	; 0 of max 9 walking sprites
+	db SPRITE_MOLTRES
+	; 1 of max 9 walking sprites
 	db 0 ; end
 
 DungeonsGroupSprites:

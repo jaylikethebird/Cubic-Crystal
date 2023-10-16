@@ -122,7 +122,7 @@ SpecialsPointers::
 	add_special PrintDiploma
 
 ; Crystal only
-	add_special Function11ac3e
+	add_special BirdsCheck
 	add_special TradeCornerHoldMon
 	add_special Function11b5e8
 	add_special Function11b7e5
@@ -166,7 +166,6 @@ SpecialsPointers::
 	add_special GiveDratini
 	add_special SampleKenjiBreakCountdown
 	add_special BeastsCheck
-	add_special BirdsCheck
 	add_special MonCheck
 	add_special SetPlayerPalette
 	add_special UnusedBattleTowerDummySpecial2
