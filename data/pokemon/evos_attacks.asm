@@ -3685,6 +3685,10 @@ LugiaEvosAttacks:
 	db 77, PSYCHIC_M
 	db 88, ANCIENTPOWER
 	db 99, FUTURE_SIGHT
+	db 100, FLY
+	db 100, SURF
+	db 100, STRENGTH
+	db 100, FLASH
 	db 0 ; no more level-up moves
 
 HoOhEvosAttacks:

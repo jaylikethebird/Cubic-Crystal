@@ -20,6 +20,7 @@ DragonsDenB1F_MapScripts:
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, DragonsDenB1FCheckRivalCallback
+	callback MAPCALLBACK_NEWMAP, DragonsDenB1FLeadersCallback
 
 DragonsDenB1FNoop1Scene:
 	end
@@ -35,6 +36,7 @@ DragonsDenB1FCheckRivalCallback:
 
 .CheckDay:
 	readvar VAR_WEEKDAY
+	ifequal SUNDAY, .AppearRival
 	ifequal TUESDAY, .AppearRival
 	ifequal THURSDAY, .AppearRival
 	disappear DRAGONSDENB1F_RIVAL
@@ -42,6 +44,30 @@ DragonsDenB1FCheckRivalCallback:
 
 .AppearRival:
 	appear DRAGONSDENB1F_RIVAL
+	endcallback
+
+DragonsDenB1FLeadersCallback:
+	checkevent EVENT_CLAIR_SILVER
+	iftrue .AppearLeaders
+	disappear FIGHTINGDOJO_FALKNER
+	disappear FIGHTINGDOJO_BUGSY
+	disappear FIGHTINGDOJO_WHITNEY
+	disappear FIGHTINGDOJO_PRYCE
+	disappear FIGHTINGDOJO_CHUCK
+	disappear FIGHTINGDOJO_JASMINE
+	disappear FIGHTINGDOJO_MORTY
+	disappear FIGHTINGDOJO_CLAIR	
+	endcallback
+
+.AppearLeaders
+	appear FIGHTINGDOJO_FALKNER
+	appear FIGHTINGDOJO_BUGSY
+	appear FIGHTINGDOJO_WHITNEY
+	appear FIGHTINGDOJO_PRYCE
+	appear FIGHTINGDOJO_CHUCK
+	appear FIGHTINGDOJO_JASMINE
+	appear FIGHTINGDOJO_MORTY
+	appear FIGHTINGDOJO_CLAIR
 	endcallback
 
 DragonsDenB1F_ClairScene:
@@ -516,11 +542,11 @@ DojoBugsyIntroText:
     text "Hiya <PLAYER>!"
 
     para "Surprise surprise,"
-    line "I’ve been studying"
+    line "I've been studying"
     cont "hard!"
 
     para "Wanna see what"
-    line "I’ve learned?"
+    line "I've learned?"
     done
 
 DojoBugsyWinLossText:
@@ -532,8 +558,8 @@ DojoWhitneyIntroText:
 
     para "The CHAMPION, huh?"
 
-    para "Fancy titles won’t"
-    line "scare me! C’mon!"
+    para "Fancy titles won't"
+    line "scare me! C'mon!"
     done
 
 DojoWhitneyWinLossText:
@@ -551,7 +577,7 @@ DojoPryceIntroText:
 	line "me for training,"
 
 	para "despite the long"
-	line "rivalry between the"
+	line "feud between the"
 
 	para "ice trainers of"
 	line "MAHOGANY and the"
@@ -601,7 +627,7 @@ DojoJasmineWinLossText:
 	text "ARGH!"
 	done
 
-DojoMortyIntroText
+DojoMortyIntroText:
 	text "Hello again!"
 
 	para "I must admit, I"
@@ -651,14 +677,14 @@ DragonsDenB1F_MapEvents:
 	def_object_events
 	object_event 14, 30, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
 	object_event 20, 23, SPRITE_RIVAL, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FRivalScript, EVENT_RIVAL_DRAGONS_DEN
-	object_event 16, 4, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoFalknerScript, -1
-	object_event 17, 4, SPRITE_BUGSY, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoBugsyScript, -1
-	object_event 18, 4, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoWhitneyScript, -1
-	object_event 19, 4, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoPryceScript, -1
-	object_event 21, 4, SPRITE_CHUCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DojoChuckScript, -1
-	object_event 22, 4, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DojoJasmineScript, -1
-	object_event 23, 4, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoMortyScript, -1
-	object_event 24, 4, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DojoClairScript, -1
+	object_event 19, 4, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoFalknerScript, -1
+	object_event 8, 12, SPRITE_BUGSY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoBugsyScript, -1
+	object_event 28, 4, SPRITE_WHITNEY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoWhitneyScript, -1
+	object_event 20, 9, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoPryceScript, -1
+	object_event 5, 18, SPRITE_CHUCK, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DojoChuckScript, -1
+	object_event 34, 17, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DojoJasmineScript, -1
+	object_event 30, 28, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoMortyScript, -1
+	object_event 20, 30, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DojoClairScript, -1
 	object_event 35, 16, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FDragonFang, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
 	object_event 30,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FCalcium, EVENT_DRAGONS_DEN_B1F_CALCIUM
 	object_event  5, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FMaxElixer, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
