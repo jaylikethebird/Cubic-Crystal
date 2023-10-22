@@ -18,7 +18,7 @@ Route20ClearRocksCallback:
 ArticunoAppearSeafoam:
 	checkevent EVENT_FOUGHT_ARTICUNO
 	iftrue .NoAppear
-	checkevent EVENT_OPENED_MT_SILVER
+	checkevent EVENT_MET_FALKNER_DAD
 	iftrue .Appear
 	sjump .NoAppear
 

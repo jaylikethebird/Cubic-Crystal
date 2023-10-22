@@ -14,9 +14,20 @@ BillsBrothersHouseYoungsterScript:
 	jumptextfaceplayer BillsBrothersHouseYoungsterText
 
 BillsBrotherText:
-	text "My grandpa is at "
-	line "my brother BILL's"
-	cont "on CERULEAN CAPE."
+	text "BILL moved out to"
+	line "JOHTO from his"
+
+	para "old house up at"
+	line "CERULEAN CAPE."
+
+	para "The guy who lives"
+	line "there now was a"
+
+	para "LEADER who left"
+	line "his GYM to his kid"
+
+	para "when he retired."
+	line "Sorta like KOGA!"
 	done
 
 BillsBrothersHouseYoungsterText:

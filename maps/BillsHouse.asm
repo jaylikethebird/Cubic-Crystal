@@ -7,29 +7,19 @@ BillsHouse_MapScripts:
 	def_callbacks
 
 BillsGrandpa:
+	checkevent EVENT_MET_FALKNER_DAD
+	iffalse .MeetGrandpa
 	faceplayer
 	opentext
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue .JustShowedSomething
-	checkevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
-	iftrue .GotThunderstone
-	checkevent EVENT_MET_BILLS_GRANDPA
-	iftrue .MetGrandpa
-	writetext BillsGrandpaIntroText
-	promptbutton
-	setevent EVENT_MET_BILLS_GRANDPA
-.MetGrandpa:
-	checkevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
-	iftrue .ShowedPichu
-	checkevent EVENT_SHOWED_GROWLITHE_VULPIX_TO_BILLS_GRANDPA
-	iftrue .ShowedGrowlitheVulpix
-	checkevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
-	iftrue .ShowedStaryu
-	checkevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
-	iftrue .ShowedOddish
-	checkevent EVENT_SHOWED_LICKITUNG_TO_BILLS_GRANDPA
-	iftrue .ShowedLickitung
-	writetext BillsGrandpaLickitungText
+	checkevent EVENT_SHOWED_LUGIA_TO_BILLS_GRANDPA
+	iftrue .ShowedLugia
+	checkevent EVENT_SHOWED_Moltres_TO_BILLS_GRANDPA
+	iftrue .ShowedMoltres
+	checkevent EVENT_SHOWED_Zapdos_TO_BILLS_GRANDPA
+	iftrue .ShowedZapdos
+	checkevent EVENT_SHOWED_Articuno_TO_BILLS_GRANDPA
+	iftrue .ShowedArticuno
+	writetext BillsGrandpaArticunoText
 	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
@@ -37,13 +27,21 @@ BillsGrandpa:
 	scall .ExcitedToSee
 	special BillsGrandfather
 	iffalse .SaidNo
-	ifnotequal LICKITUNG, .WrongPokemon
+	ifnotequal ARTICUNO, .WrongPokemon
 	scall .CorrectPokemon
-	setevent EVENT_SHOWED_LICKITUNG_TO_BILLS_GRANDPA
-	sjump .ShowedLickitung
+	setevent EVENT_SHOWED_Articuno_TO_BILLS_GRANDPA
+	sjump .ShowedArticuno 
+.MeetGrandpa:
+	faceplayer
+	opentext
+	writetext BillsGrandpaIntroText
+	waitbutton
+	closetext
+	setevent EVENT_MET_FALKNER_DAD
+	end
 
 .GotEverstone:
-	writetext BillsGrandpaOddishText
+	writetext BillsGrandpaZapdosText
 	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
@@ -51,13 +49,13 @@ BillsGrandpa:
 	scall .ExcitedToSee
 	special BillsGrandfather
 	iffalse .SaidNo
-	ifnotequal ODDISH, .WrongPokemon
+	ifnotequal ZAPDOS, .WrongPokemon
 	scall .CorrectPokemon
-	setevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
-	sjump .ShowedOddish
+	setevent EVENT_SHOWED_Zapdos_TO_BILLS_GRANDPA
+	sjump .ShowedZapdos
 
 .GotLeafStone:
-	writetext BillsGrandpaStaryuText
+	writetext BillsGrandpaMoltresText
 	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
@@ -65,15 +63,13 @@ BillsGrandpa:
 	scall .ExcitedToSee
 	special BillsGrandfather
 	iffalse .SaidNo
-	ifnotequal STARYU, .WrongPokemon
+	ifnotequal MOLTRES, .WrongPokemon
 	scall .CorrectPokemon
-	setevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
-	sjump .ShowedStaryu
+	setevent EVENT_SHOWED_Moltres_TO_BILLS_GRANDPA
+	sjump .ShowedMoltres
 
 .GotWaterStone:
-	checkver
-	iftrue .AskVulpix
-	writetext BillsGrandpaGrowlitheText
+	writetext BillsGrandpaLugiaText
 	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
@@ -81,88 +77,49 @@ BillsGrandpa:
 	scall .ExcitedToSee
 	special BillsGrandfather
 	iffalse .SaidNo
-	ifnotequal GROWLITHE, .WrongPokemon
+	ifnotequal LUGIA, .WrongPokemon
 	scall .CorrectPokemon
-	setevent EVENT_SHOWED_GROWLITHE_VULPIX_TO_BILLS_GRANDPA
-	sjump .ShowedGrowlitheVulpix
+	setevent EVENT_SHOWED_LUGIA_TO_BILLS_GRANDPA
+	sjump .ShowedLugia
 
-.AskVulpix:
-	writetext BillsGrandpaVulpixText
-	promptbutton
-	writetext BillsGrandpaAskToSeeMonText
-	yesorno
-	iffalse .SaidNo
-	scall .ExcitedToSee
-	special BillsGrandfather
-	iffalse .SaidNo
-	ifnotequal VULPIX, .WrongPokemon
-	scall .CorrectPokemon
-	setevent EVENT_SHOWED_GROWLITHE_VULPIX_TO_BILLS_GRANDPA
-	sjump .ShowedGrowlitheVulpix
-
-.GotFireStone:
-	writetext BillsGrandpaPichuText
-	promptbutton
-	writetext BillsGrandpaAskToSeeMonText
-	yesorno
-	iffalse .SaidNo
-	scall .ExcitedToSee
-	special BillsGrandfather
-	iffalse .SaidNo
-	ifnotequal PICHU, .WrongPokemon
-	scall .CorrectPokemon
-	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
-	sjump .ShowedPichu
-
-.ShowedLickitung:
+.ShowedArticuno:
 	checkevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
 	iftrue .GotEverstone
-	scall .ReceiveItem
-	verbosegiveitem EVERSTONE
+	scall .RareCandies
+	giveitem RARE_CANDY, 5
 	iffalse .BagFull
 	setevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	closetext
 	end
 
-.ShowedOddish:
+.ShowedZapdos:
 	checkevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotLeafStone
-	scall .ReceiveItem
-	verbosegiveitem LEAF_STONE
+	scall .PPupsGet
+	giveitem PP_UP, 5
 	iffalse .BagFull
 	setevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	closetext
 	end
 
-.ShowedStaryu:
+.ShowedMoltres:
 	checkevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
 	iftrue .GotWaterStone
-	scall .ReceiveItem
-	verbosegiveitem WATER_STONE
+	scall .SilverWingGet
+	giveitem SILVER_WING
 	iffalse .BagFull
 	setevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	closetext
 	end
 
-.ShowedGrowlitheVulpix:
+.ShowedLugia
 	checkevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
-	iftrue .GotFireStone
-	scall .ReceiveItem
-	verbosegiveitem FIRE_STONE
+	iftrue .GotThunderstone
+	scall .JackpotGet
+	giveitem RARE_CANDY, 50
+	giveitem PP_UP, 50
 	iffalse .BagFull
 	setevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	closetext
-	end
-
-.ShowedPichu:
-	scall .ReceiveItem
-	verbosegiveitem THUNDERSTONE
-	iffalse .BagFull
-	setevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
 	closetext
 	end
 
@@ -182,15 +139,24 @@ BillsGrandpa:
 	promptbutton
 	end
 
-.ReceiveItem:
-	writetext BillsGrandpaTokenOfAppreciationText
+.RareCandies
+	writetext RareCandyText
 	promptbutton
 	end
 
-.JustShowedSomething:
-	writetext BillsGrandpaComeAgainText
-	waitbutton
-	closetext
+.PPupsGet:
+	writetext PPUpsText
+	promptbutton
+	end
+
+.SilverWingGet
+	writetext SilverWingText
+	promptbutton
+	end
+
+.JackpotGet
+	writetext Jackpot
+	promptbutton
 	end
 
 .GotThunderstone:
@@ -210,14 +176,28 @@ BillsGrandpa:
 	end
 
 BillsGrandpaIntroText:
-	text "Hm? You know BILL?"
-	line "He's my grandson."
+	text "Hm? That ZEPHYR"
+	line "BADGE…"
 
-	para "He's in JOHTO. He"
-	line "does something"
+	para "But I don't recall"
+	line "battling you."
 
-	para "with PCs, so I'm"
-	line "house-sitting."
+	para "Ah, you must have"
+	line "fought my son"
+	cont "FALKNER!"
+
+	para "He took over my"
+	line "GYM in VIOLET"
+	cont "when I retired."
+
+	para "I moved to KANTO"
+	line "to search for"
+
+	para "three LEGENDARY"
+	line "BIRDS rumored to"
+
+	para "roost here every"
+	line "three years…"
 	done
 
 BillsGrandpaAskToSeeMonText:
@@ -241,34 +221,96 @@ BillsGrandpaShownPokemonText:
 	line "@"
 	text_ram wStringBuffer3
 	text "?"
-
-	para "Isn't it cute!"
-	line "That's so kind of"
-	cont "you."
 	done
 
-BillsGrandpaTokenOfAppreciationText:
-	text "Thanks!"
 
-	para "This is a token of"
-	line "my appreciation."
+RareCandyText:
+	text "Incredible!"
+
+	para "Its piercing blue"
+	line "plumage! That"
+	cont "magnificent tail!"
+
+	para "Thank you so much!"
+	line "Please take these!"
+
+	para "<PLAYER> received"
+	line "five RARE CANDIES."
 	done
 
-BillsGrandpaComeAgainText:
-	text "Come visit again"
-	line "sometime."
+PPUpsText:
+	text "Incredible!"
+
+	para "Its spear of a"
+	line "beak! And sharp"
+	cont "feathers to match!"
+
+	para "Thank you so much!"
+	line "Please take these!"
+
+	para "<PLAYER> received"
+	line "five PP UPs."
+	done
+
+SilverWingText:
+	text "Incredible!"
+
+	para "Its flaming crest!"
+	line "The wildfire to"
+	cont "HO-OH's rainbow!"
+
+	para "Thank you so much!"
+	line "Please take this!"
+
+	para "<PLAYER> received"
+	line "SILVER WING."
+	done
+
+Jackpot:
+	text "You've…"
+	line "you've done it."
+
+	para "LEGEND of LEGENDS,"
+	line "the lord of sky"
+	cont "and sea itself!"
+
+	para "Thank you so much!"
+	line "Please take this!"
+
+	para "<PLAYER> received"
+	line "FIFTY RARE CANDIES"
+	cont "and FIFTY PP UPs!"
+	done
+
+BillsGrandpaLugiaText:
+	text "That SILVER WING"
+	line "is said to belong"
+
+	para "to a #MON that"
+	line "rules all three"
+	cont "LEGENDARY BIRDS."
+
+	para "Deep in the WHIRL"
+	line "ISLANDS in JOHTO"
+	cont "dwells LUGIA…"
+
+	para "Or so they say."
+
+	para "Child, if you"
+	line "were to find this"
+
+	para "LEGEND of LEGENDS,"
+	line "my gratitude would"
+	cont "be unending!"
 	done
 
 BillsGrandpaShownAllThePokemonText:
-	text "Thanks for showing"
-	line "me so many cute"
-	cont "#MON."
+	text "You've made my"
+	line "greatest dreams"
+	cont "come true."
 
-	para "I really enjoyed"
-	line "myself. I'm glad"
-
-	para "I've lived such a"
-	line "long life."
+	para "Thank you, thank"
+	line "you so much!"
 	done
 
 BillsGrandpaWrongPokemonText:
@@ -279,76 +321,88 @@ BillsGrandpaWrongPokemonText:
 	cont "told about."
 	done
 
-BillsGrandpaLickitungText:
-	text "My grandson BILL"
-	line "told me about a"
+BillsGrandpaArticunoText:
+	text "Hello again!"
 
-	para "#MON that has a"
-	line "long tongue."
+	para "I've uncovered"
+	line "a lead for the"
+
+	para "LEGENDARY BIRD"
+	line "of ICE, ARTICUNO!"
+
+	para "Three years ago"
+	line "it was spotted at"
+	cont "the SEAFOAM ISLES."
+	
+	para "I'm too old to"
+	line "travel too far,"
+
+	para "but if you were"
+	line "to catch it, I"
+
+	para "would love to see"
+	line "ARTICUNO!"
 	done
 
-BillsGrandpaOddishText:
-	text "Ah, my grandson"
-	line "mentioned a round,"
+BillsGrandpaZapdosText:
+	text "Hello again!"
 
-	para "green #MON that"
-	line "has leaves growing"
-	cont "on its head."
+	para "I've uncovered"
+	line "a lead for the"
+
+	para "LEGENDARY BIRD"
+	line "of LIGHTNING,"
+	cont "ZAPDOS!"
+
+	para "Three years ago"
+	line "it was spotted at"
+	cont "the POWER PLANT."
+	
+	para "But now that the"
+	line "PLANT is in use"
+
+	para "for the MAGNET"
+	line "TRAIN, it may be"
+
+	para "roosting in ROCK"
+	line "TUNNEL. If you"
+
+	para "were to catch it,"
+	line "would love to see"
+	cont "ZAPDOS!"
 	done
 
-BillsGrandpaStaryuText:
-	text "Do you know of a"
-	line "sea #MON that"
+BillsGrandpaMoltresText:
+	text "Hello again!"
 
-	para "has a red sphere"
-	line "in its body?"
+	para "I've uncovered"
+	line "a lead for the"
 
-	para "You know, the one"
-	line "that's shaped like"
-	cont "a star?"
+	para "LEGENDARY BIRD"
+	line "of FLAME, MOLTRES!"
 
-	para "I heard that it"
-	line "appears at night."
+	para "Three years ago"
+	line "it was spotted in"
+	cont "VICTORY ROAD."
+	
+	para "But my sources"
+	line "spotted a fiery"
 
-	para "I would surely"
-	line "like to see it."
-	done
+	para "bird just west"
+	line "of VICTORY ROAD,"
 
-BillsGrandpaGrowlitheText:
-	text "BILL told me about"
-	line "a #MON that is"
+	para "on the path to"
+	line "MT.SILVER!"
 
-	para "very loyal to its"
-	line "trainer."
+	para "You've impressed me"
+	line "so far, but if I"
 
-	para "It's supposed to"
-	line "ROAR well."
-	done
+	para "got to see all"
+	line "three BIRDS, I"
 
-BillsGrandpaVulpixText:
-	text "I heard about a"
-	line "cute #MON that"
-	cont "has six tails."
-
-	para "I would love to"
-	line "hug a cute #MON"
-	cont "like that."
-	done
-
-BillsGrandpaPichuText:
-	text "Do you know that"
-	line "hugely popular"
-	cont "#MON?"
-
-	para "The #MON that"
-	line "has a yellow body"
-	cont "and red cheeks."
-
-	para "I would love to"
-	line "see what it looks"
-
-	para "like before it"
-	line "evolves."
+	para "would be willing"
+	line "to part with my"
+	cont "SILVER WING!"
 	done
 
 BillsHouse_MapEvents:
@@ -363,4 +417,4 @@ BillsHouse_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BillsGrandpa, -1
+	object_event  2,  3, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BillsGrandpa, -1

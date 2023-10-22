@@ -1,11 +1,15 @@
 	object_const_def
-	const DRAGONSDENB1F_POKE_BALL1
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_RIVAL
-	const DRAGONSDENB1F_COOLTRAINER_M
-	const DRAGONSDENB1F_COOLTRAINER_F
-	const DRAGONSDENB1F_TWIN1
-	const DRAGONSDENB1F_TWIN2
+	const FIGHTINGDOJO_FALKNER
+	const FIGHTINGDOJO_BUGSY
+	const FIGHTINGDOJO_WHITNEY
+	const FIGHTINGDOJO_PRYCE
+	const FIGHTINGDOJO_CHUCK
+	const FIGHTINGDOJO_JASMINE
+	const FIGHTINGDOJO_MORTY
+	const FIGHTINGDOJO_CLAIR
+	const DRAGONSDENB1F_POKE_BALL1
 	const DRAGONSDENB1F_POKE_BALL2
 	const DRAGONSDENB1F_POKE_BALL3
 
@@ -41,7 +45,6 @@ DragonsDenB1FCheckRivalCallback:
 	endcallback
 
 DragonsDenB1F_ClairScene:
-; BUG: Clair can give TM24 Dragonbreath twice (see docs/bugs_and_glitches.md)
 	appear DRAGONSDENB1F_CLAIR
 	opentext
 	writetext ClairText_Wait
@@ -82,75 +85,6 @@ DragonsDenB1F_ClairScene:
 	setscene SCENE_DRAGONSDENB1F_NOOP
 	end
 
-TrainerCooltrainermDarin:
-	trainer COOLTRAINERM, DARIN, EVENT_BEAT_COOLTRAINERM_DARIN, CooltrainermDarinSeenText, CooltrainermDarinBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext CooltrainermDarinAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerCooltrainerfCara:
-	trainer COOLTRAINERF, CARA, EVENT_BEAT_COOLTRAINERF_CARA, CooltrainerfCaraSeenText, CooltrainerfCaraBeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext CooltrainerfCaraAfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerTwinsLeaandpia1:
-	trainer TWINS, LEAANDPIA1, EVENT_BEAT_TWINS_LEA_AND_PIA, TwinsLeaandpia1SeenText, TwinsLeaandpia1BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext TwinsLeaandpia1AfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerTwinsLeaandpia2:
-	trainer TWINS, LEAANDPIA1, EVENT_BEAT_TWINS_LEA_AND_PIA, TwinsLeaandpia2SeenText, TwinsLeaandpia2BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext TwinsLeaandpia2AfterBattleText
-	waitbutton
-	closetext
-	end
-
-DragonsDenB1FDragonFangScript:
-; This whole script is written out rather than as an itemball
-; because it's left over from the GS event.
-	giveitem DRAGON_FANG
-	iffalse .BagFull
-	disappear DRAGONSDENB1F_POKE_BALL1
-	opentext
-	getitemname STRING_BUFFER_3, DRAGON_FANG
-	writetext Text_FoundDragonFang
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	closetext
-	end
-
-.BagFull:
-	opentext
-	getitemname STRING_BUFFER_3, DRAGON_FANG
-	writetext Text_FoundDragonFang
-	promptbutton
-	writetext Text_NoRoomForDragonFang
-	waitbutton
-	closetext
-	end
-
 DragonsDenB1FRivalScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	faceplayer
@@ -171,8 +105,243 @@ DragonsDenB1FRivalScript:
 	special RestartMapMusic
 	end
 
+DojoFalknerScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iffalse .DojoFalknerContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoFalknerContinue
+	writetext DojoFalknerIntroText
+	yesorno
+	iftrue .FightFalkner
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightFalkner
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoFalknerWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	end
+
+DojoBugsyScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	iffalse .DojoBugsyContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoBugsyContinue
+	writetext DojoBugsyIntroText
+	yesorno
+	iftrue .FightBugsy
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightBugsy
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoBugsyWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	end
+
+DojoWhitneyScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+	iffalse .DojoWhitneyContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoWhitneyContinue
+	writetext DojoWhitneyIntroText
+	yesorno
+	iftrue .FightWhitney
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightWhitney
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoWhitneyWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+	end
+	
+DojoPryceScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
+	iffalse .DojoPryceContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoPryceContinue
+	writetext DojoPryceIntroText
+	yesorno
+	iftrue .FightPryce
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightPryce
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoPryceWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
+	end
+
+DojoChuckScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
+	iffalse .DojoChuckContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoChuckContinue
+	writetext DojoChuckIntroText
+	yesorno
+	iftrue .FightChuck
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightChuck
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoChuckWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
+	end
+
+DojoJasmineScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
+	iffalse .DojoJasmineContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoJasmineContinue
+	writetext DojoJasmineIntroText
+	yesorno
+	iftrue .FightJasmine
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightJasmine
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoJasmineWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
+	end
+
+DojoMortyScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
+	iffalse .DojoMortyContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoMortyContinue
+	writetext DojoMortyIntroText
+	yesorno
+	iftrue .FightMorty
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightMorty
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoMortyWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
+	end
+
+DojoClairScript:
+	faceplayer
+	opentext
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
+	iffalse .DojoClairContinue
+	writetext DenLeaderAfterText  
+	waitbutton
+	closetext
+	end
+
+.DojoClairContinue
+	writetext DojoClairIntroText
+	yesorno
+	iftrue .FightClair
+	writetext DenLeaderNoText
+	waitbutton
+	closetext
+	end
+
+.FightClair
+	writetext DenLeaderYesText
+	waitbutton
+	winlosstext DojoClairWinLossText, 0
+	loadtrainer CLAIR, CLAIR1
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
+	end
+
 DragonShrineSignpost:
 	jumptext DragonShrineSignpostText
+
+DragonsDenB1FDragonFang:
+	itemball DRAGON_FANG
 
 DragonsDenB1FCalcium:
 	itemball CALCIUM
@@ -208,8 +377,8 @@ ClairText_Wait:
 	done
 
 ClairText_GiveDragonbreathDragonDen:
-	text "CLAIR: I'm sorry"
-	line "about this."
+	text "I'm sorry about"
+	line "all this."
 
 	para "Here, take this as"
 	line "my apology."
@@ -245,10 +414,10 @@ ClairText_NoRoom:
 	done
 
 ClairText_WhatsTheMatterDragonDen:
-	text "CLAIR: What's the"
-	line "matter? Aren't you"
+	text "What's the matter?"
+	line "Aren't you gonna"
 
-	para "going on to the"
+	para "go fight the?"
 	line "#MON LEAGUE?"
 
 	para "Do you know how to"
@@ -316,92 +485,151 @@ RivalText_Training2:
 	line "of my way…"
 	done
 
-CooltrainermDarinSeenText:
-	text "You! How dare you"
-	line "enter uninvited!"
+DenLeaderAfterText:
+	text "Good luck out"
+	line "there, <PLAYER>!"
 	done
 
-CooltrainermDarinBeatenText:
-	text "S-strong!"
+DenLeaderYesText:
+	text "Let's go!"
 	done
 
-CooltrainermDarinAfterBattleText:
-	text "The SHRINE ahead"
-	line "is home to the"
-
-	para "MASTER of our"
-	line "dragon-user clan."
-
-	para "You're not allowed"
-	line "to just go in!"
+DenLeaderNoText:
+	text "No? Okay, next"
+	line "time!"
 	done
 
-CooltrainerfCaraSeenText:
-	text "You shouldn't be"
-	line "in here!"
+DojoFalknerIntroText:
+    text "Hey, <PLAYER>!"
+
+    para "My team is soaring"
+    line "higher than ever."
+
+    para "Let's battle!"
+    done
+
+DojoFalknerWinLossText:
+	text "Ugh, I'm grounded!"
 	done
 
-CooltrainerfCaraBeatenText:
-	text "Oh yikes, I lost!"
+DojoBugsyIntroText:
+    text "Hiya <PLAYER>!"
+
+    para "Surprise surprise,"
+    line "I’ve been studying"
+    cont "hard!"
+
+    para "Wanna see what"
+    line "I’ve learned?"
+    done
+
+DojoBugsyWinLossText:
+	text "Flattened!"
 	done
 
-CooltrainerfCaraAfterBattleText:
-	text "Soon I'm going to"
-	line "get permission"
+DojoWhitneyIntroText:
+    text "<PLAYER>! Hi!"
 
-	para "from our MASTER to"
-	line "use dragons."
+    para "The CHAMPION, huh?"
 
-	para "When I do, I'm"
-	line "going to become an"
+    para "Fancy titles won’t"
+    line "scare me! C’mon!"
+    done
 
-	para "admirable dragon"
-	line "trainer and gain"
-
-	para "our MASTER's"
-	line "approval."
+DojoWhitneyWinLossText:
+	text "Holy cow!"
 	done
 
-TwinsLeaandpia1SeenText:
-	text "It's a stranger we"
-	line "don't know."
+DojoPryceIntroText:
+	text "Young <PLAYER>,"
+	line "good to see you."
+	
+	para "You made quite the"
+	line "impact on CLAIR!"
+	
+	para "She reached out to"
+	line "me for training,"
+
+	para "despite the long"
+	line "rivalry between the"
+
+	para "ice trainers of"
+	line "MAHOGANY and the"
+
+	para "DRAGON MASTERS of"
+	line "BLACKTHORN."
+
+	para "Shall we show the"
+	line "DRAGON'S DEN how"
+	cont "outsiders battle?" 
 	done
 
-TwinsLeaandpia1BeatenText:
-	text "Ouchies."
+DojoPryceWinLossText:
+	text "Brr…"
 	done
 
-TwinsLeaandpia1AfterBattleText:
-	text "It was like having"
-	line "to battle LANCE."
+DojoChuckIntroText:
+	text "<PLAYER>!"
+
+	para "CLAIR convinced me"
+	line "to take a break"
+
+	para "from training in"
+	line "MT.MORTAR to spar"
+
+	para "with my fellow"
+	line "LEADERS. And the"
+
+	para "new CHAMP too,"
+	line "apparently! Let's"
+	cont "fight!"
 	done
 
-TwinsLeaandpia2SeenText:
-	text "Who are you?"
+DojoChuckWinLossText:
+	text "Oof, no good."
 	done
 
-TwinsLeaandpia2BeatenText:
-	text "Meanie."
+DojoJasmineIntroText:
+	text "<PLAYER>!"
+
+	para "No tricks, no"
+	line "disguises, let's"
+	cont "just battle!"
 	done
 
-TwinsLeaandpia2AfterBattleText:
-	text "We'll tell on you."
-
-	para "MASTER will be"
-	line "angry with you."
+DojoJasmineWinLossText:
+	text "ARGH!"
 	done
 
-Text_FoundDragonFang:
-	text "<PLAYER> found"
-	line "@"
-	text_ram wStringBuffer3
-	text "!"
+DojoMortyIntroText
+	text "Hello again!"
+
+	para "I must admit, I"
+	line "prefer this dojo"
+	cont "to that cave."
+
+	para "How about a scrap?"
 	done
 
-Text_NoRoomForDragonFang:
-	text "But <PLAYER> can't"
-	line "carry any more"
-	cont "items."
+DojoMortyWinLossText:
+	text "Burned!"
+	done
+
+DojoClairIntroText:
+	text "Hey! You!"
+
+	para "I usually train"
+	line "solo, but I gotta"
+
+	para "kick it up a notch"
+	line "if I'm gonna put"
+	cont "you in your place."
+
+	para "Battle me!"
+	done
+
+DojoClairWinLossText:
+	text "Come ON! Again!?"
 	done
 
 DragonsDenB1F_MapEvents:
@@ -421,12 +649,17 @@ DragonsDenB1F_MapEvents:
 	bg_event 31, 15, BGEVENT_ITEM, DragonsDenB1FHiddenMaxElixer
 
 	def_object_events
-	object_event 35, 16, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FDragonFangScript, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
 	object_event 14, 30, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
 	object_event 20, 23, SPRITE_RIVAL, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FRivalScript, EVENT_RIVAL_DRAGONS_DEN
-	object_event 20,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 4, TrainerCooltrainermDarin, -1
-	object_event  8,  8, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfCara, -1
-	object_event  4, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
-	object_event  4, 18, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
+	object_event 16, 4, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoFalknerScript, -1
+	object_event 17, 4, SPRITE_BUGSY, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoBugsyScript, -1
+	object_event 18, 4, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoWhitneyScript, -1
+	object_event 19, 4, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoPryceScript, -1
+	object_event 21, 4, SPRITE_CHUCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DojoChuckScript, -1
+	object_event 22, 4, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DojoJasmineScript, -1
+	object_event 23, 4, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DojoMortyScript, -1
+	object_event 24, 4, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DojoClairScript, -1
+	object_event 35, 16, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonsDenB1FDragonFang, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
 	object_event 30,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FCalcium, EVENT_DRAGONS_DEN_B1F_CALCIUM
 	object_event  5, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FMaxElixer, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
+

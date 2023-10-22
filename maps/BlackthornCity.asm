@@ -213,9 +213,18 @@ BlackBeltText_VoicesInMyHead:
 	done
 
 BlackthornCooltrainerF1Text:
-	text "Are you going to"
-	line "make your #MON"
-	cont "forget some moves?"
+	text "The MOVE DELETER"
+	line "got depressed when"
+
+	para "HM moves became"
+	line "forgettable on"
+	cont "their own."
+
+	para "But since he got" 
+	line "married to that"
+
+	para "FOSSIL MANIAC,"
+	line "he's all smiles!"
 	done
 
 BlackthornYoungsterText:
@@ -290,8 +299,9 @@ BlackthornGymSignText:
 	done
 
 MoveDeletersHouseSignText:
-	text "MOVE DELETER'S"
-	line "HOUSE"
+	text "FOSSIL MANIAC"
+	line "AND MOVE DELETER'S"
+	cont "HOUSE!"
 	done
 
 DragonDensSignText:

@@ -19,7 +19,7 @@ Route24Text:
 	line "for MISTY?"
 
 	para "She took her new"
-	line "boyfriend through"
+	line "girlfriend through"
 	cont "the NUGGET SIX."
 
 	para "Her dates always"

@@ -7,6 +7,7 @@
 	const SAFFRONCITY_YOUNGSTER1
 	const SAFFRONCITY_YOUNGSTER2
 	const SAFFRONCITY_LASS2
+	const SAFFRONCITY_BRUNO
 
 SaffronCity_MapScripts:
 	def_scene_scripts
@@ -56,6 +57,9 @@ SaffronCityCooltrainerMScript:
 SaffronCityCooltrainerFScript:
 	jumptextfaceplayer SaffronCityCooltrainerFText
 
+BrunoSaffronScript:
+	jumptextfaceplayer BrunoNostalgia
+
 SaffronCityFisherScript:
 	faceplayer
 	opentext
@@ -104,6 +108,37 @@ SaffronCityPokecenterSign:
 
 SaffronCityMartSign:
 	jumpstd MartSignScript
+
+BrunoNostalgia:
+	text "Ah, CHAMPION!"
+
+	para "Nostalgia drew me"
+	line "back to where I"
+	cont "began my training."
+
+	para "Years ago, I was"
+	line "the SAFFRON GYM"
+	cont "LEADER."
+
+	para "My successor lost"
+	line "a decisive battle"
+
+	para "against SABRINA,"
+	line "and the rest is"
+	cont "history…"
+
+	para "Perhaps I'll train"
+	line "other GYM LEADERS"
+
+	para "to reach their"
+	line "potential here."
+
+	para "Return when you've"
+	line "gained every BADGE"
+	cont "in KANTO!"
+
+	para "Hoo hah!"
+	done
 
 SaffronCityLass1Text:
 	text "A little girl who"
@@ -304,3 +339,5 @@ SaffronCity_MapEvents:
 	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronCityYoungster1Script, -1
 	object_event 35, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronCityYoungster2Script, -1
 	object_event 19,  8, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronCityLass2Script, -1
+	object_event 26,  4, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BrunoSaffronScript, EVENT_OPENED_MT_SILVER
+

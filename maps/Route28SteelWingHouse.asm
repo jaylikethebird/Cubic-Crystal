@@ -18,7 +18,7 @@ Celebrity:
 	iftrue .AlreadyGotItem
 	writetext CelebrityText1
 	promptbutton
-	verbosegiveitem SACRED_ASH
+	verbosegiveitem SMOKE_BALL
 	iffalse .Done
 	setevent EVENT_GOT_SACRED_ASH2
 .Done:
@@ -33,7 +33,7 @@ Celebrity:
 CelebritysFearow:
 	opentext
 	writetext CelebritysFearowText
-	cry FEAROW
+	cry CROBAT
 	waitbutton
 	closetext
 	end
@@ -42,30 +42,49 @@ CelebrityHouseBookshelf:
 	jumpstd MagazineBookshelfScript
 
 CelebrityText1:
-	text "Oh, dear."
-	line "You've found me."
+	text "Ah, CHAMPION!"
+	line "Welcome to my"
+	cont "humble home."
 
-	para "Please don't tell"
-	line "anyone about me."
+	para "After I joined"
+	line "the ELITE FOUR,"
 
-	para "I'll give you this"
-	line "for keeping my"
-	cont "secret. Please?"
+	para "I moved here to"
+	line "hone my skills"
+	cont "in solitude."
+
+	para "But company is"
+	line "always welcome."
+
+	para "Here! A gift!" 
+	line "It will help you"
+
+	para "escape powerful"
+	line "#MON like a"
+	cont "ninja!"
 	done
 
 CelebrityText2:
-	text "It's tough being a"
-	line "top celebrity."
+	text "To be honest, I"
+	line "miss FUCHSIA CITY."
 
-	para "Everywhere I go,"
-	line "people chase me."
+	para "But it's important"
+	line "that my daughter"
 
-	para "I just want to be"
-	line "left alone…"
+	para "gain respect for"
+	line "her talent instead"
+	cont "of her legacy."
+
+	para "She fights well in"
+	line "the shadows, but I"
+
+	para "hope she doesn't"
+	line "always live in"
+	cont "mine…"
 	done
 
 CelebritysFearowText:
-	text "FEAROW: Feero!"
+	text "CROBA! CROBA!"
 	done
 
 Route28SteelWingHouse_MapEvents:
@@ -82,5 +101,5 @@ Route28SteelWingHouse_MapEvents:
 	bg_event  1,  1, BGEVENT_READ, CelebrityHouseBookshelf
 
 	def_object_events
-	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Celebrity, -1
-	object_event  6,  5, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CelebritysFearow, -1
+	object_event  2,  3, SPRITE_KOGA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Celebrity, -1
+	object_event  6,  5, SPRITE_ZUBAT, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CelebritysFearow, -1

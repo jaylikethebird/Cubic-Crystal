@@ -339,11 +339,10 @@ JanineText_DisappointYou:
 	cont "beautiful JANINE!"
 
 	para "My father, the"
-	line "great KOGA, gave"
+	line "great KOGA, left"
 
-	para "FUCHSIA's GYM to"
-	line "me when he left"
-	cont "for the ELITE 4."
+	para "FUCHSIA's GYM in"
+	line "my care."
 
 	para "It's finally time"
 	line "to show the world"

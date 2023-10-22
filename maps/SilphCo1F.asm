@@ -17,7 +17,7 @@ SilphCoOfficerScript:
 	iftrue .GotUpGrade
 	writetext SilphCoOfficerText
 	promptbutton
-	verbosegiveitem UP_GRADE
+	verbosegiveitem MASTER_BALL
 	iffalse .NoRoom
 	setevent EVENT_GOT_UP_GRADE
 .GotUpGrade:
@@ -34,23 +34,27 @@ SilphCoReceptionistText:
 	done
 
 SilphCoOfficerText:
-	text "Only employees are"
-	line "permitted to go"
-	cont "upstairs."
+	text "Say, aren't you the"
+	line "kid CHAMPION that"
 
-	para "But since you came"
-	line "such a long way,"
+	para "took down TEAM"
+	line "ROCKET in JOHTO?"
 
-	para "have this neat"
-	line "little souvenir."
+	para "This building was"
+	line "attacked by TEAM"
+
+	para "ROCKET three years"
+	line "ago. Here!"
 	done
 
 SilphCoOfficerText_GotUpGrade:
-	text "It's SILPH CO.'s"
-	line "latest product."
+	text "That's SILPH CO.'s"
+	line "signature MASTER"
+	cont "BALL."
 
-	para "It's not for sale"
-	line "anywhere yet."
+	para "I'm sure a hero"
+	line "like you could"
+	cont "use it!"
 	done
 
 SilphCo1F_MapEvents:

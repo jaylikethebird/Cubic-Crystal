@@ -5,6 +5,22 @@ Route28_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, MoltresAppear
+
+MoltresAppear:
+	checkevent EVENT_FOUGHT_MOLTRES2
+	iftrue .NoAppear
+	checkevent EVENT_SHOWED_Zapdos_TO_BILLS_GRANDPA
+	iftrue .Appear
+	sjump .NoAppear
+
+.Appear:
+	appear SILVER_MOLTRES
+	endcallback
+
+.NoAppear:
+	disappear SILVER_MOLTRES
+	endcallback
 
 MoltresScript:
 	faceplayer
@@ -49,4 +65,4 @@ Route28_MapEvents:
 	bg_event 25,  2, BGEVENT_ITEM, Route28HiddenRareCandy
 
 	def_object_events
-	object_event 20, 2, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MoltresScript, EVENT_FOUGHT_MOLTRES
+	object_event 20, 2, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MoltresScript, EVENT_FOUGHT_MOLTRES2

@@ -65,7 +65,7 @@ SaffronGroupSprites:
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_FALKNER
+	db SPRITE_BRUNO
 	db SPRITE_YOUNGSTER
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
@@ -265,8 +265,9 @@ BlackthornGroupSprites:
 
 SilverGroupSprites:
 ; Route28, SilverCaveOutside
+	db SPRITE_CLAIR
 	db SPRITE_MOLTRES
-	; 1 of max 9 walking sprites
+	; 2 of max 9 walking sprites
 	db 0 ; end
 
 DungeonsGroupSprites:

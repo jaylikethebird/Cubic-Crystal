@@ -190,7 +190,7 @@ ChucksWifeChubbyText:
 	cont "little chubby."
 
 	para "I'm so proud of"
-	line "how buff hee made"
+	line "how buff he made"
 	cont "my SNUBBULL!"
 	done
 

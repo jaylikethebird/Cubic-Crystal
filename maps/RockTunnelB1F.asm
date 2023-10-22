@@ -13,7 +13,7 @@ RockTunnelB1F_MapScripts:
 ZapdosAppearTunnel:
 	checkevent EVENT_FOUGHT_ZAPDOS
 	iftrue .NoAppear
-	checkevent EVENT_OPENED_MT_SILVER
+	checkevent EVENT_SHOWED_Articuno_TO_BILLS_GRANDPA
 	iftrue .Appear
 	sjump .NoAppear
 
