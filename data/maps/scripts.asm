@@ -21,7 +21,6 @@ INCLUDE "maps/GoldenrodGameCorner.asm"
 
 SECTION "Map Scripts 2", ROMX
 
-INCLUDE "maps/RuinsOfAlphOutside.asm"
 INCLUDE "maps/RuinsOfAlphHoOhChamber.asm"
 INCLUDE "maps/RuinsOfAlphKabutoChamber.asm"
 INCLUDE "maps/RuinsOfAlphOmanyteChamber.asm"
@@ -365,6 +364,7 @@ INCLUDE "maps/Route31VioletGate.asm"
 
 SECTION "Map Scripts 18B", ROMX
 INCLUDE "maps/MoveDeletersHouse.asm"
+INCLUDE "maps/RuinsOfAlphOutside.asm"
 
 SECTION "Map Scripts 19", ROMX
 

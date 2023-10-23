@@ -2834,7 +2834,7 @@ ExecutiveMGroup:
 PsychicGroup:
 	; PSYCHIC_T (1)
 	db "NATHAN@", TRAINERTYPE_NORMAL
-	db 32, GIRAFARIG
+	db 40, WOBBUFFET
 	db -1 ; end
 
 	; PSYCHIC_T (2)

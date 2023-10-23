@@ -242,6 +242,7 @@ GyaradosScript:
 	writetext LakeOfRageGyaradosText
 	pause 15
 	cry GYARADOS
+	waitbutton
 	writetext Yikes
 	waitbutton
 	closetext

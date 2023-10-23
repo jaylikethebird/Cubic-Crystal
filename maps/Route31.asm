@@ -263,7 +263,7 @@ Route31Potion:
 	itemball POTION
 
 Route31PokeBall:
-	itemball SQUIRTBOTTLE
+	itemball ANTIDOTE
 
 Route31CooltrainerMText:
 	text "DARK CAVE…"

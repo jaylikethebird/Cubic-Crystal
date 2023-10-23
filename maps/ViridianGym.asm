@@ -10,6 +10,14 @@ ViridianGym_MapScripts:
 ViridianGymBlueScript:
 	faceplayer
 	opentext
+	readvar VAR_BADGES
+	ifequal 15, .ViridianBlueFight
+	writetext BlueNotEnoughBadges
+	waitbutton
+	closetext
+	end
+
+.ViridianBlueFight:
 	checkflag ENGINE_EARTHBADGE
 	iftrue .FightDone
 	writetext LeaderBlueBeforeText
@@ -64,6 +72,19 @@ ViridianGymStatue:
 .Beaten:
 	gettrainername STRING_BUFFER_4, BLUE, BLUE1
 	jumpstd GymStatue2Script
+
+BlueNotEnoughBadges:
+	text "Seriously?"
+	
+	para "You don't even"
+	line "have every BADGE"
+	cont "from KANTO?"
+
+	para "Then you're not"
+	line "worth my time."
+
+	para "Smell ya later!"
+	done
 
 LeaderBlueBeforeText:
 	text "Yo! Finally"

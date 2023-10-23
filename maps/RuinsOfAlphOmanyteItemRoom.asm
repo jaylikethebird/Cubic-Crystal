@@ -1,8 +1,6 @@
 	object_const_def
 	const RUINSOFALPHOMANYTEITEMROOM_POKE_BALL1
 	const RUINSOFALPHOMANYTEITEMROOM_POKE_BALL2
-	const RUINSOFALPHOMANYTEITEMROOM_POKE_BALL3
-	const RUINSOFALPHOMANYTEITEMROOM_POKE_BALL4
 
 RuinsOfAlphOmanyteItemRoom_MapScripts:
 	def_scene_scripts
@@ -10,16 +8,10 @@ RuinsOfAlphOmanyteItemRoom_MapScripts:
 	def_callbacks
 
 RuinsOfAlphOmanyteItemRoomMysteryberry:
-	itemball DOME_FOSSIL
+	itemball CLEAR_BELL
 
 RuinsOfAlphOmanyteItemRoomMysticWater:
-	itemball GOLD_BERRY
-
-RuinsOfAlphOmanyteItemRoomStardust:
-	itemball GOLD_BERRY
-
-RuinsOfAlphOmanyteItemRoomStarPiece:
-	itemball GOLD_BERRY
+	itemball MAX_REVIVE
 
 RuinsOfAlphOmanyteItemRoomAncientReplica:
 	jumptext RuinsOfAlphOmanyteItemRoomAncientReplicaText
@@ -34,8 +26,8 @@ RuinsOfAlphOmanyteItemRoom_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  3,  9, RUINS_OF_ALPH_OMANYTE_CHAMBER, 5
-	warp_event  4,  9, RUINS_OF_ALPH_OMANYTE_CHAMBER, 5
+	warp_event  3,  8, RUINS_OF_ALPH_OMANYTE_CHAMBER, 5
+	warp_event  4,  8, RUINS_OF_ALPH_OMANYTE_CHAMBER, 5
 	warp_event  3,  1, RUINS_OF_ALPH_OMANYTE_WORD_ROOM, 1
 	warp_event  4,  1, RUINS_OF_ALPH_OMANYTE_WORD_ROOM, 2
 
@@ -48,5 +40,3 @@ RuinsOfAlphOmanyteItemRoom_MapEvents:
 	def_object_events
 	object_event  2,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RuinsOfAlphOmanyteItemRoomMysteryberry, EVENT_GOT_CLEAR_BELL
 	object_event  5,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RuinsOfAlphOmanyteItemRoomMysticWater, EVENT_PICKED_UP_MYSTIC_WATER_FROM_OMANYTE_ITEM_ROOM
-	object_event  2,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RuinsOfAlphOmanyteItemRoomStardust, EVENT_PICKED_UP_STARDUST_FROM_OMANYTE_ITEM_ROOM
-	object_event  5,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RuinsOfAlphOmanyteItemRoomStarPiece, EVENT_PICKED_UP_STAR_PIECE_FROM_OMANYTE_ITEM_ROOM

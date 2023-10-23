@@ -69,7 +69,7 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_GimmeTheScale
 	yesorno
 	iffalse .refused
-	verbosegiveitem HELIX_FOSSIL
+	verbosegiveitem DOME_FOSSIL
 	iffalse .full
 	takeitem RED_SCALE
 	sjump .AlwaysNewDiscoveries
@@ -346,7 +346,7 @@ MrPokemonText_GimmeTheScale:
 
 	para "He said it had"
 	line "something to do"
-	cont "with OMANYTE."
+	cont "with KABUTO."
 	done
 
 MrPokemonText_Disappointed:

@@ -20,7 +20,8 @@ SilverClair:
 	playsound SFX_WARP_TO
 	applymovement SILVER_CLAIR, ClairTeleport
 	disappear SILVER_CLAIR
-	setevent EVENT_CLAIR_SILVER
+	setevent EVENT_BYE_CLAIR
+	clearevent EVENT_CLAIR_SILVER
 	end
 
 ClairTeleport:
@@ -113,4 +114,4 @@ SilverCaveOutside_MapEvents:
 	bg_event  9, 25, BGEVENT_ITEM, SilverCaveOutsideHiddenFullRestore
 
 	def_object_events
-	object_event  18,  12, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SilverClair, EVENT_CLAIR_SILVER
+	object_event  18,  12, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SilverClair, EVENT_BYE_CLAIR

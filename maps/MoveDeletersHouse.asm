@@ -261,7 +261,7 @@ FossilScientistReceiveText:
 MoveDeleter:
 	faceplayer
 	opentext
-	special MoveDeletion
+	special MoveRelearner
 	waitbutton
 	closetext
 	end

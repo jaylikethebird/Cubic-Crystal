@@ -1,0 +1,23 @@
+;In main.asm add the following under  INCLUDE "engine/events/move_deleter.asm"
+
+INCLUDE "engine/events/move_relearner.asm"
+
+;in data\pokemon\evos_attacks.asm, add this under INCLUDE "data/pokemon/evos_attacks_pointers.asm"
+
+EvosAttacks::
+
+;add this to the end of data/events/specials_pointers.asm
+
+	add_special MoveRelearner
+
+;Change MoveDeletersHouseSignText: in maps/BlackthornCity.asm
+
+MoveDeletersHouseSignText:
+	text "MOVE DELETER AND"
+	line "MOVE REMINDER'S"
+	cont "HOUSE"
+	done
+
+;add move_relearner.asm to engine/events/
+
+;replace maps/MoveDeletersHouse.asm with the included one. 

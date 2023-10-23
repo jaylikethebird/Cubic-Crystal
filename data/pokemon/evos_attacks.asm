@@ -13,6 +13,7 @@ SECTION "Evolutions and Attacks", ROMX
 ; - db 0 ; no more level-up moves
 
 INCLUDE "data/pokemon/evos_attacks_pointers.asm"
+EvosAttacks::
 
 BulbasaurEvosAttacks:
 	db EVOLVE_LEVEL, 16, IVYSAUR
@@ -3685,10 +3686,6 @@ LugiaEvosAttacks:
 	db 77, PSYCHIC_M
 	db 88, ANCIENTPOWER
 	db 99, FUTURE_SIGHT
-	db 100, FLY
-	db 100, SURF
-	db 100, STRENGTH
-	db 100, FLASH
 	db 0 ; no more level-up moves
 
 HoOhEvosAttacks:
@@ -3704,6 +3701,10 @@ HoOhEvosAttacks:
 	db 77, RAZOR_WIND
 	db 88, ANCIENTPOWER
 	db 99, FUTURE_SIGHT
+	db 100, FLY
+	db 100, SURF
+	db 100, CUT
+	db 100, FLASH
 	db 0 ; no more level-up moves
 
 CelebiEvosAttacks:
