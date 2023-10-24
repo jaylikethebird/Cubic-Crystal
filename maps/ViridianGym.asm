@@ -12,6 +12,7 @@ ViridianGymBlueScript:
 	opentext
 	readvar VAR_BADGES
 	ifequal 15, .ViridianBlueFight
+	ifequal 16, .GotHiddenPower
 	writetext BlueNotEnoughBadges
 	waitbutton
 	closetext

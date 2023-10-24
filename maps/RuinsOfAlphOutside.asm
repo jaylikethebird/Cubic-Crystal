@@ -5,6 +5,7 @@
 	const RUINSOFALPHOUTSIDE_FISHER
 	const RUINSOFALPHOUTSIDE_YOUNGSTER2
 	const RUINSOFALPHOUTSIDE_YOUNGSTER3
+	const RUINSOFALPHOUTSIDE_ELM
 
 RuinsOfAlphOutside_MapScripts:
 	def_scene_scripts
@@ -121,6 +122,54 @@ RuinsOfAlphOutsideYoungster2Script:
 	turnobject RUINSOFALPHOUTSIDE_YOUNGSTER3, UP
 	end
 
+RuinsofAlphElmScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_MEW_EGG_FROM_ELM
+	iftrue .GotMewEgg
+	checkevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELM
+	iftrue .SecondTimeAsking
+	writetext RuinsOfAlphOutsideElmText
+.AskTakeEgg:
+	yesorno
+	iffalse .RefusedEgg
+	readvar VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .PartyFull
+	giveegg MEW, EGG_LEVEL
+	getstring STRING_BUFFER_4, .eggname
+	setevent EVENT_GOT_MEW_EGG_FROM_ELM
+	writetext RuinsOfAlphOutsideElmGotEgg
+	waitbutton
+	closetext
+	end
+
+.eggname
+	db "EGG@"
+
+.PartyFull:
+	writetext ElmFullPartyText
+	waitbutton
+	closetext
+	setevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELM
+	end
+
+.RefusedEgg:
+	writetext ElmRefuseWhyText
+	waitbutton
+	closetext
+	setevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELM
+	end
+
+.SecondTimeAsking:
+	writetext ElmAskAgainText
+	sjump .AskTakeEgg
+
+.GotMewEgg
+	writetext ElmDoneAlph
+	waitbutton
+	closetext
+	end
+
 TrainerPsychicNathan:
 	trainer PSYCHIC_T, NATHAN, EVENT_BEAT_PSYCHIC_NATHAN, PsychicNathanSeenText, PsychicNathanBeatenText, 0, .Script
 
@@ -142,7 +191,6 @@ TrainerSuperNerdStan: ; unreferenced
 	waitbutton
 	closetext
 	end
-
 
 RuinsOfAlphOutsideMysteryChamberSign:
 	jumptext RuinsOfAlphOutsideMysteryChamberSignText
@@ -351,6 +399,70 @@ RuinsOfAlphOutsideYoungster2Text:
 	line "message!"
 	done
 
+RuinsOfAlphOutsideElmText:
+	text "<PLAYER>! I had"
+	line "no idea you were"
+
+	para "interested in the"
+	line "RUINS OF ALPH!"
+
+	para "As a researcher of"
+	line "#MON origins,"
+
+	para "I'm as intrigued"
+	line "by UNOWN as I am"
+	cont "by #MON EGGS."
+
+	para "My colleagues here"
+	line "say you collected"
+
+	para "data on each UNOWN"
+	line "type. Thank you!"
+
+	para "PROF.OAK just gave"
+	line "me an EGG from a"
+
+	para "rare #MON his"
+	line "grandson caught"
+	cont "three years ago."
+
+	para "Or was it his"
+	line "grandson's friend?"
+
+	para "Either way, here!"
+	done
+
+RuinsOfAlphOutsideElmGotEgg:
+	text "Great! Here!"
+	done
+
+ElmFullPartyText:
+	text "Huh? You don't"
+	line "have room for"
+	cont "this EGG!"
+	done
+
+ElmRefuseWhyText:
+	text "Really? Why not?"
+	line "It's a super rare"
+	cont "find!"
+	done
+
+ElmAskAgainText:
+	text "I've still got the"
+	line "rare EGG from OAK."
+
+	para "It's yours if you"
+	line "want it!"
+	done
+
+ElmDoneAlph:
+	text "<PLAYER>, thank you"
+	line "so much for all"
+	cont "your help!" 
+	done
+
+
 RuinsOfAlphOutside_MapEvents:
 	db 0, 0 ; filler
 
@@ -383,3 +495,5 @@ RuinsOfAlphOutside_MapEvents:
 	object_event 13, 17, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideFisherScript, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	object_event 14, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster1Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	object_event 12,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster2Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	object_event 16, 12, SPRITE_ELM, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RuinsofAlphElmScript, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	

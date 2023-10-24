@@ -271,20 +271,25 @@ Kurt1:
 	closetext
 	setevent EVENT_GAVE_GS_BALL_TO_KURT
 	takeitem GS_BALL
-	setflag ENGINE_KURT_MAKING_BALLS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	end
 
 .GaveGSBallToKurt:
-	checkflag ENGINE_KURT_MAKING_BALLS
-	iffalse .NotMakingBalls
 	writetext KurtsHouseKurtImCheckingItNowText
 	waitbutton
 	writetext KurtsHouseKurtAhHaISeeText
 	waitbutton
 	closetext
+	special FadeBlackQuickly
+	special ReloadSpritesNoPalettes
+	playsound SFX_WARP_TO
+	waitsfx
+	pause 35
+	sjump Kurt3
 	end
 
-.NotMakingBalls:
+Kurt3:
+	opentext
 	writetext KurtsHouseKurtThisBallStartedToShakeText
 	waitbutton
 	closetext

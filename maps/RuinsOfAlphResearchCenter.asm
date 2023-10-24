@@ -103,6 +103,7 @@ RuinsOfAlphResearchCenterScientist1Script:
 	writetext RuinsOfAlphResearchCenterScientist1Text_GotAllUnown
 	waitbutton
 	closetext
+	setevent EVENT_GOT_ALL_UNOWN
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	end
 
@@ -221,17 +222,21 @@ RuinsOfAlphResearchCenterScientist3Text:
 
 RuinsOfAlphResearchCenterScientist3_PrinterAvailable:
 	text "You caught all the"
-	line "UNOWN variations?"
+	line "UNOWN variations!"
 
 	para "That's a great"
 	line "achievement!"
 
-	para "I've set up the"
-	line "printer here for"
-	cont "handling UNOWN."
+	para "I've compiled the"
+	line "data from your"
 
-	para "Feel free to use"
-	line "it anytime."
+	para "UNOWN DEX and sent"
+	line "the results to"
+	cont "PROF.ELM."
+
+	para "He was so excited"
+	line "about this amazing"
+	cont "discovery!"
 	done
 
 RuinsOfAlphResearchCenterScientist1Text:

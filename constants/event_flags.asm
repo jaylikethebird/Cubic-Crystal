@@ -202,7 +202,9 @@
 	const EVENT_GAVE_GS_BALL_TO_KURT
 	const EVENT_FOREST_IS_RESTLESS
 	const EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
-; Unused: next 6 events
+	const EVENT_GOT_MEW_EGG_FROM_ELM
+	const EVENT_REFUSED_TO_TAKE_EGG_FROM_ELM
+; Unused: next 4 events
 
 	const_next 200
 ; Kanto story events
@@ -1466,7 +1468,9 @@
 	const EVENT_RADIO_TOWER_5F_ULTRA_BALL
 	const EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
 	const EVENT_BATTLE_TOWER_OPEN_CIVILIANS
-; Unused: next 48 events
+	const EVENT_GOT_ALL_UNOWN
+	const EVENT_GET_MEW
+; Unused: next 46 events
 
 	const_next 2048
 DEF NUM_EVENTS EQU const_value ; 800

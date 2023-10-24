@@ -280,6 +280,7 @@ DungeonsGroupSprites:
 	db SPRITE_WILL
 	db SPRITE_FISHER
 	db SPRITE_SCIENTIST
+	db SPRITE_ELM
 	; 8 of max 9 walking sprites
 	db SPRITE_GAMEBOY_KID
 	db SPRITE_GROWLITHE

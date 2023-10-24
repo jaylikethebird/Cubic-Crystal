@@ -480,20 +480,6 @@ AideScript_GivePotion:
 	giveitem HM_FLASH
 	giveitem HM_STRENGTH
 	giveitem HM_CUT
-	setflag ENGINE_ZEPHYRBADGE
-	setflag ENGINE_HIVEBADGE
-	setflag ENGINE_PLAINBADGE
-	setflag ENGINE_FOGBADGE
-	setflag ENGINE_MINERALBADGE
-	setflag ENGINE_STORMBADGE
-	setflag ENGINE_GLACIERBADGE
-	setflag ENGINE_RISINGBADGE
-	setflag ENGINE_BOULDERBADGE
-	setflag ENGINE_CASCADEBADGE
-	setflag ENGINE_THUNDERBADGE
-	setflag ENGINE_RAINBOWBADGE
-	setflag ENGINE_SOULBADGE
-	setflag ENGINE_MARSHBADGE
 	writetext AideText_AlwaysBusy
 	waitbutton
 	closetext
