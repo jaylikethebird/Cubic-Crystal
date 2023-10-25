@@ -129,7 +129,7 @@ DojoFalknerScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoFalknerWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer FALKNER, FALKNER4
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -158,7 +158,7 @@ DojoBugsyScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoBugsyWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer BUGSY, BUGSY3
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
@@ -187,7 +187,7 @@ DojoWhitneyScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoWhitneyWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer WHITNEY, WHITNEY3
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
@@ -216,7 +216,7 @@ DojoPryceScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoPryceWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer PRYCE, PRYCE3
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
@@ -245,7 +245,7 @@ DojoChuckScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoChuckWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer CHUCK, CHUCK3
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
@@ -274,7 +274,7 @@ DojoJasmineScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoJasmineWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer JASMINE, JASMINE3
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
@@ -303,7 +303,7 @@ DojoMortyScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoMortyWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer MORTY, MORTY3
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
@@ -332,7 +332,7 @@ DojoClairScript:
 	writetext DenLeaderYesText
 	waitbutton
 	winlosstext DojoClairWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer CLAIR, CLAIR2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8

@@ -45,7 +45,7 @@ DojoBrockScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoBrockWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer BROCK, BROCK2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -74,7 +74,7 @@ DojoMistyScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoMistyWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer MISTY, MISTY2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
@@ -103,7 +103,7 @@ DojoSurgeScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoSurgeWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer LT_SURGE, LT_SURGE2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
@@ -132,7 +132,7 @@ DojoErikaScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoErikaWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer ERIKA, ERIKA2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
@@ -161,7 +161,7 @@ DojoSabrinaScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoSabrinaWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer SABRINA, SABRINA2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
@@ -190,7 +190,7 @@ DojoJanineScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoJanineWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer JANINE, JANINE2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
@@ -219,7 +219,7 @@ DojoBlaineScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoBlaineWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer BLAINE, BLAINE2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
@@ -248,7 +248,7 @@ DojoBlueScript:
 	writetext DojoLeaderYesText
 	waitbutton
 	winlosstext DojoBlueWinLossText, 0
-	loadtrainer CLAIR, CLAIR1
+	loadtrainer BLUE, BLUE2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8

@@ -691,6 +691,7 @@ TeddiursaEggMoves:
 	db FOCUS_ENERGY
 	db COUNTER
 	db METAL_CLAW
+	db THRASH
 	db -1 ; end
 
 SlugmaEggMoves:
