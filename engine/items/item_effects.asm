@@ -2545,7 +2545,7 @@ CardKeyEffect:
 	ret
 
 BasementKeyEffect:
-	farcall _BasementKey
+	farcall _CardKey
 	ret
 
 SacredAshEffect:

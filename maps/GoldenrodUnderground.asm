@@ -11,17 +11,24 @@ DEF GOLDENRODUNDERGROUND_YOUNGER_HAIRCUT_PRICE EQU 300
 	const GOLDENRODUNDERGROUND_OLDER_HAIRCUT_BROTHER
 	const GOLDENRODUNDERGROUND_YOUNGER_HAIRCUT_BROTHER
 	const GOLDENRODUNDERGROUND_GRANNY
+	const GOLDENRODUNDERGROUND_ROCKET
 	const GOLDENRODUNDERGROUND_RIVAL
 
 GoldenrodUnderground_MapScripts:
 	def_scene_scripts
-	scene_script GoldenrodUndergroundSwitchRoomEntrancesNoop1Scene, SCENE_GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_RIVAL_BATTLE
-	scene_script GoldenrodUndergroundSwitchRoomEntrancesNoop2Scene, SCENE_GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_NOOP
+	scene_script GoldenrodUndergroundNoop1Scene, SCENE_GOLDENRODUNDERGROUND_RIVAL_BATTLE
+	scene_script GoldenrodUndergroundNoop2Scene, SCENE_GOLDENRODUNDERGROUND_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, GoldenrodUndergroundResetSwitchesCallback
-	callback MAPCALLBACK_TILES, GoldenrodUndergroundCheckBasementKeyCallback
 	callback MAPCALLBACK_OBJECTS, GoldenrodUndergroundCheckDayOfWeekCallback
+
+; Moved this here for consistency with other maps.
+GoldenrodUndergroundNoop1Scene:
+	end
+
+GoldenrodUndergroundNoop2Scene:
+	end
 
 GoldenrodUndergroundResetSwitchesCallback:
 	clearevent EVENT_SWITCH_1
@@ -42,21 +49,6 @@ GoldenrodUndergroundResetSwitchesCallback:
 	setval 0
 	writemem wUndergroundSwitchPositions
 	endcallback
-
-GoldenrodUndergroundCheckBasementKeyCallback:
-	checkevent EVENT_USED_BASEMENT_KEY
-	iffalse .LockBasementDoor
-	endcallback
-
-.LockBasementDoor:
-	changeblock 18, 6, $3d ; locked door
-	endcallback
-
-GoldenrodUndergroundSwitchRoomEntrancesNoop1Scene:
-	end
-
-GoldenrodUndergroundSwitchRoomEntrancesNoop2Scene:
-	end
 
 GoldenrodUndergroundCheckDayOfWeekCallback:
 	readvar VAR_WEEKDAY
@@ -120,7 +112,14 @@ GoldenrodUndergroundCheckDayOfWeekCallback:
 	appear GOLDENRODUNDERGROUND_GRANNY
 	endcallback
 
-UndergroundRivalScene1:
+GoldenrodUndergroundRivalScene1:
+	moveobject GOLDENRODUNDERGROUND_RIVAL,  10,  7
+	sjump GoldenrodUndergroundRivalScript
+
+GoldenrodUndergroundRivalScene2:
+	moveobject GOLDENRODUNDERGROUND_RIVAL,  11,  7
+
+GoldenrodUndergroundRivalScript:
 	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special FadeOutMusic
@@ -128,45 +127,16 @@ UndergroundRivalScene1:
 	playsound SFX_EXIT_BUILDING
 	appear GOLDENRODUNDERGROUND_RIVAL
 	waitsfx
-	applymovement GOLDENRODUNDERGROUND_RIVAL, UndergroundRivalApproachMovement1
-	turnobject PLAYER, RIGHT
-	scall UndergroundRivalBattleScript
-	applymovement GOLDENRODUNDERGROUND_RIVAL, UndergroundRivalRetreatMovement1
-	playsound SFX_EXIT_BUILDING
-	disappear GOLDENRODUNDERGROUND_RIVAL
-	setscene SCENE_GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_NOOP
-	waitsfx
-	playmapmusic
-	end
-
-UndergroundRivalScene2:
-	turnobject PLAYER, RIGHT
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special FadeOutMusic
-	pause 15
-	playsound SFX_EXIT_BUILDING
-	appear GOLDENRODUNDERGROUND_RIVAL
-	waitsfx
-	applymovement GOLDENRODUNDERGROUND_RIVAL, UndergroundRivalApproachMovement2
-	turnobject PLAYER, RIGHT
-	scall UndergroundRivalBattleScript
-	applymovement GOLDENRODUNDERGROUND_RIVAL, UndergroundRivalRetreatMovement2
-	playsound SFX_EXIT_BUILDING
-	disappear GOLDENRODUNDERGROUND_RIVAL
-	setscene SCENE_GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_NOOP
-	waitsfx
-	playmapmusic
-	end
-
-UndergroundRivalBattleScript:
+	applymovement GOLDENRODUNDERGROUND_RIVAL, GoldenrodUnderground_RivalApproachMovement1
 	checkevent EVENT_RIVAL_BURNED_TOWER
 	iftrue .Continue
 	setevent EVENT_RIVAL_BURNED_TOWER
 	setmapscene BURNED_TOWER_1F, SCENE_BURNEDTOWER1F_RIVAL_BATTLE
+
 .Continue:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
-	writetext UndergroundRivalBeforeText
+	writetext GoldenrodUndergroundRivalBeforeText
 	waitbutton
 	closetext
 	setevent EVENT_RIVAL_GOLDENROD_UNDERGROUND
@@ -174,16 +144,17 @@ UndergroundRivalBattleScript:
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
-	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
+	winlosstext GoldenrodUndergroundRivalWinText, GoldenrodUndergroundRivalLossText
 	setlasttalked GOLDENRODUNDERGROUND_RIVAL
 	loadtrainer RIVAL1, RIVAL1_4_TOTODILE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	sjump .FinishRivalBattle
+	end
 
 .Totodile:
-	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
+	winlosstext GoldenrodUndergroundRivalWinText, GoldenrodUndergroundRivalLossText
 	setlasttalked GOLDENRODUNDERGROUND_RIVAL
 	loadtrainer RIVAL1, RIVAL1_4_CHIKORITA
 	startbattle
@@ -192,7 +163,7 @@ UndergroundRivalBattleScript:
 	sjump .FinishRivalBattle
 
 .Chikorita:
-	winlosstext UndergroundRivalWinText, UndergroundRivalLossText
+	winlosstext GoldenrodUndergroundRivalWinText, GoldenrodUndergroundRivalLossText
 	setlasttalked GOLDENRODUNDERGROUND_RIVAL
 	loadtrainer RIVAL1, RIVAL1_4_CYNDAQUIL
 	startbattle
@@ -203,9 +174,16 @@ UndergroundRivalBattleScript:
 .FinishRivalBattle:
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
-	writetext UndergroundRivalAfterText
+	writetext GoldenrodUndergroundRivalAfterText
 	waitbutton
 	closetext
+	applymovement GOLDENRODUNDERGROUND_RIVAL, GoldenrodUnderground_RivalRetreatMovement
+	playsound SFX_EXIT_BUILDING
+	disappear GOLDENRODUNDERGROUND_RIVAL
+	setevent EVENT_USED_BASEMENT_KEY
+	setscene SCENE_GOLDENRODUNDERGROUND_NOOP
+	waitsfx
+	playmapmusic
 	end
 
 TrainerSupernerdEric:
@@ -240,6 +218,9 @@ TrainerPokemaniacIssac:
 	waitbutton
 	closetext
 	end
+
+GoldenrodUndergroundRocketScript:
+	jumptextfaceplayer GoldenrodUndergroundRocketText
 
 TrainerPokemaniacDonald:
 	trainer POKEMANIAC, DONALD, EVENT_BEAT_POKEMANIAC_DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText, 0, .Script
@@ -466,39 +447,41 @@ EitherHaircutBrotherScript_MuchHappier:
 	closetext
 	end
 
-BasementDoorScript::
-	opentext
-	checkevent EVENT_USED_BASEMENT_KEY
-	iftrue .Open
-	checkitem BASEMENT_KEY
-	iftrue .Unlock
-	writetext GoldenrodUndergroundTheDoorsLockedText
-	waitbutton
-	closetext
-	end
-
-.Unlock:
-	playsound SFX_TRANSACTION
-	writetext GoldenrodUndergroundBasementKeyOpenedDoorText
-	waitbutton
-	closetext
-	changeblock 18, 6, $2e ; unlocked door
-	reloadmappart
-	closetext
-	setevent EVENT_USED_BASEMENT_KEY
-	end
-
-.Open:
-	writetext GoldenrodUndergroundTheDoorIsOpenText
-	waitbutton
-	closetext
-	end
-
 GoldenrodUndergroundScript_ShopClosed:
 	writetext GoldenrodUndergroundWeAreNotOpenTodayText
 	waitbutton
 	closetext
 	end
+
+; Moved this here for consistency with other maps.
+GoldenrodUnderground_RivalApproachMovement1:
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step_end
+
+GoldenrodUnderground_RivalApproachMovement2:
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step_end
+
+GoldenrodUnderground_RivalRetreatMovement:
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step_end
+
+GoldenrodUndergroundRocketText:
+	text "Hey! No entry!"
+	line "Get lost!"
+	done
 
 GoldenrodUndergroundCoinCase:
 	itemball COIN_CASE
@@ -515,30 +498,52 @@ GoldenrodUndergroundHiddenSuperPotion:
 GoldenrodUndergroundHiddenAntidote:
 	hiddenitem ANTIDOTE, EVENT_GOLDENROD_UNDERGROUND_HIDDEN_ANTIDOTE
 
-UndergroundRivalBeforeText:
-	text "Hold it!"
+GoldenrodUndergroundRivalBeforeText:
+	text "You!"
 
-	para "I saw you, so I"
-	line "tailed you."
+	para "You heard the big"
+	line "radio announcement"
 
-	para "I don't need you"
-	line "underfoot while I"
+	para "and thought you'd"
+	line "play hero again,"
+	cont "didn't you?"
 
-	para "take care of TEAM"
-	line "ROCKET."
+	para "Well, you're too"
+	line "slow. Go ahead to"
 
-	para "…Wait a second."
-	line "You beat me be-"
-	cont "fore, didn't you?"
+	para "the RADIO TOWER if"
+	line "you want, but the"
 
-	para "That was just a"
-	line "fluke."
+	para "new ROCKET BOSS is"
+	line "hiding behind a"
 
-	para "But I repay my"
-	line "debts!"
+	para "locked gate like"
+	line "a coward."
+
+	para "I demolished one"
+	line "of the GRUNTS, and"
+
+	para "he let slip that"
+	line "the key to reach"
+
+	para "the ROCKET BOSS is"
+	line "down here."
+
+	para "That dragon master"
+	line "LANCE isn't here"
+	cont "to hold your hand."
+
+	para "If you wanna prove"
+	line "that you're not a"
+
+	para "lucky kid with big"
+	line "strong friends,"
+
+	para "you're gonna have"
+	line "to beat me!"
 	done
 
-UndergroundRivalWinText:
+GoldenrodUndergroundRivalWinText:
 	text "…Why…"
 	line "Why do I lose?"
 
@@ -551,43 +556,22 @@ UndergroundRivalWinText:
 	para "So why do I lose?"
 	done
 
-UndergroundRivalAfterText:
-	text "…I don't under-"
-	line "stand…"
+GoldenrodUndergroundRivalAfterText:
+	text "…all my training."
+	line "Only to lose to"
+	cont "a lackey like you."
 
-	para "Is what that LANCE"
-	line "guy said true?"
+	para "Fine. I can take"
+	line "TEAM ROCKET down"
 
-	para "That I don't treat"
-	line "#MON properly?"
+	para "by myself, but I"
+	line "guess you'd speed"
+	cont "things up."
 
-	para "Love…"
-
-	para "Trust…"
-
-	para "Are they really"
-	line "what I lack?"
-
-	para "Are they keeping"
-	line "me from winning?"
-
-	para "I… I just don't"
-	line "understand."
-
-	para "But it's not going"
-	line "to end here."
-
-	para "Not now. Not"
-	line "because of this."
-
-	para "I won't give up my"
-	line "dream of becoming"
-
-	para "the world's best"
-	line "#MON trainer!"
+	para "Follow me!"
 	done
 
-UndergroundRivalLossText:
+GoldenrodUndergroundRivalLossText:
 	text "Humph. This is my"
 	line "real power, wimp."
 
@@ -688,19 +672,6 @@ PokemaniacDonaldAfterBattleText:
 	para "He'll phone you if"
 	line "he sees any rare"
 	cont "#MON."
-	done
-
-GoldenrodUndergroundTheDoorsLockedText:
-	text "The door's locked…"
-	done
-
-GoldenrodUndergroundTheDoorIsOpenText:
-	text "The door is open."
-	done
-
-GoldenrodUndergroundBasementKeyOpenedDoorText:
-	text "The BASEMENT KEY"
-	line "opened the door."
 	done
 
 GoldenrodUndergroundOlderHaircutBrotherOfferHaircutText:
@@ -828,66 +799,36 @@ GoldenrodUndergroundNoEntryText:
 	line "THIS POINT"
 	done
 
-UndergroundRivalApproachMovement1:
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step_end
-
-UndergroundRivalApproachMovement2:
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step_end
-
-UndergroundRivalRetreatMovement1:
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step UP
-	step_end
-
-UndergroundRivalRetreatMovement2:
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step UP
-	step UP
-	step_end
-
 GoldenrodUnderground_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
 	warp_event  3,  2, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 7
 	warp_event  3, 34, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 4
-	warp_event 18,  6, GOLDENROD_UNDERGROUND, 4
+	warp_event 17,  6, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 1
 	warp_event 21, 31, GOLDENROD_UNDERGROUND, 3
 	warp_event 22, 31, GOLDENROD_UNDERGROUND, 3
 	warp_event 22, 27, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, 1
 
 	def_coord_events
-	coord_event 4,  7, SCENE_GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_RIVAL_BATTLE, UndergroundRivalScene1
-	coord_event 5,  7, SCENE_GOLDENRODUNDERGROUNDSWITCHROOMENTRANCES_RIVAL_BATTLE, UndergroundRivalScene2
+	coord_event 4,  7, SCENE_GOLDENRODUNDERGROUND_RIVAL_BATTLE, GoldenrodUndergroundRivalScene1
+	coord_event 5,  7, SCENE_GOLDENRODUNDERGROUND_RIVAL_BATTLE, GoldenrodUndergroundRivalScene2
 
 	def_bg_events
-	bg_event 18,  6, BGEVENT_READ, BasementDoorScript
-	bg_event 19,  6, BGEVENT_READ, GoldenrodUndergroundNoEntrySign
+	bg_event 18,  6, BGEVENT_READ, GoldenrodUndergroundNoEntrySign
 	bg_event  6, 13, BGEVENT_ITEM, GoldenrodUndergroundHiddenParlyzHeal
 	bg_event  4, 18, BGEVENT_ITEM, GoldenrodUndergroundHiddenSuperPotion
 	bg_event 17,  8, BGEVENT_ITEM, GoldenrodUndergroundHiddenAntidote
 
 	def_object_events
-	object_event  5, 31, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdEric, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event  6,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerSupernerdTeru, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event  3, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacIssac, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event  3,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacDonald, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  5, 31, SPRITE_SUPER_NERD,	SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerSupernerdEric, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  6,  9, SPRITE_SUPER_NERD,	SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerSupernerdTeru, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  3, 27, SPRITE_SUPER_NERD,	SPRITEMOVEDATA_SPINRANDOM_FAST,	0, 0, -1, -1, PAL_NPC_BLUE,	OBJECTTYPE_TRAINER, 2, TrainerPokemaniacIssac, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  3,  5, SPRITE_SUPER_NERD,	SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 	PAL_NPC_BLUE,	OBJECTTYPE_TRAINER, 3, TrainerPokemaniacDonald, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event  7, 25, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, GoldenrodUndergroundCoinCase, EVENT_GOLDENROD_UNDERGROUND_COIN_CASE
-	object_event  7, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BargainMerchantScript, EVENT_GOLDENROD_UNDERGROUND_GRAMPS
+	object_event  7, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT,	0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BargainMerchantScript, EVENT_GOLDENROD_UNDERGROUND_GRAMPS
 	object_event  7, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BROTHER
 	object_event  7, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BROTHER
 	object_event  7, 21, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BitterMerchantScript, EVENT_GOLDENROD_UNDERGROUND_GRANNY
-	object_event 12,  7, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 17,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundRocketScript, EVENT_USED_BASEMENT_KEY
+	object_event 19,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundRivalScript, EVENT_RIVAL_GOLDENROD_UNDERGROUND

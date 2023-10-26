@@ -404,7 +404,7 @@ CanUseFlash:
 
 CanUseFly:
 ; Step 1: Badge Check
-	ld de, ENGINE_PLAINBADGE
+	ld de, ENGINE_ZEPHYRBADGE
 	ld b, CHECK_FLAG
 	farcall EngineFlagAction
 	ld a, c
