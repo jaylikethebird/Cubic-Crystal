@@ -189,7 +189,9 @@ GoldenrodGroupSprites:
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_ROCKET
 	db SPRITE_LASS
-	; 7 of max 9 walking sprites
+	db SPRITE_BILL
+	db SPRITE_BUGSY
+	; 9 of max 9 walking sprites
 	db SPRITE_DAY_CARE_MON_1
 	db SPRITE_DAY_CARE_MON_2
 	db SPRITE_POKE_BALL
@@ -281,7 +283,8 @@ DungeonsGroupSprites:
 	db SPRITE_FISHER
 	db SPRITE_SCIENTIST
 	db SPRITE_ELM
-	; 8 of max 9 walking sprites
+	db SPRITE_BUGSY
+	; 9 of max 9 walking sprites
 	db SPRITE_GAMEBOY_KID
 	db SPRITE_GROWLITHE
 	db SPRITE_POKE_BALL

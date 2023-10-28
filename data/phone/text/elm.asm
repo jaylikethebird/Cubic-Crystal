@@ -197,15 +197,21 @@ ElmPhoneGiftText:
 	para "See you later!"
 	done
 
-ElmPhoneGotAholdOfSomethingNeatText:
+ElmPhoneMewtwoText:
 	text "Hello, <PLAY_G>?"
 	line "How's it going?"
 
-	para "I got ahold of"
-	line "something neat."
+	para "I just got word"
+	line "about a strange"
 
-	para "Swing by my LAB"
-	line "and pick it up!"
+	para "surge of energy"
+	line "east of the lab."
 
-	para "See you later!"
+	para "I thought you'd"
+	line "be interested in"
+
+	para "investigating the"
+	line "matter yourself."
+
+	para "Take care!"
 	done

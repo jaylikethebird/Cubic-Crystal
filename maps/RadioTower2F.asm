@@ -3,7 +3,6 @@ DEF BLUE_CARD_POINT_CAP EQU 30
 	object_const_def
 	const RADIOTOWER2F_SUPER_NERD
 	const RADIOTOWER2F_TEACHER
-	const RADIOTOWER2F_ROCKET1
 	const RADIOTOWER2F_ROCKET2
 	const RADIOTOWER2F_ROCKET3
 	const RADIOTOWER2F_ROCKET_GIRL
@@ -53,17 +52,6 @@ RadioTower2FBlackBelt1Script:
 
 RadioTower2FBlackBelt2Script:
 	jumptextfaceplayer RadioTower2FBlackBelt2Text
-
-TrainerGruntM4:
-	trainer GRUNTM, GRUNTM_4, EVENT_BEAT_ROCKET_GRUNTM_4, GruntM4SeenText, GruntM4BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM4AfterBattleText
-	waitbutton
-	closetext
-	end
 
 TrainerGruntM5:
 	trainer GRUNTM, GRUNTM_5, EVENT_BEAT_ROCKET_GRUNTM_5, GruntM5SeenText, GruntM5BeatenText, 0, .Script
@@ -370,22 +358,11 @@ RadioTower2FBlackBelt1Text:
 	text "Sorry. Authorized"
 	line "personnel only"
 	cont "beyond this point."
-
-	para "It wasn't that way"
-	line "before."
-
-	para "There's something"
-	line "wrong with the"
-	cont "DIRECTOR…"
 	done
 
 RadioTower2FBlackBelt2Text:
 	text "Feel free to look"
-	line "around anywhere."
-
-	para "The DIRECTOR is"
-	line "nice again, just"
-	cont "as he was before."
+	line "around anywhere!"
 	done
 
 GruntM4SeenText:
@@ -730,7 +707,6 @@ RadioTower2F_MapEvents:
 	def_object_events
 	object_event  6,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower2FSuperNerdScript, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 17,  2, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower2FTeacherScript, -1
-	object_event  1,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  8,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGruntM6, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 10,  5, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

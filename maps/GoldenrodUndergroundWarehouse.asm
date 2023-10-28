@@ -3,6 +3,7 @@
 	const GOLDENRODUNDERGROUNDWAREHOUSE_ROCKET2
 	const GOLDENRODUNDERGROUNDWAREHOUSE_ROCKET3
 	const GOLDENRODUNDERGROUNDWAREHOUSE_GENTLEMAN
+	const GOLDENRODUNDERGROUNDWAREHOUSE_RIVAL
 	const GOLDENRODUNDERGROUNDWAREHOUSE_POKE_BALL1
 	const GOLDENRODUNDERGROUNDWAREHOUSE_POKE_BALL2
 	const GOLDENRODUNDERGROUNDWAREHOUSE_POKE_BALL3
@@ -66,34 +67,127 @@ TrainerGruntM15:
 	closetext
 	end
 
-GoldenrodUndergroundWarehouseDirectorScript:
+GoldenrodUndergroundWarehouseCapoScript:
 	faceplayer
 	opentext
 	checkevent EVENT_RECEIVED_CARD_KEY
 	iftrue .GotCardKey
-	writetext DirectorIntroText
+	writetext UndergroundCapoIntroText
+	waitbutton
+	closetext
+	winlosstext UndergroundCapoWinText, 0
+	loadtrainer EXECUTIVEM, EXECUTIVEM_3
+	startbattle
+	reloadmapafterbattle
+	opentext
+	writetext UndergroundCapoGiveKeyText
 	promptbutton
 	verbosegiveitem CARD_KEY
 	setevent EVENT_RECEIVED_CARD_KEY
 	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1
 	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_2
 	clearevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_3
-	writetext DirectorCardKeyText
 	promptbutton
 .GotCardKey:
-	writetext DirectorAfterText
+	writetext CapoAfterText
 	waitbutton
 	closetext
 	end
 
-GoldenrodUndergroundWarehouseMaxEther:
-	itemball MAX_ETHER
+GoldenrodUndergroundWarehouseRivalScript:
+	opentext
+	checkevent EVENT_RECEIVED_CARD_KEY
+	iftrue .GotCardKey
+	writetext UndergroundRivalIntroText
+	waitbutton
+	closetext
+	end
+.GotCardKey
+	writetext UndergroundRivalOverText
+	waitbutton
+	closetext
+	end
 
-GoldenrodUndergroundWarehouseTMSleepTalk:
+GoldenrodUndergroundWarehouseDirectorScript:
+	faceplayer
+	end
+
+GoldenrodUndergroundWarehouseMaxEther:
 	itemball TM_SLEEP_TALK
 
+GoldenrodUndergroundWarehouseTMSleepTalk:
+	itemball PP_UP
+
 GoldenrodUndergroundWarehouseUltraBall:
-	itemball ULTRA_BALL
+	itemball MAX_ELIXER
+
+
+UndergroundCapoIntroText:
+	text "You!"
+
+	para "You're the twerp"
+	line "who raided our HQ"
+	cont "in MAHOGANY."
+
+	para "I didn't have time"
+	line "to set up my traps"
+
+	para "down here, but I"
+	line "was trusted with"
+
+	para "the RADIO TOWER's"
+	line "CARD KEY for good"
+
+	para "reason. I'll blow"
+	line "you to smithereens"
+
+	para "with my explosive"
+	line "#MON!"
+	done
+
+UndergroundCapoWinText:
+	text "You…"
+	line "you defused me!"
+	done
+
+UndergroundCapoGiveKeyText:
+	text "Argh! My #MON"
+	line "couldn't cut it."
+
+	para "Fine, take this"
+	line "CARD KEY, it won't"
+
+	para "help you beat the"
+	line "new BOSS."
+	done
+
+CapoAfterText:
+	text "If you ever see"
+	line "the light, you'd"
+
+	para "go far in TEAM"
+	line "ROCKET!"
+	done
+
+UndergroundRivalIntroText:
+	text "Idiot! Don't you"
+	line "see I'm busy?"
+
+	para "Find the ROCKET"
+	line "EXEC with the"
+	cont "CARD KEY!"
+	done
+
+UndergroundRivalOverText:
+	text "You got the KEY?"
+
+	para "Then what are you"
+	line "waiting for?"
+
+	para "I'll catch up when"
+	line "I'm through with"
+	cont "these chumps!"
+	done
 
 GruntM24SeenText:
 	text "How did you get"
@@ -221,10 +315,11 @@ GoldenrodUndergroundWarehouse_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  9,  8, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM24, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  8, 15, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM14, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 14,  3, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerGruntM15, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 12,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundWarehouseDirectorScript, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  12,  8, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundWarehouseCapoScript, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  7, 13, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 0, TrainerGruntM14, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 9,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerGruntM15, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 8,  12, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundWarehouseDirectorScript, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 7,  12, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundWarehouseRivalScript, EVENT_RADIO_TOWER_ROCKET_TAKEOVER	
 	object_event 18, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, GoldenrodUndergroundWarehouseMaxEther, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_MAX_ETHER
 	object_event 13,  9, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, GoldenrodUndergroundWarehouseTMSleepTalk, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_TM_SLEEP_TALK
 	object_event  2,  1, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, GoldenrodUndergroundWarehouseUltraBall, EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_ULTRA_BALL

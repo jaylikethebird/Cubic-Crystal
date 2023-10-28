@@ -1470,7 +1470,10 @@
 	const EVENT_BATTLE_TOWER_OPEN_CIVILIANS
 	const EVENT_GOT_ALL_UNOWN
 	const EVENT_GET_MEW
-; Unused: next 46 events
+	const EVENT_GOT_RADIO_CARD
+	const EVENT_FOUGHT_MEWTWO
+	const EVENT_MEWTWO_SPAWNS
+; Unused: next 43 events
 
 	const_next 2048
 DEF NUM_EVENTS EQU const_value ; 800

@@ -10,6 +10,7 @@
 	const CIANWOODCITY_ROCK6
 	const CIANWOODCITY_POKEFAN_F
 	const CIANWOODCITY_EUSINE
+	const CIANWOODCITY_KAREN
 	const CIANWOODCITY_SUICUNE
 
 CianwoodCity_MapScripts:
@@ -53,6 +54,7 @@ CianwoodCitySuicuneAndEusine:
 	checkevent EVENT_FOUGHT_EUSINE
 	iftrue .Done
 	setevent EVENT_FOUGHT_EUSINE
+	disappear CIANWOODCITY_KAREN
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
 	applymovement CIANWOODCITY_EUSINE, CianwoodCityEusineApproachMovement
@@ -78,6 +80,14 @@ CianwoodCitySuicuneAndEusine:
 	playmapmusic
 	pause 10
 .Done:
+	end
+
+CianwoodKaren:
+	faceplayer
+	opentext
+	writetext CianwoodKarenText
+	waitbutton
+	closetext
 	end
 
 CianwoodCityChucksWife:
@@ -128,6 +138,22 @@ CianwoodPokecenterSign:
 
 CianwoodCityRock:
 	jumpstd SmashRockScript
+
+CianwoodKarenText:
+	text "<PLAYER>! I see"
+	line "you're on the hunt"
+	cont "for SUICUNE."
+	
+	para "I spotted it run"
+	line "clear over the sea"
+
+	para "fast as the wind."
+	line "Incredible!"
+
+	para "I figured the GYM"
+	line "LEADER might have"
+	cont "some leads…"
+	done
 
 CianwoodCityHiddenRevive:
 	hiddenitem REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
@@ -392,5 +418,6 @@ CianwoodCity_MapEvents:
 	object_event 10, 27, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	object_event  4, 19, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodCityRock, -1
 	object_event 10, 46, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodCityChucksWife, -1
-	object_event 11, 21, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
+	object_event 11, 21, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
+	object_event 8, 44, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CianwoodKaren, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	object_event 10, 14, SPRITE_SUICUNE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY

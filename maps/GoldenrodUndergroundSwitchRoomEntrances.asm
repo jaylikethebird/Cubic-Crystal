@@ -527,10 +527,10 @@ GoldenrodUndergroundSwitchRoomEntrances_UpdateDoors:
 	end
 
 GoldenrodUndergroundSwitchRoomEntrancesSmokeBall:
-	itemball SMOKE_BALL
+	itemball NUGGET
 
 GoldenrodUndergroundSwitchRoomEntrancesFullHeal:
-	itemball FULL_HEAL
+	itemball NUGGET
 
 GoldenrodUndergroundSwitchRoomEntrancesHiddenMaxPotion:
 	hiddenitem MAX_POTION, EVENT_GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION
@@ -560,20 +560,22 @@ GoldenrodUndergroundSwitchRoomEntrances_TeacherText:
 	done
 
 GruntM11SeenText:
-	text "Open one shutter,"
-	line "another closes."
+	text "That red-haired"
+	line "brat messed with"
+	cont "the shutters!"
 
-	para "Bet you can't get"
-	line "where you want!"
+	para "Better make sure"
+	line "you don't do the"
+	cont "same!"
 	done
 
 GruntM11BeatenText:
-	text "Drat! I was sunk"
-	line "by indecision!"
+	text "Drat! I forgot"
+	line "the button order!"
 	done
 
 GruntM11AfterBattleText:
-	text "I'm confused too…"
+	text "I'm so confused…"
 	line "The switch on the"
 
 	para "end is the one to"
@@ -581,14 +583,11 @@ GruntM11AfterBattleText:
 	done
 
 GruntM25SeenText:
-	text "Kwahaha!"
+	text "That kid looked"
+	line "super tough."
 
-	para "Confounded by the"
-	line "shutters, are we?"
-
-	para "I'll let you in on"
-	line "a secret if you"
-	cont "can beat me!"
+	para "But I bet I can"
+	line "take you!"
 	done
 
 GruntM25BeatenText:
@@ -597,14 +596,12 @@ GruntM25BeatenText:
 	done
 
 GruntM25AfterBattleText:
-	text "All right. A hint!"
+	text "How did that brat"
+	line "know that the"
 
-	para "Change the order"
-	line "of switching."
-
-	para "That'll change the"
-	line "ways the shutters"
-	cont "open and close."
+	para "order you press"
+	line "the buttons is"
+	cont "the secret?"
 	done
 
 BurglarDuncanSeenText:
@@ -623,12 +620,12 @@ BurglarDuncanAfterBattleText:
 	done
 
 BurglarEddieSeenText:
-	text "They ditched this"
-	line "project before"
-	cont "they finished."
+	text "Ugh, the ROCKETS"
+	line "are bringing too"
 
-	para "I'm searching for"
-	line "leftover loot."
+	para "much heat! I just"
+	line "wanted to make an"
+	cont "easy buck!"
 	done
 
 BurglarEddieBeatenText:
@@ -644,26 +641,30 @@ BurglarEddieAfterBattleText:
 
 	para "There's nothing"
 	line "down there."
+
+	para "Certainly not good"
+	line "loot! Go away!"
 	done
 
 GruntM13SeenText:
-	text "I don't care if"
-	line "you're lost."
-
-	para "You show up here,"
-	line "you're nothing but"
-	cont "a victim!"
+	text "Hey! What happened"
+	line "to the guard at"
+	cont "the entrance?"
 	done
 
 GruntM13BeatenText:
-	text "Urk! Yeah, think"
-	line "you're cool, huh?"
+	text "Urk!"
 	done
 
 GruntM13AfterBattleText:
-	text "You must have ice"
-	line "in your veins to"
-	cont "dis TEAM ROCKET."
+	text "Wait, you didn't"
+	line "fight the guard?"
+
+	para "It must've been"
+	line "that angry red-"
+
+	para "haired kid that"
+	line "just rushed past."
 	done
 
 SwitchRoomText_Switch1:
@@ -672,25 +673,27 @@ SwitchRoomText_Switch1:
 	done
 
 GruntF3SeenText:
-	text "Are you lost? No,"
-	line "you can't be."
-
-	para "You don't have"
-	line "that scared look."
-
-	para "I'll give you"
-	line "something to be"
-	cont "scared about!"
+	text "Hey! I already"
+	line "saw one weird kid"
+	
+	para "slip past me. No"
+	line "way you're gonna"
+	cont "do the same!"
 	done
 
 GruntF3BeatenText:
-	text "How could you?"
+	text "WHAT? HOW?"
 	done
 
 GruntF3AfterBattleText:
-	text "Go wherever you'd"
-	line "like! Get lost!"
-	cont "See if I care!"
+	text "I gotta warn the"
+	line "BOSS at the TOWER."
+
+	para "But how am I gonna"
+	line "explain that two"
+
+	para "kids made it to"
+	line "the WAREHOUSE?"
 	done
 
 SwitchRoomText_OffTurnOn:

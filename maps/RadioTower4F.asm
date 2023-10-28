@@ -3,7 +3,6 @@
 	const RADIOTOWER4F_TEACHER
 	const RADIOTOWER4F_PIKACHU
 	const RADIOTOWER4F_ROCKET1
-	const RADIOTOWER4F_ROCKET2
 	const RADIOTOWER4F_ROCKET_GIRL
 	const RADIOTOWER4F_SCIENTIST
 
@@ -53,17 +52,6 @@ RadioTowerMeowth:
 	closetext
 	end
 
-TrainerGruntM10:
-	trainer GRUNTM, GRUNTM_10, EVENT_BEAT_ROCKET_GRUNTM_10, GruntM10SeenText, GruntM10BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntM10AfterBattleText
-	waitbutton
-	closetext
-	end
-
 TrainerExecutivem2:
 	trainer EXECUTIVEM, EXECUTIVEM_2, EVENT_BEAT_ROCKET_EXECUTIVEM_2, Executivem2SeenText, Executivem2BeatenText, 0, .Script
 
@@ -71,17 +59,6 @@ TrainerExecutivem2:
 	endifjustbattled
 	opentext
 	writetext Executivem2AfterBattleText
-	waitbutton
-	closetext
-	end
-
-TrainerGruntF4:
-	trainer GRUNTF, GRUNTF_4, EVENT_BEAT_ROCKET_GRUNTF_4, GruntF4SeenText, GruntF4BeatenText, 0, .Script
-
-.Script:
-	endifjustbattled
-	opentext
-	writetext GruntF4AfterBattleText
 	waitbutton
 	closetext
 	end
@@ -149,24 +126,6 @@ RadioTowerMeowthText:
 	text "PIKACHU: Chuuuu…"
 	done
 
-GruntM10SeenText:
-	text "You plan to rescue"
-	line "the DIRECTOR?"
-
-	para "That won't be pos-"
-	line "sible because I'm"
-	cont "going to beat you!"
-	done
-
-GruntM10BeatenText:
-	text "No! Unbelievable!"
-	done
-
-GruntM10AfterBattleText:
-	text "I don't believe"
-	line "it! I was beaten!"
-	done
-
 Executivem2SeenText:
 	text "Heh. The savior"
 	line "of the SLOWPOKES."
@@ -204,8 +163,8 @@ GruntF4SeenText:
 	para "I've got another"
 	line "password for you:"
 
-	para "I'MGONNAKICK"
-	line "YOURTAIL!"
+	para "I'MGONNAKICKYOUR"
+	line "TAIL!"
 	done
 
 GruntF4BeatenText:
@@ -213,11 +172,8 @@ GruntF4BeatenText:
 	done
 
 GruntF4AfterBattleText:
-	text "I love my"
-	line "beautiful self!"
-
-	para "Who cares about"
-	line "#MON?"
+	text "You'll never win."
+	line "Go home!"
 	done
 
 ScientistRichSeenText:
@@ -268,7 +224,6 @@ RadioTower4F_MapEvents:
 	object_event  6,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower4FFisherScript, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	object_event 14,  6, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower4FDJMaryScript, -1
 	object_event 12,  7, SPRITE_PIKACHU, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTowerMeowth, -1
-	object_event  5,  6, SPRITE_ROCKET, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerExecutivem2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 12,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 12,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  4,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 4, TrainerScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

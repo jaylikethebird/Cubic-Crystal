@@ -16,19 +16,22 @@ DEF GOLDENRODUNDERGROUND_YOUNGER_HAIRCUT_PRICE EQU 300
 
 GoldenrodUnderground_MapScripts:
 	def_scene_scripts
-	scene_script GoldenrodUndergroundNoop1Scene, SCENE_GOLDENRODUNDERGROUND_RIVAL_BATTLE
-	scene_script GoldenrodUndergroundNoop2Scene, SCENE_GOLDENRODUNDERGROUND_NOOP
+    scene_script GoldenrodUndergroundNoop1Scene, SCENE_GOLDENRODUNDERGROUND_DUMMY
+	scene_script GoldenrodUndergroundNoop2Scene, SCENE_GOLDENRODUNDERGROUND_RIVAL_BATTLE
+	scene_script GoldenrodUndergroundNoop3Scene, SCENE_GOLDENRODUNDERGROUND_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, GoldenrodUndergroundResetSwitchesCallback
 	callback MAPCALLBACK_OBJECTS, GoldenrodUndergroundCheckDayOfWeekCallback
 
-; Moved this here for consistency with other maps.
 GoldenrodUndergroundNoop1Scene:
-	end
+    end
 
 GoldenrodUndergroundNoop2Scene:
-	end
+    end
+
+GoldenrodUndergroundNoop3Scene:
+    end
 
 GoldenrodUndergroundResetSwitchesCallback:
 	clearevent EVENT_SWITCH_1
@@ -534,10 +537,10 @@ GoldenrodUndergroundRivalBeforeText:
 	cont "to hold your hand."
 
 	para "If you wanna prove"
-	line "that you're not a"
+	line "you can survive"
 
-	para "lucky kid with big"
-	line "strong friends,"
+	para "without relying"
+	line "on strong friends,"
 
 	para "you're gonna have"
 	line "to beat me!"
@@ -830,5 +833,5 @@ GoldenrodUnderground_MapEvents:
 	object_event  7, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BROTHER
 	object_event  7, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BROTHER
 	object_event  7, 21, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BitterMerchantScript, EVENT_GOLDENROD_UNDERGROUND_GRANNY
-	object_event 17,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundRocketScript, EVENT_USED_BASEMENT_KEY
+	object_event 17,  7, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundRocketScript, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
 	object_event 19,  9, SPRITE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundRivalScript, EVENT_RIVAL_GOLDENROD_UNDERGROUND

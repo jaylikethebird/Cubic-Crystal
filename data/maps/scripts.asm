@@ -128,7 +128,6 @@ INCLUDE "maps/MountMoon.asm"
 INCLUDE "maps/UndergroundPath.asm"
 INCLUDE "maps/RockTunnel1F.asm"
 INCLUDE "maps/RockTunnelB1F.asm"
-INCLUDE "maps/VictoryRoad.asm"
 INCLUDE "maps/OlivinePort.asm"
 INCLUDE "maps/VermilionPort.asm"
 INCLUDE "maps/FastShip1F.asm"
@@ -365,6 +364,7 @@ INCLUDE "maps/Route31VioletGate.asm"
 SECTION "Map Scripts 18B", ROMX
 INCLUDE "maps/MoveDeletersHouse.asm"
 INCLUDE "maps/RuinsOfAlphOutside.asm"
+INCLUDE "maps/VictoryRoad.asm"
 
 SECTION "Map Scripts 19", ROMX
 

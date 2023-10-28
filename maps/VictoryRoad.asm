@@ -766,25 +766,35 @@ MortyWinLoss:
 	done
 
 VictoryRoadRivalBeforeText:
-	text "I get it now."
-
-	para "What you possess,"
-	line "and what I lack…"
+	text "I was right all"
+	line "along, wasn't I?"
 
 	para "You're weak, but"
 	line "others have helped"
-	cont "you pick up the"
-	cont "slack."
+
+	para "you pick up the"
+	line "slack."
 
 	para "That professor in"
 	line "NEW BARK TOWN just"
-	cont "gave you a #MON"
-	cont "for free."
 
-	para "The dragon master,"
-	line "these GYM LEADERS,"
-	cont "they think you're"
-	cont "something special."
+	para "gave you a #MON"
+	line "for free."
+
+	para "The dragon master"
+	line "and I held your"
+
+	para "hand to take down"
+	line "TEAM ROCKET."
+
+	para "And now all these"
+	line "GYM LEADERS came"
+
+	para "running to help"
+	line "train you for your"
+	
+	para "big standoff with"
+	line "the ELITE FOUR."
 
 	para "I had to fight for"
 	line "what's mine."
@@ -792,16 +802,17 @@ VictoryRoadRivalBeforeText:
 	para "Alone!"
 
 	para "Nobody ever helped"
-	line "me. My own father"
+	line "me. Even my father"
 
 	para "cared more about"
 	line "TEAM ROCKET than"
 	cont "his own son."
 
-	para "Well I'll show him."
-	line "And you!"
+	para "Well, I'll show"
+	line "him. And you!"
 
 	para "Prepare to lose!"
+	done
 
 VictoryRoadRivalDefeatText:
 	text "…I couldn't win…"
@@ -829,9 +840,11 @@ VictoryRoadRivalAfterText:
 	line "friends will rip"
 	cont "yours to shreds."
 
-	para "You better not"
-	line "lose to anybody"
-	cont "else before then!"
+	para "Don't slow down."
+	line "Don't give up."
+
+	para "Because I'm coming"
+	line "for you, <PLAYER>!"
 	done
 
 VictoryRoadRivalVictoryText:

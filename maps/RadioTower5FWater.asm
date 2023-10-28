@@ -4,7 +4,6 @@
 	const RADIOTOWER5F_ROCKET_GIRL
 	const RADIOTOWER5F_ROCKER
 	const RADIOTOWER5F_POKE_BALL
-    const RADIOTOWER5F_RIVAL
 
 RadioTower5F_MapScripts:
 	def_scene_scripts
@@ -26,14 +25,6 @@ Director:
 	faceplayer
 	opentext
 	writetext RadioTower5FDirectorText
-	waitbutton
-	closetext
-	end
-
-RadioRival:
-	faceplayer
-	opentext
-	writetext RadioRivalText
 	waitbutton
 	closetext
 	end
@@ -70,7 +61,6 @@ RadioTower5FRocketBossScript:
 	special ReloadSpritesNoPalettes
 	disappear RADIOTOWER5F_ROCKET
 	disappear RADIOTOWER5F_ROCKET_GIRL
-	special FadeOutMusic
 	pause 15
 	special FadeInQuickly
 	setevent EVENT_BEAT_ROCKET_EXECUTIVEM_1
@@ -85,24 +75,8 @@ RadioTower5FRocketBossScript:
 	clearevent EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	setevent EVENT_BLACKTHORN_CITY_SUPER_NERD_BLOCKS_GYM
 	clearevent EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM
-	playmusic MUSIC_RIVAL_ENCOUNTER
-	disappear RADIOTOWER5F_RIVAL
-	moveobject RADIOTOWER5F_RIVAL, 12, 0
-	appear RADIOTOWER5F_RIVAL
-	applymovement RADIOTOWER5F_RIVAL, RadioTower5FDirectorWalksIn
-	turnobject PLAYER, RIGHT
-	opentext
-	writetext RadioTower5FRivalText
-	waitbutton
-	closetext
-	setscene SCENE_RADIOTOWER5F_NOOP
-	setmapscene ECRUTEAK_TIN_TOWER_ENTRANCE, SCENE_ECRUTEAKTINTOWERENTRANCE_SAGE_BLOCKS
-	setevent EVENT_GOT_CLEAR_BELL
-	setevent EVENT_TEAM_ROCKET_DISBANDED
-	applymovement RADIOTOWER5F_RIVAL, RadioTower5FDirectorWalksOut
-	playsound SFX_EXIT_BUILDING
-	disappear RADIOTOWER5F_RIVAL
-	special RestartMapMusic
+	special PlayMapMusic
+	disappear RADIOTOWER5F_DIRECTOR
 	moveobject RADIOTOWER5F_DIRECTOR, 12, 0
 	appear RADIOTOWER5F_DIRECTOR
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksIn
@@ -114,6 +88,16 @@ RadioTower5FRocketBossScript:
 	writetext RadioTower5FDirectorDescribeClearBellText
 	waitbutton
 	closetext
+	setscene SCENE_RADIOTOWER5F_NOOP
+	setmapscene ECRUTEAK_TIN_TOWER_ENTRANCE, SCENE_ECRUTEAKTINTOWERENTRANCE_SAGE_BLOCKS
+	setevent EVENT_GOT_CLEAR_BELL
+	setevent EVENT_TEAM_ROCKET_DISBANDED
+	sjump .UselessJump
+
+.UselessJump:
+	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksOut
+	playsound SFX_EXIT_BUILDING
+	disappear RADIOTOWER5F_DIRECTOR
 	end
 
 Ben:
@@ -184,10 +168,6 @@ Executivef1SeenText:
 	para "I won't let you"
 	line "stop us!"
 	done
-
-RadioRivalText:
-	text "This can't be"
-    done
 
 Executivef1BeatenText:
 	text "This can't be"
@@ -297,69 +277,9 @@ RadioTower5FRocketBossAfterText:
 	line "dream! Farewell!"
 	done
 
-RadioTower5FRivalText:
-	text "I was on my way"
-	line "up when my radio"
-
-	para "stopped blasting"
-	line "ROCKET nonsense."
-
-	para "Guess you get to"
-	line "be the hero again."
-
-	para "Nobody's gonna"
-	line "remember the guy"
-
-	para "who kept thirty"
-	line "angry GRUNTS from"
-
-	para "reinforcing the"
-	line "RADIO TOWER after"
-
-	para "you stormed in to"
-	line "save the day."
-
-	para "Whatever."
-
-	para "Nobody cares about"
-	line "me anyway."
-
-	para "You can keep the"
-	line "glory, it won't"
-
-	para "help you beat me"
-	line "next time."
-
-	para "You're welcome,"
-	line "chump."
-	done
-
 RadioTower5FDirectorThankYouText:
-	text "You! You must be"
-	line "the trainer who"
-
-	para "fought off TEAM"
-	line "ROCKET! That rude"
-
-	para "young man who just"
-	line "bumped into me"
-
-	para "could learn some-"
-	line "thing from you!"
-
-	para "I'm the DIRECTOR"
-	line "of this TOWER."
-
-	para "TEAM ROCKET took"
-	line "us by surprise,"
-
-	para "but what's more"
-	line "surprising is that"
-
-	para "a youngster like"
-	line "you saved us!"
-
-	para "Thank you!"
+	text "DIRECTOR: <PLAY_G>,"
+	line "thank you!"
 
 	para "Your courageous"
 	line "actions have saved"
@@ -390,10 +310,14 @@ RadioTower5FDirectorDescribeClearBellText:
 	para "of BLACKTHORN CITY"
 	line "to use the move"
 	cont "outside of battle."
+
+	para "OK, I better go to"
+	line "my OFFICE."
 	done
 
 RadioTower5FDirectorText:
-	text "Hello, <PLAY_G>!"
+	text "DIRECTOR: Hello,"
+	line "<PLAY_G>!"
 
 	para "You know, I love"
 	line "#MON."
@@ -410,20 +334,8 @@ RadioTower5FDirectorText:
 	done
 
 BenText:
-	text "Hi! I'm BEN!"
-
-	para "I'm just a DJ,"
-	line "but the DIRECTOR"
-
-	para "himself asked me"
-	line "to switch offices."
-
-	para "I think this room"
-	line "has too many bad"
-
-	para "memories from TEAM"
-	line "ROCKET. Oh well,"
-	cont "more room for me!"
+	text "BEN: Do you listen"
+	line "to our music?"
 	done
 
 RadioTower5FDirectorsOfficeSignText:
@@ -453,9 +365,8 @@ RadioTower5F_MapEvents:
 	bg_event 17,  1, BGEVENT_READ, RadioTower5FBookshelf
 
 	def_object_events
-	object_event 13,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Director, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	object_event  3,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Director, -1
 	object_event 13,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 17,  2, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerExecutivef1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 3,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	object_event 13,  5, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	object_event  8,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, RadioTower5FUltraBall, EVENT_RADIO_TOWER_5F_ULTRA_BALL
-	object_event  3,  6, SPRITE_RIVAL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioRival, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

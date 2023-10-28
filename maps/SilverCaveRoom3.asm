@@ -27,6 +27,8 @@ Red:
 	special FadeBlackQuickly
 	special ReloadSpritesNoPalettes
 	disappear SILVERCAVEROOM3_RED
+	setevent EVENT_MEWTWO_SPAWNS
+	specialphonecall SPECIALCALL_MEWTWO
 	pause 15
 	special FadeInQuickly
 	pause 30

@@ -323,7 +323,7 @@ RadioTower1FRadioCardWomanOfferQuizText:
 RadioTower1FRadioCardWomanQuestion1Text:
 	text "Question 1:"
 
-	para "You can forget"
+	para "Can you forget"
 	line "and relearn HM"
 	cont "moves at will?"
 	done
@@ -332,15 +332,11 @@ RadioTower1FRadioCardWomanQuestion2Text:
 	text "Correct!"
 	line "Question 2:"
 
-	para "Is this statement"
-	line "correct?"
+	para "Can #MON use HM"
+	line "moves outside of"
 
-	para "A #MON can use"
-	line "an HM move in the"
-
-	para "field even if it"
-	line "hasn't learned"
-	cont "the move."
+	para "battle without"
+	line "learning the move?"
 	done
 
 RadioTower1FRadioCardWomanQuestion3Text:
@@ -355,10 +351,9 @@ RadioTower1FRadioCardWomanQuestion4Text:
 	text "So far so good!"
 	line "Question 4:"
 
-	para "Does FALKNER the"
-	line "VIOLET GYM LEADER"
-
-	para "have the FLY HM?"
+	para "Can #MON use HM"
+	line "moves after they"
+	cont "fainted in battle?"
 	done
 
 RadioTower1FRadioCardWomanQuestion5Text:

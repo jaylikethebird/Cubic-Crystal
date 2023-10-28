@@ -5,6 +5,7 @@
 	const RADIOTOWER3F_ROCKET1
 	const RADIOTOWER3F_ROCKET2
 	const RADIOTOWER3F_ROCKET3
+	const RADIOTOWER3F_ROCKET4
 	const RADIOTOWER3F_SCIENTIST
 
 RadioTower3F_MapScripts:
@@ -114,7 +115,7 @@ TrainerGruntM9:
 	end
 
 TrainerScientistMarc:
-	trainer SCIENTIST, MARC, EVENT_BEAT_SCIENTIST_MARC, ScientistMarcSeenText, ScientistMarcBeatenText, 0, .Script
+	trainer SCIENTIST, RICH, EVENT_BEAT_SCIENTIST_RICH, ScientistMarcSeenText, ScientistMarcBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
@@ -191,21 +192,15 @@ RadioTower3FGymGuideText:
 
 RadioTower3FCooltrainerFPleaseSaveDirectorText:
 	text "The TEAM ROCKET"
-	line "boss has locked"
+	line "BOSS has locked"
 	cont "himself in."
 
-	para "But the DIRECTOR"
-	line "can open it."
-
-	para "He's up on the"
-	line "fifth floor."
-
-	para "Please save him!"
+	para "Where's the KEY?"
 	done
 
 RadioTower3FCooltrainerFIsDirectorSafeText:
-	text "Is the DIRECTOR"
-	line "safe?"
+	text "You found the KEY?"
+	line "Incredible!"
 	done
 
 RadioTower3FCooltrainerFYoureMyHeroText:
@@ -290,11 +285,37 @@ GruntM9AfterBattleText:
 	para "How could you?"
 	done
 
-ScientistMarcSeenText:
-	text "An unknown child"
-	line "wandering here?"
+TrainerGruntM10:
+	trainer GRUNTM, GRUNTM_10, EVENT_BEAT_ROCKET_GRUNTM_10, GruntM10SeenText, GruntM10BeatenText, 0, .Script
 
-	para "Who are you?"
+.Script:
+	endifjustbattled
+	opentext
+	writetext GruntM10AfterBattleText
+	waitbutton
+	closetext
+	end
+
+TrainerGruntF4:
+	trainer GRUNTF, GRUNTF_4, EVENT_BEAT_ROCKET_GRUNTF_4, GruntF4SeenText, GruntF4BeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext GruntF4AfterBattleText
+	waitbutton
+	closetext
+	end
+
+ScientistMarcSeenText:
+	text "My colleagues are"
+	line "amplifying our"
+
+	para "BOSS's message to"
+	line "reach as far as"
+
+	para "KANTO. I won't let"
+	line "you interfere!"
 	done
 
 ScientistMarcBeatenText:
@@ -305,10 +326,40 @@ ScientistMarcBeatenText:
 ScientistMarcAfterBattleText:
 	text "Bwahahaha…"
 
-	para "I can transmit as"
-	line "strong a signal as"
-	cont "I need from here."
+	para "What, you think I"
+	line "have to move just"
+
+	para "because you beat"
+	line "me? I only take"
+
+	para "orders from the"
+	line "ROCKET BOSS past"
+	cont "that gate."
+	
+	para "Buzz off!"
 	done
+
+GruntM10SeenText:
+	text "Our experiment at"
+	line "the LAKE OF RAGE"
+
+	para "was a big success!"
+	line "The BOSS is using"
+
+	para "what he learned to"
+	line "take over JOHTO!"
+	done
+
+GruntM10BeatenText:
+	text "No! Unbelievable!"
+	done
+
+GruntM10AfterBattleText:
+	text "No matter!"
+	line "The BOSS can't be"
+	cont "defeated!"
+	done
+
 
 RadioTower3FCardKeySlotText:
 	text "It's the CARD KEY"
@@ -346,9 +397,10 @@ RadioTower3F_MapEvents:
 
 	def_object_events
 	object_event  7,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower3FSuperNerdScript, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	object_event  3,  4, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower3FGymGuideScript, -1
-	object_event 11,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower3FCooltrainerFScript, -1
-	object_event  5,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  6,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  3,  4, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower3FGymGuideScript, -1
+	object_event 10,  7, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower3FCooltrainerFScript, -1
+	object_event  11,  3, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  6,  2, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 16,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  9,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 5, TrainerScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  5,  5, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  7,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 0, TrainerScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

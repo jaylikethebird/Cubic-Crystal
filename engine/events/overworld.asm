@@ -387,8 +387,6 @@ FlashFunction:
 
 .CheckUseFlash:
 	ld de, ENGINE_POKEDEX
-	farcall CheckBadge
-	jr c, .nozephyrbadge
 	push hl
 	pop hl
 	jr c, .useflash
@@ -402,10 +400,6 @@ FlashFunction:
 
 .notadarkcave
 	call FieldMoveFailed
-	ld a, $80
-	ret
-
-.nozephyrbadge
 	ld a, $80
 	ret
 
