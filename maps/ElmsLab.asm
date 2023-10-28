@@ -209,7 +209,7 @@ TotodilePokeBallScript:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	promptbutton
-	givepoke HO_OH, 100, BERRY
+	givepoke TOTODILE, 5, BERRY
 	closetext
 	applymovement PLAYER, AfterTotodileMovement
 	sjump ElmDirectionsScript
@@ -475,20 +475,6 @@ AideScript_GivePotion:
 	writetext AideText_GiveYouPotion
 	promptbutton
 	verbosegiveitem REPEL
-	giveitem HM_FLY
-	giveitem HM_SURF
-	giveitem HM_FLASH
-	giveitem HM_STRENGTH
-	giveitem HM_CUT
-	giveitem HM_WATERFALL
-	setflag ENGINE_ZEPHYRBADGE
-	setflag ENGINE_HIVEBADGE
-	setflag ENGINE_PLAINBADGE
-	setflag ENGINE_FOGBADGE
-	setflag ENGINE_MINERALBADGE
-	setflag ENGINE_STORMBADGE
-	setflag ENGINE_GLACIERBADGE
-	setflag ENGINE_RISINGBADGE
 	writetext AideText_AlwaysBusy
 	waitbutton
 	closetext

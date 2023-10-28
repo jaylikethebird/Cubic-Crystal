@@ -3701,10 +3701,6 @@ HoOhEvosAttacks:
 	db 77, RAZOR_WIND
 	db 88, ANCIENTPOWER
 	db 99, FUTURE_SIGHT
-	db 100, FLY
-	db 100, SURF
-	db 100, CUT
-	db 100, FLASH
 	db 0 ; no more level-up moves
 
 CelebiEvosAttacks:
