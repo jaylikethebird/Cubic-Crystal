@@ -214,7 +214,7 @@ PokefanmDerekSeenText:
 
 PokefanmDerekBeatenText:
 	text "I had no time to"
-	line "show off PIKACHU"
+	line "show off PIKACHU."
 	done
 
 PokefanMDerekText_NotBragging:

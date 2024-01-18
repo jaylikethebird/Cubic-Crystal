@@ -15,7 +15,7 @@ MountMortarB1F_MapScripts:
 MountMortarB1FKiyoScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TYROGUE_FROM_KIYO
+	checkevent EVENT_GOT_ITEM_FROM_CHUCK
 	iftrue .GotTyrogue
 	checkevent EVENT_BEAT_BLACKBELT_KIYO
 	iftrue .BeatKiyo
@@ -31,14 +31,9 @@ MountMortarB1FKiyoScript:
 .BeatKiyo:
 	writetext MountMortarB1FTyrogueRewardText
 	promptbutton
-	waitsfx
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .NoRoom
-	writetext MountMortarB1FReceiveMonText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke TYROGUE, 18
-	setevent EVENT_GOT_TYROGUE_FROM_KIYO
+	verbosegiveitem LUCKY_EGG
+	iffalse .NoRoom
+	setevent EVENT_GOT_ITEM_FROM_CHUCK
 .GotTyrogue:
 	writetext MountMortarB1FKiyoGotTyrogueText
 	waitbutton
@@ -75,28 +70,16 @@ MountMortarB1FHiddenMaxRevive:
 MountMortarB1FKiyoIntroText:
 	text "Hey! Kid!"
 
-	para "You found my"
-	line "favorite spot to"
-	cont "train my #MON."
+	para "Yeah, I'm back in"
+	line "MT.MORTAR to train"
+	cont "my #MON."
 
-	para "It's got boulders"
-	line "for GRANBULL to"
+	para "Good job getting"
+	line "up the waterfall!"
 
-	para "push, waterfalls"
-	line "for POLIWRATH to"
-
-	para "climb, shadows for"
-	line "SNEASEL to hide,"
-
-	para "and tons of #-"
-	line "MON for PRIMEAPE"
-	cont "to pummel."
-
-	para "Like I promised,"
-	line "I've been working"
-	
-	para "nonstop to buff up"
-	line "my #MON."
+	para "Your #MON must"
+	line "have gotten even"
+	cont "buffer!"
 
 	para "Come on!"
 	line "Let's see how far"
@@ -122,30 +105,12 @@ MountMortarB1FTyrogueRewardText:
 	line "twice. Here!"
 	done
 
-MountMortarB1FReceiveMonText:
-	text "<PLAYER> received"
-	line "TYROGUE."
-	done
-
 MountMortarB1FKiyoGotTyrogueText:
-	text "TYROGUE is a"
-	line "fighting-type."
+	text "Training can be"
+	line "tough on your own."
 
-	para "Two of my GYM"
-	line "TRAINERS raised"
-
-	para "TYROGUE, but each"
-	line "evolved into a"
-
-	para "different strong"
-	line "#MON in time."
-
-	para "I trained mine to"
-	line "balance attack and"
-
-	para "defense, and it"
-	line "evolved into my"
-	cont "HITMONTOP!"
+	para "This LUCKY EGG can"
+	line "speed things up!"
 
 	para "Keep up the hard"
 	line "work. I'll keep"
@@ -153,7 +118,7 @@ MountMortarB1FKiyoGotTyrogueText:
 	done
 
 MountMortarB1FKiyoFullPartyText:
-	text "Kid, your party's"
+	text "Kid, your bag is"
 	line "full. Make room!"
 	done
 

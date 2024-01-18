@@ -321,7 +321,7 @@ DojoMistyWinLossText:
 	done
 
 DojoSurgeIntroText:
-	text "Howdy, squirt!"
+	text "Heya, squirt!"
 
 	para "I'm already plenty"
 	line "tough, but my team"

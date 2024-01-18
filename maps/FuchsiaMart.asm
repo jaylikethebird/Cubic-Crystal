@@ -22,7 +22,8 @@ FuchsiaMartFisherText:
 
 	para "ZONE souvenirs,"
 	line "but it's closed…"
-
+	done
+	
 FuchsiaMart_MapEvents:
 	db 0, 0 ; filler
 

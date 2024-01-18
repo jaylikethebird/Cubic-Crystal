@@ -28,7 +28,7 @@ Moves:
 	move GUILLOTINE,   EFFECT_FLINCH_HIT,         80, STEEL,        100, 15,  30
 	move RAZOR_WIND,   EFFECT_NORMAL_HIT,         100, FLYING,      80, 5,   0
 	move SWORDS_DANCE, EFFECT_ATTACK_UP_2,         0, NORMAL,       100, 30,   0
-	move CUT,          EFFECT_NORMAL_HIT,         50, NORMAL,       100, 30,   0
+	move CUT,          EFFECT_NORMAL_HIT,         50, STEEL,       100, 30,   0
 	move GUST,         EFFECT_GUST,               40, FLYING,       100, 35,   0
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,       100, 35,   0
 	move WHIRLWIND,    EFFECT_FORCE_SWITCH,        0, NORMAL,       100, 20,   0
@@ -80,10 +80,10 @@ Moves:
 	move PECK,         EFFECT_NORMAL_HIT,         35, FLYING,       100, 35,   0
 	move DRILL_PECK,   EFFECT_NORMAL_HIT,         80, FLYING,       100, 20,   0
 	move SUBMISSION,   EFFECT_RECOIL_HIT,         100, FIGHTING,    100, 10,   0
-	move LOW_KICK,     EFFECT_FLINCH_HIT,         50, FIGHTING,     90, 20,  30
+	move LOW_KICK,     EFFECT_FLINCH_HIT,         50, FIGHTING,     100, 20,  30
 	move COUNTER,      EFFECT_COUNTER,             1, FIGHTING,     100, 20,   0
 	move SEISMIC_TOSS, EFFECT_LEVEL_DAMAGE,        1, FIGHTING,     100, 20,   0
-	move STRENGTH,     EFFECT_NORMAL_HIT,         80, NORMAL,       100, 15,   0
+	move STRENGTH,     EFFECT_NORMAL_HIT,         80, FIGHTING,     85, 15,   0
 	move ABSORB,       EFFECT_LEECH_HIT,          30, GRASS,        100, 20,   0
 	move MEGA_DRAIN,   EFFECT_LEECH_HIT,          50, GRASS,        100, 15,   0
 	move LEECH_SEED,   EFFECT_LEECH_SEED,          0, GRASS,        90, 10,   0
@@ -182,7 +182,7 @@ Moves:
 	move SKETCH,       EFFECT_SKETCH,              0, NORMAL,       100,  1,   0
 	move TRIPLE_KICK,  EFFECT_TRIPLE_KICK,        20, FIGHTING,     90, 10,   0
 	move THIEF,        EFFECT_THIEF,              60, DARK,         100, 10, 100
-	move HIDDEN_POWER, EFFECT_NORMAL_HIT,         60, FIGHTING,        100,  15,  0
+	move HIDDEN_POWER, EFFECT_NORMAL_HIT,         60, FIGHTING,     100,  15,  0
 	move MIND_READER,  EFFECT_LOCK_ON,             0, NORMAL,       100,  5,   0
 	move NIGHTMARE,    EFFECT_ALL_UP_HIT,         60, GHOST,        100, 10,  10
 	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,         100, 25,  10

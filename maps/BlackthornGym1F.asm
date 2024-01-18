@@ -364,11 +364,15 @@ BlackthornGymGuideText:
 	para "You can't damage"
 	line "them very easily."
 
-	para "But you know,"
-	line "they're supposed"
+	para "They're supposed"
+	line "to be weak against"
 
-	para "to be weak against"
-	line "ice-type moves."
+	para "ice-type moves,"
+	line "but I heard that"
+
+	para "CLAIR's partner is"
+	line "only weak to other"
+	cont "dragon-types!"
 	done
 
 BlackthornGymGuideWinText:

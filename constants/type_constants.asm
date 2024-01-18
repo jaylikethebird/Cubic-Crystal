@@ -10,7 +10,6 @@ DEF PHYSICAL EQU const_value
 	const NORMAL
 	const FIGHTING
 	const FLYING
-	const POISON
 	const GROUND
 	const ROCK
 	const BIRD
@@ -28,6 +27,7 @@ DEF SPECIAL EQU const_value
 	const WATER
 	const GRASS
 	const ELECTRIC
+	const POISON
 	const PSYCHIC_TYPE
 	const ICE
 	const DRAGON

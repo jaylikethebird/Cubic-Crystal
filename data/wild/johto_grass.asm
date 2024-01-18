@@ -397,29 +397,29 @@ JohtoGrassWildMons:
 	def_grass_wildmons RUINS_OF_ALPH_INNER_CHAMBER
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
 	; day
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
 	; nite
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
-	db 5, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
+	db 10, UNOWN
 	end_grass_wildmons
 
 	def_grass_wildmons UNION_CAVE_1F
@@ -1349,27 +1349,27 @@ JohtoGrassWildMons:
 	def_grass_wildmons ROUTE_34
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 5, PHANPY
-	db 5, TEDDIURSA
 	db 5, PICHU
-	db 5, TOGEPI
-	db 5, EEVEE
+	db 5, PICHU
+	db 16, SNUBBULL
 	db 17, SNUBBULL
+	db 12, EEVEE
+	db 11, EEVEE
 	db 16, DITTO
 	; day
 	db 5, PICHU
-	db 5, TOGEPI
 	db 5, PICHU
-	db 5, TOGEPI
-	db 5, EEVEE
+	db 16, SNUBBULL
 	db 17, SNUBBULL
+	db 12, EEVEE
+	db 11, EEVEE
 	db 16, DITTO
 	; nite
 	db 5, CLEFFA
 	db 5, IGGLYBUFF
 	db 5, CLEFFA
 	db 5, IGGLYBUFF
-	db 5, EEVEE
+	db 12, EEVEE
 	db 17, DITTO
 	db 16, DITTO
 	end_grass_wildmons
@@ -1463,19 +1463,19 @@ JohtoGrassWildMons:
 	; morn
 	db 23, DODUO
 	db 21, ELEKID
-	db 23, FURRET
+	db 23, FLAAFFY
 	db 20, MILTANK
 	db 20, TAUROS
 	db 23, PONYTA
-	db 20, FLAAFFY
+	db 20, FURRET
 	; day
 	db 23, DODUO
 	db 21, ELEKID
-	db 23, FURRET
+	db 23, FLAAFFY
 	db 20, MILTANK
 	db 20, TAUROS
 	db 23, PONYTA
-	db 20, FLAAFFY
+	db 20, FURRET
 	; nite
 	db 23, RATICATE
 	db 21, ELEKID
@@ -1491,19 +1491,19 @@ JohtoGrassWildMons:
 	; morn
 	db 23, DODUO
 	db 21, MAGNEMITE
-	db 23, FURRET
+	db 23, SKIPLOOM
 	db 20, MILTANK
 	db 20, TAUROS
 	db 23, PONYTA
-	db 20, SKIPLOOM
+	db 20, FURRET
 	; day
 	db 23, DODUO
 	db 21, MAGNEMITE
-	db 23, FURRET
+	db 23, SKIPLOOM
 	db 20, MILTANK
 	db 20, TAUROS
 	db 23, PONYTA
-	db 20, SKIPLOOM
+	db 20, FURRET
 	; nite
 	db 23, RATICATE
 	db 21, MAGNEMITE
@@ -1661,7 +1661,7 @@ JohtoGrassWildMons:
 	db 59, PRIMEAPE
 	db 58, ARBOK
 	db 60, RAPIDASH
-	db 56, DODRIO
+	db 50, TOGETIC
 	db 60, POLIWRATH
 	db 60, POLIWRATH
 	; day
@@ -1669,7 +1669,7 @@ JohtoGrassWildMons:
 	db 59, PRIMEAPE
 	db 58, ARBOK
 	db 60, RAPIDASH
-	db 56, DODRIO
+	db 50, TOGETIC
 	db 60, POLIWRATH
 	db 60, POLIWRATH
 	; nite

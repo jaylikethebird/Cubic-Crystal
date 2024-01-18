@@ -87,10 +87,9 @@ SecurityCamera2a:
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	turnobject PLAYER, RIGHT
-	moveobject TEAMROCKETBASEB1F_ROCKET1, 12, 5
+	moveobject TEAMROCKETBASEB1F_ROCKET1, 4, 7
 	appear TEAMROCKETBASEB1F_ROCKET1
-	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement3
+	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement2
 	scall TrainerCameraGrunt2
 	ifequal TRUE, NoSecurityCamera
 	setevent EVENT_SECURITY_CAMERA_2
@@ -113,10 +112,9 @@ SecurityCamera2b:
 	scall PlaySecurityCameraSounds
 	showemote EMOTE_SHOCK, PLAYER, 15
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	turnobject PLAYER, RIGHT
-	moveobject TEAMROCKETBASEB1F_ROCKET1, 12, 5
+	moveobject TEAMROCKETBASEB1F_ROCKET1, 4, 8
 	appear TEAMROCKETBASEB1F_ROCKET1
-	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement5
+	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement4
 	scall TrainerCameraGrunt2
 	ifequal TRUE, NoSecurityCamera
 	setevent EVENT_SECURITY_CAMERA_2
@@ -591,11 +589,10 @@ SecurityCameraMovement5:
 SecurityCameraMovement6:
 	big_step UP
 	big_step UP
-	big_step RIGHT
 	big_step UP
 	big_step UP
 	big_step UP
-	big_step LEFT
+	turn_head LEFT
 	step_end
 
 SecurityCameraMovement7:
@@ -611,11 +608,9 @@ SecurityCameraMovement7:
 SecurityCameraMovement8:
 	big_step DOWN
 	big_step DOWN
-	big_step RIGHT
 	big_step DOWN
 	big_step DOWN
 	big_step DOWN
-	big_step LEFT
 	big_step LEFT
 	big_step LEFT
 	step_end
@@ -697,13 +692,16 @@ GruntM16BeatenText:
 	done
 
 GruntM16AfterBattleText:
-	text "I don't even know"
-	line "where the traps"
-	cont "are planted."
+	text "The direct path is"
+	line "full of dangerous"
+	cont "#MON traps!"
 
-	para "You'll just have"
-	line "to collect your"
-	cont "courage and walk."
+	para "The long way will"
+	line "bring a legion of"
+	cont "GRUNTS to battle."
+
+	para "What's it gonna be"
+	line "today, punk?"
 	done
 
 TeamRocketBaseB1FSecurityCameraText:

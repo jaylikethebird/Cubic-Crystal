@@ -37,7 +37,11 @@ CeladonCityGramps1Script:
 	jumptextfaceplayer CeladonCityGramps1Text
 
 CeladonCityGramps2Script:
-	jumptextfaceplayer CeladonCityGramps2Text
+	opentext
+	writetext CeladonCityGramps2Text
+	waitbutton
+	closetext
+	end
 
 CeladonCityYoungster1Script:
 	jumptextfaceplayer CeladonCityYoungster1Text

@@ -14,7 +14,7 @@ Route5CleanseTagHouseGrannyScript:
 	iftrue .GotCleanseTag
 	writetext Route5CleanseTagHouseGrannyText1
 	promptbutton
-	verbosegiveitem CLEANSE_TAG
+	verbosegiveitem LUCKY_EGG
 	iffalse .NoRoom
 	setevent EVENT_GOT_CLEANSE_TAG
 .GotCleanseTag:
@@ -31,31 +31,36 @@ HouseForSaleBookshelf:
 	jumpstd DifficultBookshelfScript
 
 Route5CleanseTagHouseGrannyText1:
-	text "Eeyaaaah!"
+	text "There used to be a"
+	line "#MON DAY-CARE"
 
-	para "I sense a sinister"
-	line "shadow hovering"
-	cont "over you."
+	para "here, but now it's"
+	line "just us."
 
-	para "Take this to ward"
-	line "it off!"
+	para "The other DAY-CARE"
+	line "in JOHTO found an"
+	cont "EGG or two lately."
+
+	para "Well, you came all"
+	line "this way. Here, an"
+	cont "EGG, on the house!"
 	done
 
 Route5CleanseTagHouseGrannyText2:
-	text "You were in mortal"
-	line "danger, but you"
-	cont "are protected now."
+	text "That's no #MON"
+	line "EGG, but it helps"
+
+	para "#MON grow much"
+	line "faster than they"
+	cont "do in DAY-CARE!"
 	done
 
 Route5CleanseTagHouseTeacherText:
-	text "My grandma is into"
-	line "warding off what"
+	text "My grandma won't"
+	line "stop giving eggs"
+	cont "to strangers."
 
-	para "she believes to be"
-	line "evil spirits."
-
-	para "I'm sorry that she"
-	line "startled you."
+	para "We worry."
 	done
 
 Route5CleanseTagHouse_MapEvents:

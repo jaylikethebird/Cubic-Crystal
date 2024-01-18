@@ -9,48 +9,86 @@ CeladonMansionRoofHouse_MapScripts:
 CeladonMansionRoofHousePharmacistScript:
 	faceplayer
 	opentext
+	checkevent EVENT_HEARD_SCARY_STORY
+	iftrue .MartTime
 	checkevent EVENT_GOT_TM03_CURSE
 	iftrue .GotCurse
-	writetext CeladonMansionRoofHousePharmacistIntroText
-	promptbutton
-	checktime NITE
-	iftrue .Night
-	writetext CeladonMansionRoofHousePharmacistNotNightText
+	writetext CeladonMansionRoofHousePharmacistNoCurse
 	waitbutton
+    closetext
+    end
+
+.MartTime
+	pokemart MARTTYPE_STANDARD, MART_CURSE
 	closetext
 	end
 
-.Night:
-	writetext CeladonMansionRoofHousePharmacistStoryText
-	promptbutton
-	verbosegiveitem TM_CURSE
-	iffalse .NoRoom
-	setevent EVENT_GOT_TM03_CURSE
 .GotCurse:
-	writetext CeladonMansionRoofHousePharmacistCurseText
+	writetext CeladonMansionRoofHousePharmacistGotCurse
 	waitbutton
-.NoRoom:
+	checkevent EVENT_GOT_TM42_DREAM_EATER
+	iftrue .GotDreamEater
+	writetext CeladonMansionRoofHousePharmacistNoDream
+	waitbutton
 	closetext
 	end
 
-CeladonMansionRoofHousePharmacistIntroText:
+.GotDreamEater
+	writetext CeladonMansionRoofHousePharmacistStoryText
+	setevent EVENT_HEARD_SCARY_STORY
+	waitbutton
+	closetext
+	end
+
+CeladonMansionRoofHousePharmacistNoCurse:
 	text "Let me recount a"
 	line "terrifying tale…"
+	
+	para "Then again, you've"
+	line "yet to encounter a"
+
+	para "cursed TM, so I"
+	line "doubt you could"
+	cont "handle it."
+
+	para "I hear a dark and"
+	line "chilling cave in"
+
+	para "JOHTO has such a"
+	line "haunted move…"
 	done
 
-CeladonMansionRoofHousePharmacistNotNightText:
-	text "Then again, it's"
-	line "not as scary while"
+CeladonMansionRoofHousePharmacistGotCurse:
+	text "Let me recount a"
+	line "terrifying tale…"	
 
-	para "it's still light"
-	line "outside."
+	para "I see you've felt"
+	line "the CURSE of ICE"
+	cont "PATH. Gooood…"
+	done 
 
-	para "Come back after"
-	line "sunset, OK?"
-	done
+CeladonMansionRoofHousePharmacistNoDream:
+	text "But you still have"
+	line "yet to know the"
+
+	para "terror of a stolen"
+	line "dream! They say"
+
+	para "a sleep-addled man"
+	line "in VIRIDIAN fell"
+
+	para "victim to such a"
+	line "fate before…"
+	done 
 
 CeladonMansionRoofHousePharmacistStoryText:
-	text "Once upon a time,"
+	text "Ah, and you know"
+	line "the nightmare of"
+	cont "DREAM EATER. Yes!"
+
+	para "You are ready!"
+	
+	para "Once upon a time,"
 	line "there was a little"
 
 	para "boy who was given"
@@ -99,19 +137,17 @@ CeladonMansionRoofHousePharmacistStoryText:
 	para "…"
 	line "Ba-dum ba-dum!"
 
-	para "For listening so"
-	line "patiently, you may"
-	cont "take this--TM03!"
-	done
+	para "For listening so"	
+	line "patiently, I will"
 
-CeladonMansionRoofHousePharmacistCurseText:
-	text "TM03 is CURSE."
+	para "ensure you never"
+	line "forget the fright"
+	cont "of those TMs…"
 
-	para "It's a terrifying"
-	line "move that slowly"
+	para "For a price!"
 
-	para "whittles down the"
-	line "victim's HP."
+	para "Come back and I'll"
+	line "sell fresh TMs!"
 	done
 
 CeladonMansionRoofHouse_MapEvents:

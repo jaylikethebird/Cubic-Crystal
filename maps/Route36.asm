@@ -101,14 +101,20 @@ Route36FalknerScript:
 	faceplayer
 	opentext
 	writetext FalknerText1
+	yesorno
+	iftrue .FightFalkner
+	writetext FalknerNo
 	waitbutton
+	closetext
+	end
+
+.FightFalkner
+	writetext FalknerText2
 	closetext
 	winlosstext Falkner2WinLossText, 0
 	loadtrainer FALKNER, FALKNER2
 	startbattle
 	reloadmapafterbattle
-
-.FightDone:
 	opentext
 	writetext FalknerText3
 	promptbutton
@@ -153,7 +159,7 @@ Route36FloriaScript:
 Route36RockSmashGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM08_ROCK_SMASH
+	checkevent EVENT_GOT_ROCK_SMASH_REPLACEMENT
 	iftrue .AlreadyGotRockSmash
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
@@ -165,15 +171,39 @@ Route36RockSmashGuyScript:
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
 	promptbutton
-	verbosegiveitem TM_ROCK_SMASH
-	iffalse .NoRoomForTM
-	setevent EVENT_GOT_TM08_ROCK_SMASH
+	checkitem COIN_CASE
+	iffalse .NoCoinCase
+	checkcoins MAX_COINS - 1
+	ifequal HAVE_MORE, .FullCoinCase
+	getstring STRING_BUFFER_4, .coinname
+	scall .GiveCoins
+	givecoins 1000
+	setevent EVENT_GOT_ROCK_SMASH_REPLACEMENT
 .AlreadyGotRockSmash:
 	writetext RockSmashGuyText3
 	waitbutton
-.NoRoomForTM:
 	closetext
 	end
+
+.GiveCoins:
+	jumpstd ReceiveItemScript
+	end
+
+.coinname
+	db "1000 COINS@"
+
+.NoCoinCase:
+	writetext RockSmashGuyNoCoinCase
+	waitbutton
+	closetext
+	end
+
+.FullCoinCase:
+	writetext RockSmashGuyFullCoinCase
+	waitbutton
+	closetext
+	end
+
 
 Route36LassScript:
 	faceplayer
@@ -459,25 +489,31 @@ SudowoodoAttackedText:
 	done
 
 FalknerText1:
-	text "Long time no see,"
-	line "<PLAYER>!"
+	text "FALKNER: Oh, hey"
+	line "there, <PLAYER>!"
 
-	para "I saw you take"
-	line "care of that tree."
-	cont "Good work."
+	para "Wild #MON get"
+	line "tougher up north," 
 
-	para "I've been training"
-	line "hard against the"
-	cont "tougher #MON"
-	cont "up north."
+	para "so I like training"
+	line "here now and then."
 
 	para "Huh? How did I get"
 	line "here before you"
 	cont "cleared the road?"
 
 	para "How about I show"
-	line "you…if you can"
-	cont "beat me, at least!"
+	line "you…in a battle!"
+	done
+
+FalknerText2:
+	text "Great! You won't"
+	line "beat me again!"
+	done
+
+FalknerNo:
+	text "No? Do you need to"
+	line "heal? I'll wait!"
 	done
 
 Falkner2WinLossText:
@@ -562,14 +598,16 @@ FloriaText2:
 RockSmashGuyText1:
 	text "Wa-hey!"
 
-	para "I was going to"
-	line "snap that tree"
+	para "This tree is crazy"
+	line "strong. How did it"
+	cont "sprout so fast?"
 
-	para "with my straight-"
-	line "arm punch."
+	para "Argh! I gotta get"
+	line "to GOLDENROD so I"
 
-	para "But I couldn't!"
-	line "I'm a failure!"
+	para "can spend the last"
+	line "of my COINS at the"
+	cont "GAME CORNER!"
 	done
 
 RockSmashGuyText2:
@@ -577,28 +615,40 @@ RockSmashGuyText2:
 	line "wretched tree?"
 
 	para "I'm impressed!"
-	line "I want you to"
-	cont "have this."
+	line "Here, why don't"
+
+	para "you take my COINS"
+	line "off my hands."
 	done
 
-Text_ReceivedTM08: ; unreferenced
-	text "<PLAYER> received"
-	line "TM08."
+RockSmashGuyNoCoinCase:
+	text "Huh? I wanna give"
+	line "you some COINS for"
+
+	para "the GAME CORNER,"
+	line "but you need a"
+	cont "COIN CASE."
 	done
+
+RockSmashGuyFullCoinCase:
+	text "Huh? Your have all"
+	line "the COINS you can"
+	cont "carry already?"
+
+	para "Whoa, you're rich!"
+	line "Or lucky!"
+	end
 
 RockSmashGuyText3:
-	text "That happens to be"
-	line "ROCK SMASH."
+	text "I won those COINS"
+	line "at the GAME CORNER"
+	cont "a while back."
 
-	para "You can shatter"
-	line "rocks with just a"
+	para "But my wife got me"
+	line "off gambling."
 
-	para "single well-aimed"
-	line "smack."
-
-	para "If any rocks are"
-	line "in your way, just"
-	cont "smash 'em up!"
+	para "Enjoy them! But"
+	line "don't get hooked!"
 	done
 
 UnusedOddTreeText: ; unreferenced

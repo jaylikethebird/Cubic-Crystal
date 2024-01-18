@@ -439,16 +439,11 @@ CherrygroveRivalText_Seen:
 	para "What a waste."
 	line "A wimp like you."
 
-	para "<……> <……> <……>"
+	para "And you picked the"
+	line "weakest one!"
 
-	para "Don't you get what"
-	line "I'm saying?"
-
-	para "Well, I too, have"
-	line "a good #MON."
-
-	para "I'll show you"
-	line "what I mean!"
+	para "Let me show you"
+	line "what I mean…"
 	done
 
 RivalCherrygroveWinText:

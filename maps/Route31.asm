@@ -353,13 +353,11 @@ Text_Route31DescribeNightmare:
 	text "TM50 contains"
 	line "OMINOUS WIND."
 
-	para "It's a wicked"
-	line "attack that"
+	para "It's an eerie move"
+	line "that may raise all"
 
-	para "might raise"
-	line "all of your stats"
-
-	para "at once!"
+	para "of your stats at"
+	line "the same time!"
 	done
 
 Text_Route31WrongMail:

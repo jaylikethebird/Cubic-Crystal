@@ -326,7 +326,7 @@ GoldenrodCityCooltrainerF1Text_ClearedRadioTower:
 	done
 
 BugsyGoldenrodText:
-	text "<PLAYER>! Hey!"
+	text "Howdy, <PLAYER>!"
 
 	para "I'm prepping to"
 	line "catch some bugs"
@@ -617,7 +617,7 @@ GoldenrodCity_MapEvents:
 	def_coord_events
 
 	def_bg_events
-	bg_event 8, 15, BGEVENT_READ, GoldenrodCityStationSign
+	bg_event 11, 15, BGEVENT_READ, GoldenrodCityStationSign
 	bg_event  4, 17, BGEVENT_READ, GoldenrodCityRadioTowerSign
 	bg_event 26, 27, BGEVENT_READ, GoldenrodDeptStoreSign
 	bg_event 26,  9, BGEVENT_READ, GoldenrodGymSign

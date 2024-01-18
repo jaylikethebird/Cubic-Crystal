@@ -2,6 +2,11 @@ Route10North_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, RockTunnelFlypointCallback
+
+RockTunnelFlypointCallback:
+	setflag ENGINE_FLYPOINT_ROCK_TUNNEL
+	endcallback
 
 PowerPlantSign:
 	jumptext PowerPlantSignText
@@ -27,3 +32,5 @@ Route10North_MapEvents:
 	bg_event 12,  1, BGEVENT_READ, Route10PokecenterSign
 
 	def_object_events
+
+	

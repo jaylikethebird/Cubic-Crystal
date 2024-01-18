@@ -210,18 +210,18 @@ RadioTower4F_MapEvents:
 
 	def_warp_events
 	warp_event  0,  0, RADIO_TOWER_5F, 1
-	warp_event  9,  0, RADIO_TOWER_3F, 2
+	warp_event  7,  0, RADIO_TOWER_3F, 2
 	warp_event 12,  0, RADIO_TOWER_5F, 2
 	warp_event 17,  0, RADIO_TOWER_3F, 3
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  0, BGEVENT_READ, RadioTower4FProductionSign
+	bg_event  3,  0, BGEVENT_READ, RadioTower4FProductionSign
 	bg_event 15,  0, BGEVENT_READ, RadioTower4FStudio2Sign
 
 	def_object_events
-	object_event  6,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower4FFisherScript, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	object_event  5,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower4FFisherScript, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	object_event 14,  6, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower4FDJMaryScript, -1
 	object_event 12,  7, SPRITE_PIKACHU, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTowerMeowth, -1
 	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 2, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerExecutivem2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

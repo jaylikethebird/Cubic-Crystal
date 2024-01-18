@@ -481,8 +481,11 @@ FindJanineText:
 
 	para "…"
 
-	para "Darn, I'll never"
-	line "be a ninja."
+	para "Darn, I guess a"
+	line "GYM GUIDE like me"
+
+	para "will never be a"
+	line "real ninja."
 
 	para "I can't even get"
 	line "this disguise off."

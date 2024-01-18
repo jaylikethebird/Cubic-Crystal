@@ -218,13 +218,11 @@ BirdKeeperRodSeenText:
 	text "FALKNER's ace is"
 	line "tough as steel!"
 
-	para "If you can't"
-	line "beat me, you"
+	para "If you can't beat"
+	line "me, you won't have"
 
-	para "won't have a"
-	line "chance against"
-
-	para "our LEADER!"
+	para "a chance against"
+	line "our LEADER!"
 	done
 
 BirdKeeperRodBeatenText:

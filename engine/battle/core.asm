@@ -4136,7 +4136,7 @@ SpikesDamage:
 	ld hl, BattleText_UserHurtBySpikes ; "hurt by SPIKES!"
 	call StdBattleTextbox
 
-	call GetEighthMaxHP
+	call GetQuarterMaxHP
 	call SubtractHPFromTarget
 
 	pop hl

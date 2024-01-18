@@ -1,20 +1,21 @@
 _FruitBearingTreeText::
-	text "It's a fruit-"
-	line "bearing tree."
+	text "What's that up"
+	line "there?"
 	done
 
 _HeyItsFruitText::
-	text "Hey! It's"
+	text "<PLAYER> found a"
 	line "@"
 	text_ram wStringBuffer3
-	text "!"
+	text " tree!"
+	done
+
+_ObtainedTwoFruitText::
+	text "Better pick two!"
 	done
 
 _ObtainedFruitText::
-	text "Obtained"
-	line "@"
-	text_ram wStringBuffer3
-	text "!"
+	text "Better pick one!"
 	done
 
 _FruitPackIsFullText::
@@ -23,8 +24,9 @@ _FruitPackIsFullText::
 	done
 
 _NothingHereText::
-	text "There's nothing"
-	line "here…"
+	text "It's empty!"
+	line "Better try again"
+	cont "tomorrow…"
 	done
 
 _WhichApricornText::

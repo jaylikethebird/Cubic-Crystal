@@ -514,7 +514,7 @@ DojoFalknerWinLossText:
 	done
 
 DojoBugsyIntroText:
-    text "Hiya <PLAYER>!"
+    text "Howdy, <PLAYER>!"
 
     para "Surprise surprise,"
     line "I've been studying"

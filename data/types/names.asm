@@ -4,7 +4,6 @@ TypeNames:
 	dw Normal
 	dw Fighting
 	dw Flying
-	dw Poison
 	dw Ground
 	dw Rock
 	dw Bird
@@ -21,12 +20,14 @@ TypeNames:
 	dw Normal
 	dw Normal
 	dw Normal
+	dw Normal
 	dw CurseType
 	assert_table_length UNUSED_TYPES_END
 	dw Fire
 	dw Water
 	dw Grass
 	dw Electric
+	dw Poison
 	dw Psychic
 	dw Ice
 	dw Dragon

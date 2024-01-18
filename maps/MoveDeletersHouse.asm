@@ -30,43 +30,42 @@ FossilScientist:
 
 .OldAmber
 	checkitem OLD_AMBER
-	iffalse .No
+	iffalse .NoFossil
 	getmonname STRING_BUFFER_3, AERODACTYL
 	writetext FossilScientistAerodactylText
 	promptbutton
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1 ; remove this to immediately receive the fossil
 	setevent EVENT_GAVE_SCIENTIST_OLD_AMBER
 	takeitem OLD_AMBER
-	writetext FossilScientistGiveText
-	waitbutton
 	sjump .GaveScientistFossil
 
 .DomeFossil:
 	checkitem DOME_FOSSIL
-	iffalse .No
+	iffalse .NoFossil
 	getmonname STRING_BUFFER_3, KABUTO
 	writetext FossilScientistKabutoText
 	promptbutton
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1 ; remove this to immediately receive the fossil
 	setevent EVENT_GAVE_SCIENTIST_DOME_FOSSIL
 	takeitem DOME_FOSSIL
-	opentext
-	writetext FossilScientistGiveText
-	waitbutton
 	sjump .GaveScientistFossil
 
 .HelixFossil:
 	checkitem HELIX_FOSSIL
-	iffalse .No
+	iffalse .NoFossil
 	getmonname STRING_BUFFER_3, OMANYTE
 	writetext FossilScientistOmanyteText
 	promptbutton
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1 ; remove this to immediately receive the fossil
 	setevent EVENT_GAVE_SCIENTIST_HELIX_FOSSIL
 	takeitem HELIX_FOSSIL
-	writetext FossilScientistGiveText
-	waitbutton
 	sjump .GaveScientistFossil
+
+.NoFossil
+	writetext FossilScientistNoFossilText
+	waitbutton
+	closetext
+	end
 
 .No
 	writetext FossilScientistNoText
@@ -148,13 +147,13 @@ FossilScientist:
 	db "OLD AMBER@"
 	db "DOME FOSSIL@"
 	db "HELIX FOSSIL@"
-	db "CANCEL@"
+	db "NOPE!@"
 
 FossilScientistIntroText:
-	text "Oh, what's that?"
+	text "Hello hello hello!"
 
 	para "You look like a"
-	line "FOSSIL MANIAC."
+	line "FOSSIL MANIAC!"
 
 	para "I mean no offense!"
 	line "See, I'm a FOSSIL"
@@ -164,12 +163,26 @@ FossilScientistIntroText:
 	line "a way to revive"
 	cont "old fossils!" 
 
-	para "Want to give it"
-	line "a try?"
+	para "Got any of these"
+	line "bad boys for me?"
+	done
+
+FossilScientistNoFossilText:
+	text "Yay! Hand it over!"
+
+	para "… … …"
+
+	para "…huh? You don't"
+	line "actually have that"
+	cont "fossil anymore?"
+
+	para "ARGH! NO!"
+	line "Don't tease me!"
 	done
 
 FossilScientistNoText:
-	text "No? Too bad!"
+	text "Rats! Oh well."
+	line "Bye."
 	done
 
 FossilScientistPartyFullText:
@@ -183,7 +196,7 @@ FossilScientistPartyFullText:
 	done
 
 FossilScientistTimeText:
-	text "Give me a sec!"
+	text "Uh, give me a sec!"
 
 	para "Take a walk!"
 
@@ -191,6 +204,9 @@ FossilScientistTimeText:
 
 	para "I promise, I'm not"
 	line "a FOSSIL THIEF!"
+
+	para "Come right back to"
+	line "get your #MON!"
 	done
 
 FossilScientistDoneText:
@@ -200,48 +216,75 @@ FossilScientistDoneText:
 	done
 
 FossilScientistOmanyteText:
-	text "Oh! HELIX FOSSIL!"
+	text "YES! HELIX FOSSIL!"
 
-	para "Want me to revive"
-	line "it into OMANYTE"
-	cont "for you?"
+	para "… … …"
 
-	para "This definitely is"
-	line "NOT a ploy to take"
+	para "…sorry, I didn't"
+	line "mean to snatch it"
+	cont "out of your hand."
 
-	para "your fossil and"
-	line "just replace it"
-	cont "with a #MON!"
+	para "Don't worry, I'll"
+	line "trade it in for an"
+	cont "OMANYTE!"
+
+	para "…uh, I mean I'll"
+	line "REVIVE one! Yeah!"
+
+	para "I'm definitely NOT"
+	line "stealing this cool"
+
+	para "fossil and giving"
+	line "you a rare #MON"
+	cont "from DRAGON DEN…"
 	done
 
 FossilScientistKabutoText:
-	text "Oh! DOME FOSSIL!"
+	text "YES! DOME FOSSIL!"
 
-	para "Want me to revive"
-	line "it into KABUTO"
-	cont "for you?"
+	para "… … …"
 
-	para "This definitely is"
-	line "NOT a ploy to take"
+	para "…sorry, I didn't"
+	line "mean to snatch it"
+	cont "out of your hand."
 
-	para "your fossil and"
-	line "just replace it"
-	cont "with a #MON!"
+	para "Don't worry, I'll"
+	line "trade it in for a"
+	cont "KABUTO!"
+
+	para "…uh, I mean I'll"
+	line "REVIVE one! Yeah!"
+
+	para "I'm definitely NOT"
+	line "stealing this neat"
+
+	para "fossil and giving"
+	line "you a rare #MON"
+	cont "from DRAGON DEN…"
 	done
 
 FossilScientistAerodactylText:
-	text "Oh! OLD AMBER!"
+	text "YES! OLD AMBER!"
 
-	para "Want me to revive"
-	line "it into AERODACTYL"
-	cont "for you?"
+	para "… … …"
 
-	para "This definitely is"
-	line "NOT a ploy to take"
+	para "…sorry, I didn't"
+	line "mean to snatch it"
+	cont "out of your hand."
 
-	para "your fossil and"
-	line "just replace it"
-	cont "with a #MON!"
+	para "Don't worry, I'll"
+	line "trade it in for an"
+	cont "AERODACTYL!"
+
+	para "…uh, I mean I'll"
+	line "REVIVE one! Yeah!"
+
+	para "I'm definitely NOT"
+	line "stealing this rad"
+
+	para "fossil and giving"
+	line "you a rare #MON"
+	cont "I won in a bet…"
 	done
 
 FossilScientistGiveText:

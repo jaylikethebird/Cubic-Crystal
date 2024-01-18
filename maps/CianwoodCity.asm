@@ -211,9 +211,11 @@ ChucksWifeChubbyText:
 	line "you, so he needs"
 	cont "to train harder."
 
-	para "That's good, since"
-	line "he was getting a"
-	cont "little chubby."
+	para "I can't wait to"
+	line "see which #MON"
+	
+	para "he'll train with"
+	line "in MT. MORTAR."
 
 	para "I'm so proud of"
 	line "how buff he made"
@@ -229,8 +231,7 @@ CianwoodCityYoungsterText:
 
 	para "I heard FALKNER"
 	line "of VIOLET CITY"
-
-	para "has a FLY HM."
+	cont "has a FLY HM."
 	done
 
 CianwoodCityPokefanMText:
@@ -402,7 +403,7 @@ CianwoodCity_MapEvents:
 	bg_event  7, 45, BGEVENT_READ, CianwoodGymSign
 	bg_event 24, 43, BGEVENT_READ, CianwoodPokecenterSign
 	bg_event 19, 47, BGEVENT_READ, CianwoodPharmacySign
-	bg_event  8, 32, BGEVENT_READ, CianwoodPhotoStudioSign
+	bg_event  7, 31, BGEVENT_READ, CianwoodPhotoStudioSign
 	bg_event  8, 24, BGEVENT_READ, CianwoodPokeSeerSign
 	bg_event  4, 19, BGEVENT_ITEM, CianwoodCityHiddenRevive
 	bg_event  5, 29, BGEVENT_ITEM, CianwoodCityHiddenMaxEther

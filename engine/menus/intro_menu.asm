@@ -661,7 +661,7 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	ld a, WOOPER
+	ld a, DUNSPARCE
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData

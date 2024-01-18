@@ -40,34 +40,11 @@ PewterCityBugCatcherScript:
 	jumptextfaceplayer PewterCityBugCatcherText
 
 PewterCityGrampsScript:
-	checkevent EVENT_GOT_SILVER_WING
-	iftrue .GotSilverWing
-	checkevent EVENT_CAUGHT_BIRDS
-	iftrue .CaughtBirds
 	faceplayer
 	opentext
 	writetext PewterCityGrampsTextNoBirds
 	waitbutton
 	closetext
-	end
-
-.GotSilverWing:
-	faceplayer
-	opentext
-	writetext PewterCityGrampsDone
-	waitbutton
-	closetext
-	end
-
-.CaughtBirds:
-	faceplayer
-	opentext
-	writetext PewterCityGrampsGiveWing
-	promptbutton
-	verbosegiveitem SILVER_WING
-	waitbutton
-	closetext
-	setevent EVENT_GOT_SILVER_WING
 	end
 
 PewterCitySign:
@@ -128,34 +105,26 @@ PewterCityBugCatcherText:
 	line "night."
 	done
 
-PewterCityGrampsGiveWing:
-	text "GIVE WING TEST"
-	done
-
-PewterCityGrampsDone:
-	text "YOU DONE!"
-	done
-
 PewterCityGrampsTextNoBirds:
 	text "Ah, you came all"
 	line "the way out here"
 	cont "from JOHTO?"
 
-	para "That brings back"
-	line "memories. When I"
+	para "My old friend was"
+	line "the GYM LEADER of"
+	cont "VIOLET CITY."
 
-	para "was young, I went"
-	line "to JOHTO to train."
+	para "I just visited him"
+	line "at his new home,"
 
-	para "You remind me so"
-	line "much of what I was"
+	para "in the cottage up"
+	line "north of CERULEAN."
 
-	para "like as a young"
-	line "man."
+	para "You should visit!"
 
-	para "Here. I want you"
-	line "to have this item"
-	cont "I found in JOHTO."
+	para "I'm sure he'd love"
+	line "to see a face from"
+	cont "back home!"	
 	done
 
 PewterCitySignText:

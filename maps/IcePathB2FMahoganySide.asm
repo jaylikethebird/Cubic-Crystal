@@ -36,7 +36,7 @@ IcePathB2FMahoganySide_MapEvents:
 	warp_event  9, 11, ICE_PATH_B3F, 1
 	warp_event 11,  4, ICE_PATH_B1F, 3
 	warp_event  4,  6, ICE_PATH_B1F, 4
-	warp_event  4, 12, ICE_PATH_B1F, 5
+	warp_event  3, 13, ICE_PATH_B1F, 5
 	warp_event 12, 12, ICE_PATH_B1F, 6
 
 	def_coord_events

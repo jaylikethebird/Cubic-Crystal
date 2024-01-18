@@ -64,6 +64,7 @@ Marts:
 	dw MartIndigoTM1
 	dw MartIndigoTM2
 	dw MartUnderground
+	dw MartCurse
 	assert_table_length NUM_MARTS
 
 MartCherrygrove:
@@ -521,7 +522,6 @@ MartCeladon3Fnone:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db -1 ; end
 
 MartCeladon3FRock:
@@ -529,7 +529,6 @@ MartCeladon3FRock:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db TM_ROCK_SLIDE
 	db -1 ; end
 
@@ -538,7 +537,6 @@ MartCeladon3FSolar:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db TM_SOLARBEAM
 	db -1 ; end
 
@@ -547,7 +545,6 @@ MartCeladon3FQuake:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db TM_EARTHQUAKE
 	db -1 ; end
 
@@ -556,7 +553,6 @@ MartCeladon3FRockSolar:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db TM_ROCK_SLIDE
 	db TM_SOLARBEAM
 	db -1 ; end
@@ -566,7 +562,6 @@ MartCeladon3FSolarQuake:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db TM_SOLARBEAM
 	db TM_EARTHQUAKE
 	db -1 ; end
@@ -576,7 +571,6 @@ MartCeladon3FRockQuake:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db TM_ROCK_SLIDE
 	db TM_EARTHQUAKE
 	db -1 ; end
@@ -586,7 +580,6 @@ MartCeladon3Fall:
 	db TM_PROTECT
 	db TM_REST
 	db TM_SLEEP_TALK
-	db TM_DREAM_EATER
 	db TM_ROCK_SLIDE
 	db TM_SOLARBEAM
 	db TM_EARTHQUAKE
@@ -699,6 +692,15 @@ MartUnderground:
 	db ENERGY_ROOT
 	db HEAL_POWDER
 	db REVIVAL_HERB
+	db -1 ; end
+
+MartCurse:
+	db 5 ; # items
+	db ENERGY_ROOT
+	db HEAL_POWDER
+	db REVIVAL_HERB
+	db TM_CURSE
+	db TM_DREAM_EATER
 	db -1 ; end
 
 DefaultMart:

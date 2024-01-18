@@ -456,8 +456,7 @@ FalknerWinLossFly:
 	done
 
 BugsyIntro:
-	text "Oh hey!"
-	line "There you are!"
+	text "Howdy, <PLAYER>!"
 
 	para "I'm taking a break"
 	line "from hunting bugs"

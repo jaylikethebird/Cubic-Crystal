@@ -153,8 +153,15 @@ ChuckIntroText1:
 	para "So you've come"
 	line "this far!"
 
-	para "Let me tell you,"
-	line "I'm tough!"
+	para "Hope that TYROGUE"
+	line "I gave you back in"
+
+	para "MT.MORTAR is doing"
+	line "well."
+
+	para "Now that I'm all"
+	line "warmed up, I'm as"
+	cont "burly as ever!"
 
 	para "My #MON will"
 	line "crush stones and"
@@ -164,7 +171,7 @@ ChuckIntroText1:
 	done
 
 ChuckIntroText2:
-	text "CHUCK: Urggh!"
+	text "Urggh!"
 	line "…"
 
 	para "Oooarrgh!"

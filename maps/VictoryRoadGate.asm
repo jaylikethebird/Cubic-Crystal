@@ -82,6 +82,16 @@ VictoryRoadGateLeftBlackBeltText:
 	para "You'll see scary-"
 	line "strong #MON out"
 	cont "there."
+
+	para "PROF.OAK of PALLET"
+	line "TOWN recommended"
+
+	para "keeping trainers"
+	line "away to stay safe."
+
+	para "If you wanna pass,"
+	line "talk to him!"
+
 	done
 
 VictoryRoadGateRightBlackBeltText:
