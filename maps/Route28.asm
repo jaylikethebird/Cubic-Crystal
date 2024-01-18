@@ -65,4 +65,4 @@ Route28_MapEvents:
 	bg_event 25,  2, BGEVENT_ITEM, Route28HiddenRareCandy
 
 	def_object_events
-	object_event 20, 2, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MoltresScript, EVENT_FOUGHT_MOLTRES2
+	object_event 20, 2, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MoltresScript, EVENT_MOLTRES

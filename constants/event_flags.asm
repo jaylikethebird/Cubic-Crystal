@@ -318,11 +318,11 @@
 	const EVENT_TODD_ASKED_FOR_PHONE_NUMBER
 	const EVENT_GOT_BLUE_TM
 	const EVENT_GINA_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_MEWTWO
 	const EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_ARTICUNO
 	const EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_ZAPDOS
 	const EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
 	const EVENT_FOUGHT_ZAPDOS
 	const EVENT_FOUGHT_MOLTRES
@@ -330,7 +330,7 @@
 	const EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	const EVENT_CAUGHT_BIRDS
 	const EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_MOLTRES
 	const EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
 	const_skip ; unused in Crystal
 	const EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
