@@ -114,8 +114,8 @@ Route35GoldenrodGateRandyThanksText:
 	line "guy who snoozes"
 	cont "all the time."
 
-	para "You'll recognize"
-	line "him right away!"
+	para "I heard he has a"
+	line "powerful new TM!"
 	done
 
 Route35GoldenrodGatePlayerReceivedAMonWithMailText:
@@ -124,16 +124,13 @@ Route35GoldenrodGatePlayerReceivedAMonWithMailText:
 	done
 
 Route35GoldenrodGateRandyWeirdTreeBlockingRoadText:
-	text "You can read it,"
-	line "but don't lose it!"
-	cont "ROUTE 31!"
+	text "I have an ominous"
+	line "feeling about my"
+	cont "sleepy pal…"
 
-	para "Oh, yeah. There"
-	line "was a weird tree"
-	cont "blocking the road."
-
-	para "I wonder if it's"
-	line "been cleared?"
+	para "Please deliver my"
+	line "MAIL to him ASAP"
+	cont "on ROUTE 31!"
 	done
 
 Route35GoldenrodGateRandyCantCarryAnotherMonText:

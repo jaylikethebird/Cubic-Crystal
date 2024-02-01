@@ -273,6 +273,13 @@ EcruteakCityGrampsAfterText:
 	para "Surely that's where"
 	line "KAREN will be off"
 	cont "to, at least."
+
+	para "As for MORTY? I'd"
+	line "seek out other GYM"
+	cont "LEADERS for now."
+
+	para "I've no clue when"
+	line "he'll return."
 	done
 
 EcruteakCityGrampsBeforeText:

@@ -177,8 +177,8 @@ BurnedTowerRival_BeforeText:
 	para "coming to this"
 	line "dump? No way!"
 
-	para "It's all your"
-	line "fault!"
+	para "Might as well take"
+	line "you down!"
 	done
 
 BurnedTowerRival_WinText:
@@ -187,8 +187,8 @@ BurnedTowerRival_WinText:
 	para "This is why I hate"
 	line "battling wimps."
 
-	para "There's no"
-	line "challenge in it."
+	para "They always have"
+	line "all the luck…"
 	done
 
 BurnedTowerRival_AfterText1:

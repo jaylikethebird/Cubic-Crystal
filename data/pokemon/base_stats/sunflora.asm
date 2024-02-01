@@ -3,7 +3,7 @@
 	db  85,  75,  80,  50, 115,  95
 	;   hp  atk  def  spd  sat  sdf
 
-	db GRASS, FURY_SWIPES ; type
+	db GRASS, FIRE ; type
 	db 120 ; catch rate
 	db 146 ; base exp
 	db NO_ITEM, NO_ITEM ; items

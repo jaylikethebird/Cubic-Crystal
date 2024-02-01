@@ -159,7 +159,7 @@ UnionCaveB1F_MapEvents:
 	warp_event  7, 19, UNION_CAVE_1F, 1
 	warp_event  3, 33, UNION_CAVE_1F, 2
 	warp_event 17, 31, UNION_CAVE_B2F, 1
-
+	warp_event 10, 3, RUINS_OF_ALPH_OMANYTE_WORD_ROOM, 3
 	def_coord_events
 
 	def_bg_events

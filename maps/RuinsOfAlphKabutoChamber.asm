@@ -172,16 +172,19 @@ RuinsOfAlphKabutoChamberReceptionistText:
 	done
 
 RuinsOfAlphKabutoChamberScientistCrypticText:
-	text "Recently, strange,"
-	line "cryptic patterns"
-	cont "have appeared."
+	text "I'm studying these"
+	line "cryptic etchings."
 
-	para "It's odd. They"
-	line "weren't here a"
-	cont "little while ago…"
+	para "See? This wall…"
 
-	para "You should take a"
-	line "look at the walls."
+	para "It almost looks"
+	line "like a word!"
+
+	para "DOME? What does"
+	line "that even mean?"
+
+	para "Come back if you"
+	line "find out, okay?"
 	done
 
 RuinsOfAlphKabutoChamberScientistHoleText:
