@@ -341,8 +341,8 @@ MrPokemonText_GimmeTheScale:
 	line "care to trade it?"
 
 	para "I can offer this"
-	line "FOSSIL I got"
-	cont "from PROF.OAK."
+	line "FOSSIL I got from"
+	cont "PROF.OAK."
 
 	para "He said it had"
 	line "something to do"

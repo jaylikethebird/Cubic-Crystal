@@ -168,7 +168,7 @@ NoHelixText:
 	para "I heard there's a"
 	line "local collector of"
 
-	para "rarities out near"
+	para "rarities north of"
 	line "CHERRYGROVE CITY."
 
 	para "Maybe he'll have"

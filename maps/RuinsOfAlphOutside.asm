@@ -254,7 +254,9 @@ MortyHere:
 
 	para "but he left for"
 	line "UNION CAVE after"
-	cont "he had a vision."
+
+	para "he had a vision"
+	line "of the CLEAR BELL."
 
 	para "Strangely, I can"
 	line "still sense his"

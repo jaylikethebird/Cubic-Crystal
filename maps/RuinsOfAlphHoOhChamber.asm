@@ -228,25 +228,31 @@ EusineText:
 	line "fellow scholar of"
 	cont "the RUINS OF ALPH."
 
-	para "I've been poring"
-	line "over this chamber"
-	cont "for clues."
+	para "All of my research"
+	line "suggests that the"
 
-	para "I just know it's"
+	para "CLEAR BELL, which"
+	line "summons LEGENDS to"
+
+	para "TIN TOWER with its"
+	line "beautiful sound,"
+
+	para "is in one of these"
+	line "chambers."
+
+	para "I'm so close!"
+
+	para "This room must be"
 	line "connected to the"
 
 	para "rainbow-winged"
 	line "#MON that I've"
-	cont "long dreamed of."
 
-	para "I had a vision"
-	line "of an ancient"
+	para "long dreamed of,"
+	line "but I don't know"
 
-	para "water #MON with"
-	line "a spiral shell."
-
-	para "Maybe in another"
-	line "chamber?"
+	para "if the CLEAR BELL"
+	line "is here…"
 	done
 
 FirstText:

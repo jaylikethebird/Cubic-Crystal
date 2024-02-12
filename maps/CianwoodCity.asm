@@ -62,7 +62,7 @@ CianwoodCitySuicuneAndEusine:
 	writetext EusineSuicuneText
 	waitbutton
 	closetext
-	winlosstext EusineBeatenText, 0
+	winlosstext EusineBeatenText, KarenLossText
 	setlasttalked CIANWOODCITY_EUSINE
 	loadtrainer KAREN, KAREN2
 	startbattle
@@ -318,6 +318,20 @@ EusineSuicuneText:
 EusineBeatenText:
 	text "I hate to admit"
 	line "it, but you win."
+	done
+
+KarenLossText:
+	text "Sorry, kid."
+	
+	para "But I need to show"
+	line "SUICUNE how strong"
+	cont "of a trainer I am."
+
+	para "If you wanna help"
+	line "us hunt, look for"
+
+	para "MORTY in the RUINS"
+	line "OF ALPH."
 	done
 
 EusineAfterText:
