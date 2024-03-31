@@ -1,6 +1,6 @@
 	db DUGTRIO ; 051
 
-	db  50,  100,  50, 125,  50,  70
+	db  55,  100,  50, 125,  50,  70
 	;   hp  atk  def  spd  sat  sdf
 
 	db GROUND, GROUND ; type

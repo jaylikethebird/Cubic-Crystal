@@ -1,6 +1,6 @@
 	db DODRIO ; 085
 
-	db  70, 110,  80, 110,  60,  80
+	db  70, 110,  80, 110,  60,  70
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIGHTING, FLYING ; type

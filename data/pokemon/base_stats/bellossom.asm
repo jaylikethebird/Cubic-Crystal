@@ -1,6 +1,6 @@
 	db BELLOSSOM ; 182
 
-	db  75,  80,  85,  50,  90, 100
+	db  75,  50,  85,  80,  90, 120
 	;   hp  atk  def  spd  sat  sdf
 
 	db GRASS, GRASS ; type
