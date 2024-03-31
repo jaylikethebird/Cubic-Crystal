@@ -253,6 +253,17 @@ EusineText:
 
 	para "if the CLEAR BELL"
 	line "is here…"
+
+	para "Another chamber"
+	line "wall puzzle may"
+	
+	para "have the answer,"
+	line "but I can't bear"
+	cont "to leave here."
+
+	para "Not when I'm so"
+	line "close to the the"
+	cont "answers I seek!"
 	done
 
 FirstText:
@@ -275,6 +286,12 @@ FirstText:
 
 	para "But what could it"
 	line "all mean?"
+
+	para "I'll stay here."
+	
+	para "You should join"
+	line "KAREN's hunt for"
+	cont "SUICUNE."
 	done
 
 RuinsOfAlphHoOhChamber_MapEvents:
